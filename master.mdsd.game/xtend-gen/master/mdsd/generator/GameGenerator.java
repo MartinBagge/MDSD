@@ -6,22 +6,10 @@ package master.mdsd.generator;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
 import java.util.Iterator;
-import master.mdsd.game.Action;
 import master.mdsd.game.Attack;
 import master.mdsd.game.Behaviour;
 import master.mdsd.game.Bullet;
-import master.mdsd.game.CharDec;
-import master.mdsd.game.CharacterAttr;
-import master.mdsd.game.CompOperator;
-import master.mdsd.game.IntAtt;
-import master.mdsd.game.LogicOperatorLoop;
 import master.mdsd.game.Pathfinding;
-import master.mdsd.game.ReferenceCharacter;
-import master.mdsd.game.Rule;
-import master.mdsd.game.RuleSet;
-import master.mdsd.game.RuleSetup;
-import master.mdsd.game.RuleType;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -42,7 +30,75 @@ public class GameGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     CharSequence _addToFile = this.addToFile(resource);
-    fsa.generateFile("game.py", _addToFile);
+    fsa.generateFile("master.py", _addToFile);
+    TreeIterator<EObject> _allContents = resource.getAllContents();
+    Iterator<master.mdsd.game.Character> _filter = Iterators.<master.mdsd.game.Character>filter(_allContents, master.mdsd.game.Character.class);
+    final Procedure1<master.mdsd.game.Character> _function = (master.mdsd.game.Character it) -> {
+      this.createCharacter(it, fsa);
+    };
+    IteratorExtensions.<master.mdsd.game.Character>forEach(_filter, _function);
+    TreeIterator<EObject> _allContents_1 = resource.getAllContents();
+    Iterator<Behaviour> _filter_1 = Iterators.<Behaviour>filter(_allContents_1, Behaviour.class);
+    final Procedure1<Behaviour> _function_1 = (Behaviour it) -> {
+      this.createBehaviour(it, fsa);
+    };
+    IteratorExtensions.<Behaviour>forEach(_filter_1, _function_1);
+    TreeIterator<EObject> _allContents_2 = resource.getAllContents();
+    Iterator<master.mdsd.game.Object> _filter_2 = Iterators.<master.mdsd.game.Object>filter(_allContents_2, master.mdsd.game.Object.class);
+    final Procedure1<master.mdsd.game.Object> _function_2 = (master.mdsd.game.Object it) -> {
+      this.createObject(it, fsa);
+    };
+    IteratorExtensions.<master.mdsd.game.Object>forEach(_filter_2, _function_2);
+  }
+  
+  public void createObject(final master.mdsd.game.Object object, final IFileSystemAccess2 fsa) {
+    String _name = object.getName();
+    String _plus = (_name + ".py");
+    CharSequence _ObjectTemp = this.ObjectTemp(object);
+    fsa.generateFile(_plus, _ObjectTemp);
+  }
+  
+  public CharSequence ObjectTemp(final master.mdsd.game.Object object) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import master");
+    _builder.newLine();
+    _builder.append("class ");
+    String _name = object.getName();
+    _builder.append(_name, "");
+    _builder.append("(entity):");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public Object createBehaviour(final Behaviour behaviour, final IFileSystemAccess2 fsa) {
+    return null;
+  }
+  
+  public void BehaviourTemp(final Behaviour behaviour) {
+    throw new UnsupportedOperationException("TODO: auto-generated method stub");
+  }
+  
+  public void createCharacter(final master.mdsd.game.Character character, final IFileSystemAccess2 fsa) {
+    String _name = character.getName();
+    String _plus = (_name + ".py");
+    CharSequence _characterTemp = this.characterTemp(character);
+    fsa.generateFile(_plus, _characterTemp);
+  }
+  
+  public CharSequence characterTemp(final master.mdsd.game.Character character) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import master");
+    _builder.newLine();
+    _builder.append("class ");
+    String _name = character.getName();
+    _builder.append(_name, "");
+    _builder.append("(entity):");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    return _builder;
   }
   
   public CharSequence addToFile(final Resource resource) {
@@ -50,7 +106,7 @@ public class GameGenerator extends AbstractGenerator {
     _builder.append("class master(object):");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("def __init__(self, attrs[]):");
+    _builder.append("def __init__(self, attrs):");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("self.attrs = attrs");
@@ -65,13 +121,6 @@ public class GameGenerator extends AbstractGenerator {
     _builder.append("self.type = type");
     _builder.newLine();
     _builder.newLine();
-    TreeIterator<EObject> _allContents = resource.getAllContents();
-    Iterator<Pathfinding> _filter = Iterators.<Pathfinding>filter(_allContents, Pathfinding.class);
-    final Procedure1<Pathfinding> _function = (Pathfinding it) -> {
-      this.addPathfinding(it);
-    };
-    IteratorExtensions.<Pathfinding>forEach(_filter, _function);
-    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
@@ -82,55 +131,7 @@ public class GameGenerator extends AbstractGenerator {
     _builder.append(_name, "");
     _builder.append("(entity):");
     _builder.newLineIfNotEmpty();
-    {
-      EList<RuleSet> _ruleSets = pathfinding.getRuleSets();
-      for(final RuleSet ruleSet : _ruleSets) {
-        _builder.append("\t");
-        _builder.append("def checkCondition():");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("\t");
-        _builder.append("if ");
-        Rule _rule = ruleSet.getRule();
-        RuleSetup _ruleSetup = _rule.getRuleSetup();
-        ReferenceCharacter _attributeRefLeft = _ruleSetup.getAttributeRefLeft();
-        _builder.append(_attributeRefLeft, "\t\t");
-        _builder.append(".");
-        Rule _rule_1 = ruleSet.getRule();
-        RuleSetup _ruleSetup_1 = _rule_1.getRuleSetup();
-        RuleType _ruleType = _ruleSetup_1.getRuleType();
-        _builder.append(_ruleType, "\t\t");
-        _builder.append(" ");
-        Rule _rule_2 = ruleSet.getRule();
-        RuleSetup _ruleSetup_2 = _rule_2.getRuleSetup();
-        CompOperator _operator = _ruleSetup_2.getOperator();
-        _builder.append(_operator, "\t\t");
-        _builder.append(" ");
-        Rule _rule_3 = ruleSet.getRule();
-        RuleSetup _ruleSetup_3 = _rule_3.getRuleSetup();
-        IntAtt _intAttleft = _ruleSetup_3.getIntAttleft();
-        _builder.append(_intAttleft, "\t\t");
-        _builder.append(":");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("\t\t");
-        _builder.append("self.");
-        Rule _rule_4 = ruleSet.getRule();
-        Action _toDoAction = _rule_4.getToDoAction();
-        CharacterAttr _charAtt = _toDoAction.getCharAtt();
-        _builder.append(_charAtt, "\t\t\t");
-        _builder.append(" = ");
-        Rule _rule_5 = ruleSet.getRule();
-        Action _toDoAction_1 = _rule_5.getToDoAction();
-        CharDec _charDec = _toDoAction_1.getCharDec();
-        _builder.append(_charDec, "\t\t\t");
-        Rule _rule_6 = ruleSet.getRule();
-        Action _toDoAction_2 = _rule_6.getToDoAction();
-        EList<LogicOperatorLoop> _lo = _toDoAction_2.getLo();
-        _builder.append(_lo, "\t\t\t");
-        _builder.newLineIfNotEmpty();
-      }
-    }
+    _builder.newLine();
     return _builder;
   }
   
