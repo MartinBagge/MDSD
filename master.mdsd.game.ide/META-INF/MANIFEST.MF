@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: master.mdsd.game.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: master.mdsd.game.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: master.mdsd.game,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: master.mdsd.ide.contentassist.antlr.internal,
+ master.mdsd.ide.contentassist.antlr
+
