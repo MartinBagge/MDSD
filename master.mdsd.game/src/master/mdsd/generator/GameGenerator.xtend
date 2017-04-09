@@ -11,9 +11,10 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import master.mdsd.game.Character
-import master.mdsd.game.Behaviour
 import master.mdsd.game.Pathfinding
 import master.mdsd.game.Object
+import master.mdsd.game.Attack
+import master.mdsd.game.Bullet
 
 /**
  * Generates code from your model files on save.
@@ -21,6 +22,8 @@ import master.mdsd.game.Object
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class GameGenerator extends AbstractGenerator {
+	
+	private CharSequence all
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 
@@ -28,42 +31,46 @@ class GameGenerator extends AbstractGenerator {
 //				.filter(typeof(Greeting))
 //				.map[name]
 //				.join(', '))
-		fsa.generateFile('master.py',addToFile(resource))
-		resource.allContents.filter(Character).forEach[createCharacter(fsa)]
-		resource.allContents.filter(Behaviour).forEach[createBehaviour(fsa)]
-		resource.allContents.filter(Object).forEach[createObject(fsa)]
+		
+		createAll(resource)
+		
+		fsa.generateFile('game.py',all)
 	}
 	
-	def createObject(Object object, IFileSystemAccess2 fsa) {
-		fsa.generateFile(object.name+'.py', ObjectTemp(object))
+	def createAll(Resource resource) {
+		all = addMaster()
+		resource.allContents.filter(Character).forEach[createCharacter()]
+		resource.allContents.filter(Object).forEach[createObject()]
+		resource.allContents.filter(Pathfinding).forEach[createPathfinding()]
+		resource.allContents.filter(Attack).forEach[createAttack()]
+		resource.allContents.filter(Bullet).forEach[createBullet()]
+		
+		all = all.toString() + addScript()
+		
 	}
 	
-	def ObjectTemp(Object object) '''
-		import master
-		class «object.name»(entity):
-			
-	'''
-	
-	def createBehaviour(Behaviour behaviour,  IFileSystemAccess2 fsa) {
-		//fsa.generateFile(behaviour.name+'.py', BehaviourTemp(behaviour))
+	def createPathfinding(Pathfinding pathfinding) {
+		all = all.toString() + addPathfinding(pathfinding)
 	}
 	
-	def BehaviourTemp(Behaviour behaviour) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	def createAttack(Attack attack) {
+		all = all.toString() + addAttack(attack)
 	}
 	
-	def createCharacter(Character character, IFileSystemAccess2 fsa) {
-		fsa.generateFile(character.name+'.py', characterTemp(character))
+	def createBullet(Bullet bullet) {
+		all = all.toString() + addBullet(bullet)
 	}
 	
-	def characterTemp(Character character) '''
-		import master
-		class «character.name»(entity):
-			
-	'''
+	def createCharacter(Character character) {
+		all = all.toString() + addCharacter(character)
+	}
+	
+	def createObject(Object object) {
+		all = all.toString() + addObject(object)
+	}
 	
 	
-	def addToFile(Resource resource) '''
+	def addMaster() '''
 		class master(object):
 			def __init__(self, attrs):
 				self.attrs = attrs
@@ -86,15 +93,28 @@ class GameGenerator extends AbstractGenerator {
 			*/»
 	'''
 	
-	def addBehaviour(Behaviour behaviour)'''
-		«»
-		class «IF behaviour.behaviourTypeId=="Pathfinding"»«behaviour.pathfinding.name»«ELSEIF behaviour.behaviourTypeId=="Attack"»«behaviour.attack.name»«ELSEIF behaviour.behaviourTypeId=="Bullet"»«behaviour.bullet.name»«ENDIF»(entity):
-			def 
+	def addAttack(Attack attack)'''
+		class «attack.name»(entity):
+		
 	'''
 	
+	def addBullet(Bullet bullet)'''
+		class «bullet.name»(entity)>
+		
+	'''
 	
 	def addCharacter(Character character) '''
 		class «character.name»(entity):
+		
+	'''
+	
+	def addObject(Object object)'''
+		class «object.name»(entity):
+		
+	'''
+	
+	def addScript()'''
+		
 	'''
 		
 	

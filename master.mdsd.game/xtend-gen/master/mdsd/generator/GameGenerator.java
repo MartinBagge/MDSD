@@ -3,11 +3,9 @@
  */
 package master.mdsd.generator;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
 import java.util.Iterator;
 import master.mdsd.game.Attack;
-import master.mdsd.game.Behaviour;
 import master.mdsd.game.Bullet;
 import master.mdsd.game.Pathfinding;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -27,81 +25,93 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
  */
 @SuppressWarnings("all")
 public class GameGenerator extends AbstractGenerator {
+  private CharSequence all;
+  
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    CharSequence _addToFile = this.addToFile(resource);
-    fsa.generateFile("master.py", _addToFile);
-    TreeIterator<EObject> _allContents = resource.getAllContents();
-    Iterator<master.mdsd.game.Character> _filter = Iterators.<master.mdsd.game.Character>filter(_allContents, master.mdsd.game.Character.class);
-    final Procedure1<master.mdsd.game.Character> _function = (master.mdsd.game.Character it) -> {
-      this.createCharacter(it, fsa);
-    };
-    IteratorExtensions.<master.mdsd.game.Character>forEach(_filter, _function);
-    TreeIterator<EObject> _allContents_1 = resource.getAllContents();
-    Iterator<Behaviour> _filter_1 = Iterators.<Behaviour>filter(_allContents_1, Behaviour.class);
-    final Procedure1<Behaviour> _function_1 = (Behaviour it) -> {
-      this.createBehaviour(it, fsa);
-    };
-    IteratorExtensions.<Behaviour>forEach(_filter_1, _function_1);
-    TreeIterator<EObject> _allContents_2 = resource.getAllContents();
-    Iterator<master.mdsd.game.Object> _filter_2 = Iterators.<master.mdsd.game.Object>filter(_allContents_2, master.mdsd.game.Object.class);
-    final Procedure1<master.mdsd.game.Object> _function_2 = (master.mdsd.game.Object it) -> {
-      this.createObject(it, fsa);
-    };
-    IteratorExtensions.<master.mdsd.game.Object>forEach(_filter_2, _function_2);
+    this.createAll(resource);
+    fsa.generateFile("game.py", this.all);
   }
   
-  public void createObject(final master.mdsd.game.Object object, final IFileSystemAccess2 fsa) {
-    String _name = object.getName();
-    String _plus = (_name + ".py");
-    CharSequence _ObjectTemp = this.ObjectTemp(object);
-    fsa.generateFile(_plus, _ObjectTemp);
+  public CharSequence createAll(final Resource resource) {
+    CharSequence _xblockexpression = null;
+    {
+      CharSequence _addMaster = this.addMaster();
+      this.all = _addMaster;
+      TreeIterator<EObject> _allContents = resource.getAllContents();
+      Iterator<master.mdsd.game.Character> _filter = Iterators.<master.mdsd.game.Character>filter(_allContents, master.mdsd.game.Character.class);
+      final Procedure1<master.mdsd.game.Character> _function = (master.mdsd.game.Character it) -> {
+        this.createCharacter(it);
+      };
+      IteratorExtensions.<master.mdsd.game.Character>forEach(_filter, _function);
+      TreeIterator<EObject> _allContents_1 = resource.getAllContents();
+      Iterator<master.mdsd.game.Object> _filter_1 = Iterators.<master.mdsd.game.Object>filter(_allContents_1, master.mdsd.game.Object.class);
+      final Procedure1<master.mdsd.game.Object> _function_1 = (master.mdsd.game.Object it) -> {
+        this.createObject(it);
+      };
+      IteratorExtensions.<master.mdsd.game.Object>forEach(_filter_1, _function_1);
+      TreeIterator<EObject> _allContents_2 = resource.getAllContents();
+      Iterator<Pathfinding> _filter_2 = Iterators.<Pathfinding>filter(_allContents_2, Pathfinding.class);
+      final Procedure1<Pathfinding> _function_2 = (Pathfinding it) -> {
+        this.createPathfinding(it);
+      };
+      IteratorExtensions.<Pathfinding>forEach(_filter_2, _function_2);
+      TreeIterator<EObject> _allContents_3 = resource.getAllContents();
+      Iterator<Attack> _filter_3 = Iterators.<Attack>filter(_allContents_3, Attack.class);
+      final Procedure1<Attack> _function_3 = (Attack it) -> {
+        this.createAttack(it);
+      };
+      IteratorExtensions.<Attack>forEach(_filter_3, _function_3);
+      TreeIterator<EObject> _allContents_4 = resource.getAllContents();
+      Iterator<Bullet> _filter_4 = Iterators.<Bullet>filter(_allContents_4, Bullet.class);
+      final Procedure1<Bullet> _function_4 = (Bullet it) -> {
+        this.createBullet(it);
+      };
+      IteratorExtensions.<Bullet>forEach(_filter_4, _function_4);
+      String _string = this.all.toString();
+      CharSequence _addScript = this.addScript();
+      String _plus = (_string + _addScript);
+      _xblockexpression = this.all = _plus;
+    }
+    return _xblockexpression;
   }
   
-  public CharSequence ObjectTemp(final master.mdsd.game.Object object) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("import master");
-    _builder.newLine();
-    _builder.append("class ");
-    String _name = object.getName();
-    _builder.append(_name, "");
-    _builder.append("(entity):");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    _builder.newLine();
-    return _builder;
+  public CharSequence createPathfinding(final Pathfinding pathfinding) {
+    String _string = this.all.toString();
+    CharSequence _addPathfinding = this.addPathfinding(pathfinding);
+    String _plus = (_string + _addPathfinding);
+    return this.all = _plus;
   }
   
-  public Object createBehaviour(final Behaviour behaviour, final IFileSystemAccess2 fsa) {
-    return null;
+  public CharSequence createAttack(final Attack attack) {
+    String _string = this.all.toString();
+    CharSequence _addAttack = this.addAttack(attack);
+    String _plus = (_string + _addAttack);
+    return this.all = _plus;
   }
   
-  public void BehaviourTemp(final Behaviour behaviour) {
-    throw new UnsupportedOperationException("TODO: auto-generated method stub");
+  public CharSequence createBullet(final Bullet bullet) {
+    String _string = this.all.toString();
+    CharSequence _addBullet = this.addBullet(bullet);
+    String _plus = (_string + _addBullet);
+    return this.all = _plus;
   }
   
-  public void createCharacter(final master.mdsd.game.Character character, final IFileSystemAccess2 fsa) {
-    String _name = character.getName();
-    String _plus = (_name + ".py");
-    CharSequence _characterTemp = this.characterTemp(character);
-    fsa.generateFile(_plus, _characterTemp);
+  public CharSequence createCharacter(final master.mdsd.game.Character character) {
+    String _string = this.all.toString();
+    CharSequence _addCharacter = this.addCharacter(character);
+    String _plus = (_string + _addCharacter);
+    return this.all = _plus;
   }
   
-  public CharSequence characterTemp(final master.mdsd.game.Character character) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("import master");
-    _builder.newLine();
-    _builder.append("class ");
-    String _name = character.getName();
-    _builder.append(_name, "");
-    _builder.append("(entity):");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    _builder.newLine();
-    return _builder;
+  public CharSequence createObject(final master.mdsd.game.Object object) {
+    String _string = this.all.toString();
+    CharSequence _addObject = this.addObject(object);
+    String _plus = (_string + _addObject);
+    return this.all = _plus;
   }
   
-  public CharSequence addToFile(final Resource resource) {
+  public CharSequence addMaster() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("class master(object):");
     _builder.newLine();
@@ -135,39 +145,24 @@ public class GameGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  public CharSequence addBehaviour(final Behaviour behaviour) {
+  public CharSequence addAttack(final Attack attack) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.newLine();
     _builder.append("class ");
-    {
-      String _behaviourTypeId = behaviour.getBehaviourTypeId();
-      boolean _equals = Objects.equal(_behaviourTypeId, "Pathfinding");
-      if (_equals) {
-        Pathfinding _pathfinding = behaviour.getPathfinding();
-        String _name = _pathfinding.getName();
-        _builder.append(_name, "");
-      } else {
-        String _behaviourTypeId_1 = behaviour.getBehaviourTypeId();
-        boolean _equals_1 = Objects.equal(_behaviourTypeId_1, "Attack");
-        if (_equals_1) {
-          Attack _attack = behaviour.getAttack();
-          String _name_1 = _attack.getName();
-          _builder.append(_name_1, "");
-        } else {
-          String _behaviourTypeId_2 = behaviour.getBehaviourTypeId();
-          boolean _equals_2 = Objects.equal(_behaviourTypeId_2, "Bullet");
-          if (_equals_2) {
-            Bullet _bullet = behaviour.getBullet();
-            String _name_2 = _bullet.getName();
-            _builder.append(_name_2, "");
-          }
-        }
-      }
-    }
+    String _name = attack.getName();
+    _builder.append(_name, "");
     _builder.append("(entity):");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    _builder.append("def ");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence addBullet(final Bullet bullet) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("class ");
+    String _name = bullet.getName();
+    _builder.append(_name, "");
+    _builder.append("(entity)>");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
     return _builder;
   }
@@ -179,6 +174,25 @@ public class GameGenerator extends AbstractGenerator {
     _builder.append(_name, "");
     _builder.append("(entity):");
     _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence addObject(final master.mdsd.game.Object object) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("class ");
+    String _name = object.getName();
+    _builder.append(_name, "");
+    _builder.append("(entity):");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence addScript() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\t\t");
+    _builder.newLine();
     return _builder;
   }
 }

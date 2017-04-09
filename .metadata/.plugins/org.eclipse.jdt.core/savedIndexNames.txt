@@ -9,7 +9,6 @@ INDEX VERSION 1.129+/Users/Martin/Xtext/.metadata/.plugins/org.eclipse.jdt.core
 1766242379.index
 2906408187.index
 3375451947.index
-2325664319.index
 1181243154.index
 2258094844.index
 1182768060.index

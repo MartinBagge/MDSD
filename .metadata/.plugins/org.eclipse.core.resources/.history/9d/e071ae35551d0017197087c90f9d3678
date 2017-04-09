@@ -11,6 +11,7 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import master.mdsd.game.Character
+import master.mdsd.game.Behaviour
 import master.mdsd.game.Pathfinding
 import master.mdsd.game.Object
 import master.mdsd.game.Attack
@@ -44,8 +45,6 @@ class GameGenerator extends AbstractGenerator {
 		resource.allContents.filter(Pathfinding).forEach[createPathfinding()]
 		resource.allContents.filter(Attack).forEach[createAttack()]
 		resource.allContents.filter(Bullet).forEach[createBullet()]
-		
-		all = all.toString() + addScript()
 		
 	}
 	
@@ -110,10 +109,6 @@ class GameGenerator extends AbstractGenerator {
 	
 	def addObject(Object object)'''
 		class «object.name»(entity):
-		
-	'''
-	
-	def addScript()'''
 		
 	'''
 		

@@ -45,8 +45,6 @@ class GameGenerator extends AbstractGenerator {
 		resource.allContents.filter(Attack).forEach[createAttack()]
 		resource.allContents.filter(Bullet).forEach[createBullet()]
 		
-		all = all.toString() + addScript()
-		
 	}
 	
 	def createPathfinding(Pathfinding pathfinding) {
@@ -110,10 +108,6 @@ class GameGenerator extends AbstractGenerator {
 	
 	def addObject(Object object)'''
 		class «object.name»(entity):
-		
-	'''
-	
-	def addScript()'''
 		
 	'''
 		
