@@ -3,8 +3,6 @@
  */
 package master.mdsd.game;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -80,19 +78,29 @@ public interface AttributeInitializer extends EObject
   void setAmountValueId(int value);
 
   /**
-   * Returns the value of the '<em><b>Target</b></em>' containment reference list.
-   * The list contents are of type {@link master.mdsd.game.TargetRef}.
+   * Returns the value of the '<em><b>Target</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Target</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Target</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Target</em>' containment reference list.
+   * @return the value of the '<em>Target</em>' containment reference.
+   * @see #setTarget(TargetRef)
    * @see master.mdsd.game.GamePackage#getAttributeInitializer_Target()
    * @model containment="true"
    * @generated
    */
-  EList<TargetRef> getTarget();
+  TargetRef getTarget();
+
+  /**
+   * Sets the value of the '{@link master.mdsd.game.AttributeInitializer#getTarget <em>Target</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Target</em>' containment reference.
+   * @see #getTarget()
+   * @generated
+   */
+  void setTarget(TargetRef value);
 
 } // AttributeInitializer

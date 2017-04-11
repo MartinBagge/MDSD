@@ -6,19 +6,48 @@ package master.mdsd.game.impl;
 import master.mdsd.game.GamePackage;
 import master.mdsd.game.LogicOperator;
 
+import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Logic Operator</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link master.mdsd.game.impl.LogicOperatorImpl#getLop <em>Lop</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class LogicOperatorImpl extends MinimalEObjectImpl.Container implements LogicOperator
 {
+  /**
+   * The default value of the '{@link #getLop() <em>Lop</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLop()
+   * @generated
+   * @ordered
+   */
+  protected static final String LOP_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getLop() <em>Lop</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLop()
+   * @generated
+   * @ordered
+   */
+  protected String lop = LOP_EDEFAULT;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -38,6 +67,112 @@ public class LogicOperatorImpl extends MinimalEObjectImpl.Container implements L
   protected EClass eStaticClass()
   {
     return GamePackage.Literals.LOGIC_OPERATOR;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getLop()
+  {
+    return lop;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLop(String newLop)
+  {
+    String oldLop = lop;
+    lop = newLop;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.LOGIC_OPERATOR__LOP, oldLop, lop));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case GamePackage.LOGIC_OPERATOR__LOP:
+        return getLop();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case GamePackage.LOGIC_OPERATOR__LOP:
+        setLop((String)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case GamePackage.LOGIC_OPERATOR__LOP:
+        setLop(LOP_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case GamePackage.LOGIC_OPERATOR__LOP:
+        return LOP_EDEFAULT == null ? lop != null : !LOP_EDEFAULT.equals(lop);
+    }
+    return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (lop: ");
+    result.append(lop);
+    result.append(')');
+    return result.toString();
   }
 
 } //LogicOperatorImpl

@@ -27,34 +27,28 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	public class ModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.Model");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cGameKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cMapAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cMapMapParserRuleCall_2_0 = (RuleCall)cMapAssignment_2.eContents().get(0);
+		private final Action cModelAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cGameKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cEntitiesAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cEntitiesEntityParserRuleCall_3_0 = (RuleCall)cEntitiesAssignment_3.eContents().get(0);
-		private final Assignment cIniAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cIniInitializerParserRuleCall_4_0 = (RuleCall)cIniAssignment_4.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Model:
-		//	'Game' '{' map=Map entities+=Entity* ini=Initializer '}';
+		//	{Model} 'Game' '{' entities+=Entity* '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Game' '{' map=Map entities+=Entity* ini=Initializer '}'
+		//{Model} 'Game' '{' entities+=Entity* '}'
 		public Group getGroup() { return cGroup; }
 		
+		//{Model}
+		public Action getModelAction_0() { return cModelAction_0; }
+		
 		//'Game'
-		public Keyword getGameKeyword_0() { return cGameKeyword_0; }
+		public Keyword getGameKeyword_1() { return cGameKeyword_1; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
-		
-		//map=Map
-		public Assignment getMapAssignment_2() { return cMapAssignment_2; }
-		
-		//Map
-		public RuleCall getMapMapParserRuleCall_2_0() { return cMapMapParserRuleCall_2_0; }
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
 		//entities+=Entity*
 		public Assignment getEntitiesAssignment_3() { return cEntitiesAssignment_3; }
@@ -62,53 +56,43 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		//Entity
 		public RuleCall getEntitiesEntityParserRuleCall_3_0() { return cEntitiesEntityParserRuleCall_3_0; }
 		
-		//ini=Initializer
-		public Assignment getIniAssignment_4() { return cIniAssignment_4; }
-		
-		//Initializer
-		public RuleCall getIniInitializerParserRuleCall_4_0() { return cIniInitializerParserRuleCall_4_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
-	}
-	public class MapElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.Map");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cMapAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cEntityIdAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Keyword cEntityIdMapKeyword_1_0 = (Keyword)cEntityIdAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cAttributesAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cAttributesAttributeParserRuleCall_3_0 = (RuleCall)cAttributesAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		
-		//Map:
-		//	{Map} entityId='Map' '{' attributes+=Attribute* '}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{Map} entityId='Map' '{' attributes+=Attribute* '}'
-		public Group getGroup() { return cGroup; }
-		
-		//{Map}
-		public Action getMapAction_0() { return cMapAction_0; }
-		
-		//entityId='Map'
-		public Assignment getEntityIdAssignment_1() { return cEntityIdAssignment_1; }
-		
-		//'Map'
-		public Keyword getEntityIdMapKeyword_1_0() { return cEntityIdMapKeyword_1_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-		
-		//attributes+=Attribute*
-		public Assignment getAttributesAssignment_3() { return cAttributesAssignment_3; }
-		
-		//Attribute
-		public RuleCall getAttributesAttributeParserRuleCall_3_0() { return cAttributesAttributeParserRuleCall_3_0; }
-		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+	}
+	public class GameMapElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.GameMap");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cEntityIdAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cEntityIdMapKeyword_0_0 = (Keyword)cEntityIdAssignment_0.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cAttributeListAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cAttributeListAttributeParserRuleCall_2_0 = (RuleCall)cAttributeListAssignment_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		
+		//GameMap:
+		//	entityId='Map' '{' attributeList+=Attribute* '}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//entityId='Map' '{' attributeList+=Attribute* '}'
+		public Group getGroup() { return cGroup; }
+		
+		//entityId='Map'
+		public Assignment getEntityIdAssignment_0() { return cEntityIdAssignment_0; }
+		
+		//'Map'
+		public Keyword getEntityIdMapKeyword_0_0() { return cEntityIdMapKeyword_0_0; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		
+		//attributeList+=Attribute*
+		public Assignment getAttributeListAssignment_2() { return cAttributeListAssignment_2; }
+		
+		//Attribute
+		public RuleCall getAttributeListAttributeParserRuleCall_2_0() { return cAttributeListAttributeParserRuleCall_2_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
 	public class AttributeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.Attribute");
@@ -120,10 +104,10 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypeTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
 		
 		//Attribute:
-		//	{Attribute} attributename=ID type+=Type;
+		//	{Attribute} attributename=ID type=Type;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Attribute} attributename=ID type+=Type
+		//{Attribute} attributename=ID type=Type
 		public Group getGroup() { return cGroup; }
 		
 		//{Attribute}
@@ -135,7 +119,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getAttributenameIDTerminalRuleCall_1_0() { return cAttributenameIDTerminalRuleCall_1_0; }
 		
-		//type+=Type
+		//type=Type
 		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
 		
 		//Type
@@ -163,90 +147,41 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	public class DynamicEntityElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.DynamicEntity");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Assignment cEntityidAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final Keyword cEntityidCharacterKeyword_0_0_0 = (Keyword)cEntityidAssignment_0_0.eContents().get(0);
-		private final Assignment cCharacterAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cCharacterCharacterParserRuleCall_0_1_0 = (RuleCall)cCharacterAssignment_0_1.eContents().get(0);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Assignment cEntityidAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final Keyword cEntityidObjectKeyword_1_0_0 = (Keyword)cEntityidAssignment_1_0.eContents().get(0);
-		private final Assignment cObjectAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cObjectObjectParserRuleCall_1_1_0 = (RuleCall)cObjectAssignment_1_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Assignment cEntityidAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
-		private final Keyword cEntityidBehaviourKeyword_2_0_0 = (Keyword)cEntityidAssignment_2_0.eContents().get(0);
-		private final Assignment cBehaviourAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cBehaviourBehaviourParserRuleCall_2_1_0 = (RuleCall)cBehaviourAssignment_2_1.eContents().get(0);
+		private final RuleCall cCharacterParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cObjectParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cBehaviourParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//DynamicEntity:
-		//	entityid='Character' character+=Character | entityid='Object' object+=Object | entityid='Behaviour'
-		//	behaviour+=Behaviour;
+		//	Character | Object | Behaviour;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//entityid='Character' character+=Character | entityid='Object' object+=Object | entityid='Behaviour' behaviour+=Behaviour
+		//Character | Object | Behaviour
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//entityid='Character' character+=Character
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//entityid='Character'
-		public Assignment getEntityidAssignment_0_0() { return cEntityidAssignment_0_0; }
-		
-		//'Character'
-		public Keyword getEntityidCharacterKeyword_0_0_0() { return cEntityidCharacterKeyword_0_0_0; }
-		
-		//character+=Character
-		public Assignment getCharacterAssignment_0_1() { return cCharacterAssignment_0_1; }
-		
 		//Character
-		public RuleCall getCharacterCharacterParserRuleCall_0_1_0() { return cCharacterCharacterParserRuleCall_0_1_0; }
-		
-		//entityid='Object' object+=Object
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//entityid='Object'
-		public Assignment getEntityidAssignment_1_0() { return cEntityidAssignment_1_0; }
-		
-		//'Object'
-		public Keyword getEntityidObjectKeyword_1_0_0() { return cEntityidObjectKeyword_1_0_0; }
-		
-		//object+=Object
-		public Assignment getObjectAssignment_1_1() { return cObjectAssignment_1_1; }
+		public RuleCall getCharacterParserRuleCall_0() { return cCharacterParserRuleCall_0; }
 		
 		//Object
-		public RuleCall getObjectObjectParserRuleCall_1_1_0() { return cObjectObjectParserRuleCall_1_1_0; }
-		
-		//entityid='Behaviour' behaviour+=Behaviour
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//entityid='Behaviour'
-		public Assignment getEntityidAssignment_2_0() { return cEntityidAssignment_2_0; }
-		
-		//'Behaviour'
-		public Keyword getEntityidBehaviourKeyword_2_0_0() { return cEntityidBehaviourKeyword_2_0_0; }
-		
-		//behaviour+=Behaviour
-		public Assignment getBehaviourAssignment_2_1() { return cBehaviourAssignment_2_1; }
+		public RuleCall getObjectParserRuleCall_1() { return cObjectParserRuleCall_1; }
 		
 		//Behaviour
-		public RuleCall getBehaviourBehaviourParserRuleCall_2_1_0() { return cBehaviourBehaviourParserRuleCall_2_1_0; }
+		public RuleCall getBehaviourParserRuleCall_2() { return cBehaviourParserRuleCall_2; }
 	}
 	public class StaticEntityElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.StaticEntity");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cMapParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cGameMapParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cInitializerParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//StaticEntity:
-		//	Map | Initializer;
+		//	GameMap | Initializer;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Map | Initializer
+		//GameMap | Initializer
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//Map
-		public RuleCall getMapParserRuleCall_0() { return cMapParserRuleCall_0; }
+		//GameMap
+		public RuleCall getGameMapParserRuleCall_0() { return cGameMapParserRuleCall_0; }
 		
 		//Initializer
 		public RuleCall getInitializerParserRuleCall_1() { return cInitializerParserRuleCall_1; }
@@ -254,45 +189,53 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	public class CharacterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.Character");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cCharAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cCharCharTypeParserRuleCall_0_0 = (RuleCall)cCharAssignment_0.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cAttAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cAttAttributeParserRuleCall_3_0 = (RuleCall)cAttAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cEntityidAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cEntityidCharacterKeyword_0_0 = (Keyword)cEntityidAssignment_0.eContents().get(0);
+		private final Assignment cCharIdAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cCharIdCharTypeParserRuleCall_1_0 = (RuleCall)cCharIdAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cAttAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cAttAttributeParserRuleCall_4_0 = (RuleCall)cAttAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Character:
-		//	char=CharType name=ID '{' att+=Attribute* '}';
+		//	entityid='Character' charId=CharType name=ID '{' att+=Attribute* '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//char=CharType name=ID '{' att+=Attribute* '}'
+		//entityid='Character' charId=CharType name=ID '{' att+=Attribute* '}'
 		public Group getGroup() { return cGroup; }
 		
-		//char=CharType
-		public Assignment getCharAssignment_0() { return cCharAssignment_0; }
+		//entityid='Character'
+		public Assignment getEntityidAssignment_0() { return cEntityidAssignment_0; }
+		
+		//'Character'
+		public Keyword getEntityidCharacterKeyword_0_0() { return cEntityidCharacterKeyword_0_0; }
+		
+		//charId=CharType
+		public Assignment getCharIdAssignment_1() { return cCharIdAssignment_1; }
 		
 		//CharType
-		public RuleCall getCharCharTypeParserRuleCall_0_0() { return cCharCharTypeParserRuleCall_0_0; }
+		public RuleCall getCharIdCharTypeParserRuleCall_1_0() { return cCharIdCharTypeParserRuleCall_1_0; }
 		
 		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 		
 		//att+=Attribute*
-		public Assignment getAttAssignment_3() { return cAttAssignment_3; }
+		public Assignment getAttAssignment_4() { return cAttAssignment_4; }
 		
 		//Attribute
-		public RuleCall getAttAttributeParserRuleCall_3_0() { return cAttAttributeParserRuleCall_3_0; }
+		public RuleCall getAttAttributeParserRuleCall_4_0() { return cAttAttributeParserRuleCall_4_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 	public class TypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.Type");
@@ -301,14 +244,14 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueIdINTORDECParserRuleCall_0_0 = (RuleCall)cValueIdAssignment_0.eContents().get(0);
 		private final Assignment cValueIdAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
 		private final RuleCall cValueIdIDTerminalRuleCall_1_0 = (RuleCall)cValueIdAssignment_1.eContents().get(0);
-		private final Assignment cValueIdAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
-		private final RuleCall cValueIdVECTORParserRuleCall_2_0 = (RuleCall)cValueIdAssignment_2.eContents().get(0);
+		private final Assignment cValueIdVecAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final RuleCall cValueIdVecVECTORParserRuleCall_2_0 = (RuleCall)cValueIdVecAssignment_2.eContents().get(0);
 		
 		//Type:
-		//	valueId=INTORDEC | valueId=ID | valueId=VECTOR;
+		//	valueId=INTORDEC | valueId=ID | valueIdVec=VECTOR;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//valueId=INTORDEC | valueId=ID | valueId=VECTOR
+		//valueId=INTORDEC | valueId=ID | valueIdVec=VECTOR
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//valueId=INTORDEC
@@ -323,30 +266,38 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getValueIdIDTerminalRuleCall_1_0() { return cValueIdIDTerminalRuleCall_1_0; }
 		
-		//valueId=VECTOR
-		public Assignment getValueIdAssignment_2() { return cValueIdAssignment_2; }
+		//valueIdVec=VECTOR
+		public Assignment getValueIdVecAssignment_2() { return cValueIdVecAssignment_2; }
 		
 		//VECTOR
-		public RuleCall getValueIdVECTORParserRuleCall_2_0() { return cValueIdVECTORParserRuleCall_2_0; }
+		public RuleCall getValueIdVecVECTORParserRuleCall_2_0() { return cValueIdVecVECTORParserRuleCall_2_0; }
 	}
 	public class VECTORElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.VECTOR");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cINTORDECParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final RuleCall cINTORDECParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Assignment cXValAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cXValINTORDECParserRuleCall_0_0 = (RuleCall)cXValAssignment_0.eContents().get(0);
+		private final Assignment cYValAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cYValINTORDECParserRuleCall_1_0 = (RuleCall)cYValAssignment_1.eContents().get(0);
 		
 		//VECTOR:
-		//	INTORDEC INTORDEC;
+		//	xVal=INTORDEC yVal=INTORDEC;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//INTORDEC INTORDEC
+		//xVal=INTORDEC yVal=INTORDEC
 		public Group getGroup() { return cGroup; }
 		
-		//INTORDEC
-		public RuleCall getINTORDECParserRuleCall_0() { return cINTORDECParserRuleCall_0; }
+		//xVal=INTORDEC
+		public Assignment getXValAssignment_0() { return cXValAssignment_0; }
 		
 		//INTORDEC
-		public RuleCall getINTORDECParserRuleCall_1() { return cINTORDECParserRuleCall_1; }
+		public RuleCall getXValINTORDECParserRuleCall_0_0() { return cXValINTORDECParserRuleCall_0_0; }
+		
+		//yVal=INTORDEC
+		public Assignment getYValAssignment_1() { return cYValAssignment_1; }
+		
+		//INTORDEC
+		public RuleCall getYValINTORDECParserRuleCall_1_0() { return cYValINTORDECParserRuleCall_1_0; }
 	}
 	public class INTORDECElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.INTORDEC");
@@ -369,284 +320,173 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class CharTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.CharType");
-		private final Assignment cCharTypeidAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cCharTypeidIDTerminalRuleCall_0 = (RuleCall)cCharTypeidAssignment.eContents().get(0);
+		private final Assignment cCharTypeIdAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cCharTypeIdIDTerminalRuleCall_0 = (RuleCall)cCharTypeIdAssignment.eContents().get(0);
 		
 		//CharType:
-		//	charTypeid=ID;
+		//	charTypeId=ID;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//charTypeid=ID
-		public Assignment getCharTypeidAssignment() { return cCharTypeidAssignment; }
+		//charTypeId=ID
+		public Assignment getCharTypeIdAssignment() { return cCharTypeIdAssignment; }
 		
 		//ID
-		public RuleCall getCharTypeidIDTerminalRuleCall_0() { return cCharTypeidIDTerminalRuleCall_0; }
+		public RuleCall getCharTypeIdIDTerminalRuleCall_0() { return cCharTypeIdIDTerminalRuleCall_0; }
 	}
 	public class ObjectElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.Object");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cAttAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cAttAttributeParserRuleCall_2_0 = (RuleCall)cAttAssignment_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		
-		//Object:
-		//	name=ID '{' att+=Attribute* '}';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//name=ID '{' att+=Attribute* '}'
-		public Group getGroup() { return cGroup; }
-		
-		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
-		
-		//'{'
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
-		
-		//att+=Attribute*
-		public Assignment getAttAssignment_2() { return cAttAssignment_2; }
-		
-		//Attribute
-		public RuleCall getAttAttributeParserRuleCall_2_0() { return cAttAttributeParserRuleCall_2_0; }
-		
-		//'}'
-		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
-	}
-	public class BehaviourElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.Behaviour");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Assignment cBehaviourTypeIdAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final Keyword cBehaviourTypeIdPathfindingKeyword_0_0_0 = (Keyword)cBehaviourTypeIdAssignment_0_0.eContents().get(0);
-		private final Assignment cPathfindingAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final RuleCall cPathfindingPathfindingParserRuleCall_0_1_0 = (RuleCall)cPathfindingAssignment_0_1.eContents().get(0);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Assignment cBehaviourTypeIdAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final Keyword cBehaviourTypeIdAttackKeyword_1_0_0 = (Keyword)cBehaviourTypeIdAssignment_1_0.eContents().get(0);
-		private final Assignment cAttackAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cAttackAttackParserRuleCall_1_1_0 = (RuleCall)cAttackAssignment_1_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Assignment cBehaviourTypeIdAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
-		private final Keyword cBehaviourTypeIdBulletKeyword_2_0_0 = (Keyword)cBehaviourTypeIdAssignment_2_0.eContents().get(0);
-		private final Assignment cBulletAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cBulletBulletParserRuleCall_2_1_0 = (RuleCall)cBulletAssignment_2_1.eContents().get(0);
-		
-		//Behaviour:
-		//	behaviourTypeId='Pathfinding' pathfinding=Pathfinding | behaviourTypeId='Attack' attack=Attack |
-		//	behaviourTypeId='Bullet' bullet=Bullet;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//behaviourTypeId='Pathfinding' pathfinding=Pathfinding | behaviourTypeId='Attack' attack=Attack |
-		//behaviourTypeId='Bullet' bullet=Bullet
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//behaviourTypeId='Pathfinding' pathfinding=Pathfinding
-		public Group getGroup_0() { return cGroup_0; }
-		
-		//behaviourTypeId='Pathfinding'
-		public Assignment getBehaviourTypeIdAssignment_0_0() { return cBehaviourTypeIdAssignment_0_0; }
-		
-		//'Pathfinding'
-		public Keyword getBehaviourTypeIdPathfindingKeyword_0_0_0() { return cBehaviourTypeIdPathfindingKeyword_0_0_0; }
-		
-		//pathfinding=Pathfinding
-		public Assignment getPathfindingAssignment_0_1() { return cPathfindingAssignment_0_1; }
-		
-		//Pathfinding
-		public RuleCall getPathfindingPathfindingParserRuleCall_0_1_0() { return cPathfindingPathfindingParserRuleCall_0_1_0; }
-		
-		//behaviourTypeId='Attack' attack=Attack
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//behaviourTypeId='Attack'
-		public Assignment getBehaviourTypeIdAssignment_1_0() { return cBehaviourTypeIdAssignment_1_0; }
-		
-		//'Attack'
-		public Keyword getBehaviourTypeIdAttackKeyword_1_0_0() { return cBehaviourTypeIdAttackKeyword_1_0_0; }
-		
-		//attack=Attack
-		public Assignment getAttackAssignment_1_1() { return cAttackAssignment_1_1; }
-		
-		//Attack
-		public RuleCall getAttackAttackParserRuleCall_1_1_0() { return cAttackAttackParserRuleCall_1_1_0; }
-		
-		//behaviourTypeId='Bullet' bullet=Bullet
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//behaviourTypeId='Bullet'
-		public Assignment getBehaviourTypeIdAssignment_2_0() { return cBehaviourTypeIdAssignment_2_0; }
-		
-		//'Bullet'
-		public Keyword getBehaviourTypeIdBulletKeyword_2_0_0() { return cBehaviourTypeIdBulletKeyword_2_0_0; }
-		
-		//bullet=Bullet
-		public Assignment getBulletAssignment_2_1() { return cBulletAssignment_2_1; }
-		
-		//Bullet
-		public RuleCall getBulletBulletParserRuleCall_2_1_0() { return cBulletBulletParserRuleCall_2_1_0; }
-	}
-	public class PathfindingElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.Pathfinding");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cAttPathfindingAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cAttPathfindingAttributeParserRuleCall_2_0 = (RuleCall)cAttPathfindingAssignment_2.eContents().get(0);
-		private final Assignment cRuleSetsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cRuleSetsRuleSetParserRuleCall_3_0 = (RuleCall)cRuleSetsAssignment_3.eContents().get(0);
+		private final Assignment cEntityidAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cEntityidObjectKeyword_0_0 = (Keyword)cEntityidAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cAttAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cAttAttributeParserRuleCall_3_0 = (RuleCall)cAttAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//Pathfinding:
-		//	name=ID '{' attPathfinding+=Attribute* ruleSets+=RuleSet* '}';
+		//Object:
+		//	entityid='Object' name=ID '{' att+=Attribute* '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID '{' attPathfinding+=Attribute* ruleSets+=RuleSet* '}'
+		//entityid='Object' name=ID '{' att+=Attribute* '}'
 		public Group getGroup() { return cGroup; }
 		
+		//entityid='Object'
+		public Assignment getEntityidAssignment_0() { return cEntityidAssignment_0; }
+		
+		//'Object'
+		public Keyword getEntityidObjectKeyword_0_0() { return cEntityidObjectKeyword_0_0; }
+		
 		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
-		//attPathfinding+=Attribute*
-		public Assignment getAttPathfindingAssignment_2() { return cAttPathfindingAssignment_2; }
+		//att+=Attribute*
+		public Assignment getAttAssignment_3() { return cAttAssignment_3; }
 		
 		//Attribute
-		public RuleCall getAttPathfindingAttributeParserRuleCall_2_0() { return cAttPathfindingAttributeParserRuleCall_2_0; }
-		
-		//ruleSets+=RuleSet*
-		public Assignment getRuleSetsAssignment_3() { return cRuleSetsAssignment_3; }
-		
-		//RuleSet
-		public RuleCall getRuleSetsRuleSetParserRuleCall_3_0() { return cRuleSetsRuleSetParserRuleCall_3_0; }
+		public RuleCall getAttAttributeParserRuleCall_3_0() { return cAttAttributeParserRuleCall_3_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
-	public class RuleSetElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.RuleSet");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cIfIdAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cIfIdIfKeyword_0_0 = (Keyword)cIfIdAssignment_0.eContents().get(0);
-		private final Assignment cRuleAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cRuleRuleParserRuleCall_1_0 = (RuleCall)cRuleAssignment_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Assignment cElseIfIdAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
-		private final Keyword cElseIfIdElseifKeyword_2_0_0 = (Keyword)cElseIfIdAssignment_2_0.eContents().get(0);
-		private final Assignment cElseRulesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cElseRulesRuleParserRuleCall_2_1_0 = (RuleCall)cElseRulesAssignment_2_1.eContents().get(0);
+	public class BehaviourElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.Behaviour");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cPathfindingParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cAttackParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cBulletParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
-		//RuleSet:
-		//	ifId+='if' rule=Rule (elseIfId+='elseif' elseRules+=Rule)*;
+		//Behaviour:
+		//	Pathfinding | Attack | Bullet;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ifId+='if' rule=Rule (elseIfId+='elseif' elseRules+=Rule)*
-		public Group getGroup() { return cGroup; }
+		//Pathfinding | Attack | Bullet
+		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//ifId+='if'
-		public Assignment getIfIdAssignment_0() { return cIfIdAssignment_0; }
+		//Pathfinding
+		public RuleCall getPathfindingParserRuleCall_0() { return cPathfindingParserRuleCall_0; }
 		
-		//'if'
-		public Keyword getIfIdIfKeyword_0_0() { return cIfIdIfKeyword_0_0; }
+		//Attack
+		public RuleCall getAttackParserRuleCall_1() { return cAttackParserRuleCall_1; }
 		
-		//rule=Rule
-		public Assignment getRuleAssignment_1() { return cRuleAssignment_1; }
-		
-		//Rule
-		public RuleCall getRuleRuleParserRuleCall_1_0() { return cRuleRuleParserRuleCall_1_0; }
-		
-		//(elseIfId+='elseif' elseRules+=Rule)*
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//elseIfId+='elseif'
-		public Assignment getElseIfIdAssignment_2_0() { return cElseIfIdAssignment_2_0; }
-		
-		//'elseif'
-		public Keyword getElseIfIdElseifKeyword_2_0_0() { return cElseIfIdElseifKeyword_2_0_0; }
-		
-		//elseRules+=Rule
-		public Assignment getElseRulesAssignment_2_1() { return cElseRulesAssignment_2_1; }
-		
-		//Rule
-		public RuleCall getElseRulesRuleParserRuleCall_2_1_0() { return cElseRulesRuleParserRuleCall_2_1_0; }
+		//Bullet
+		public RuleCall getBulletParserRuleCall_2() { return cBulletParserRuleCall_2; }
 	}
-	public class RuleElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.Rule");
+	public class PathfindingElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.Pathfinding");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cRuleSetupAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cRuleSetupRuleSetupParserRuleCall_1_0 = (RuleCall)cRuleSetupAssignment_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cToDoActionAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cToDoActionActionParserRuleCall_3_0 = (RuleCall)cToDoActionAssignment_3.eContents().get(0);
+		private final Assignment cEntityidAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cEntityidPathfindingKeyword_0_0 = (Keyword)cEntityidAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cAttPathfindingAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cAttPathfindingAttributeParserRuleCall_3_0 = (RuleCall)cAttPathfindingAssignment_3.eContents().get(0);
+		private final Assignment cConditionsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cConditionsConditionParserRuleCall_4_0 = (RuleCall)cConditionsAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//Rule:
-		//	'(' ruleSetup=RuleSetup ')' toDoAction=Action;
+		//Pathfinding:
+		//	entityid='Pathfinding' name=ID '{' attPathfinding+=Attribute* conditions+=Condition* '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'(' ruleSetup=RuleSetup ')' toDoAction=Action
+		//entityid='Pathfinding' name=ID '{' attPathfinding+=Attribute* conditions+=Condition* '}'
 		public Group getGroup() { return cGroup; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
+		//entityid='Pathfinding'
+		public Assignment getEntityidAssignment_0() { return cEntityidAssignment_0; }
 		
-		//ruleSetup=RuleSetup
-		public Assignment getRuleSetupAssignment_1() { return cRuleSetupAssignment_1; }
+		//'Pathfinding'
+		public Keyword getEntityidPathfindingKeyword_0_0() { return cEntityidPathfindingKeyword_0_0; }
 		
-		//RuleSetup
-		public RuleCall getRuleSetupRuleSetupParserRuleCall_1_0() { return cRuleSetupRuleSetupParserRuleCall_1_0; }
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
-		//')'
-		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
-		//toDoAction=Action
-		public Assignment getToDoActionAssignment_3() { return cToDoActionAssignment_3; }
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
-		//Action
-		public RuleCall getToDoActionActionParserRuleCall_3_0() { return cToDoActionActionParserRuleCall_3_0; }
+		//attPathfinding+=Attribute*
+		public Assignment getAttPathfindingAssignment_3() { return cAttPathfindingAssignment_3; }
+		
+		//Attribute
+		public RuleCall getAttPathfindingAttributeParserRuleCall_3_0() { return cAttPathfindingAttributeParserRuleCall_3_0; }
+		
+		//conditions+=Condition*
+		public Assignment getConditionsAssignment_4() { return cConditionsAssignment_4; }
+		
+		//Condition
+		public RuleCall getConditionsConditionParserRuleCall_4_0() { return cConditionsConditionParserRuleCall_4_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
-	public class RuleSetupElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.RuleSetup");
+	public class BooleanExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.BooleanExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cAttributeRefLeftAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cAttributeRefLeftReferenceCharacterParserRuleCall_0_0 = (RuleCall)cAttributeRefLeftAssignment_0.eContents().get(0);
-		private final Assignment cRuleTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cRuleTypeRuleTypeParserRuleCall_1_0 = (RuleCall)cRuleTypeAssignment_1.eContents().get(0);
+		private final RuleCall cAttributeRefLeftCharacterAttrParserRuleCall_0_0 = (RuleCall)cAttributeRefLeftAssignment_0.eContents().get(0);
+		private final Assignment cLeftExAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cLeftExExpressionParserRuleCall_1_0 = (RuleCall)cLeftExAssignment_1.eContents().get(0);
 		private final Assignment cOperatorAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cOperatorCompOperatorParserRuleCall_2_0 = (RuleCall)cOperatorAssignment_2.eContents().get(0);
-		private final Assignment cIntAttleftAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cIntAttleftIntAttParserRuleCall_3_0 = (RuleCall)cIntAttleftAssignment_3.eContents().get(0);
-		private final Assignment cLoAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cLoLogicOperatorLoopParserRuleCall_4_0 = (RuleCall)cLoAssignment_4.eContents().get(0);
+		private final Assignment cAttributeRefRightAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cAttributeRefRightCharacterAttrParserRuleCall_3_0 = (RuleCall)cAttributeRefRightAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Assignment cOpAssignment_4_0 = (Assignment)cGroup_4.eContents().get(0);
+		private final RuleCall cOpLogicOperatorParserRuleCall_4_0_0 = (RuleCall)cOpAssignment_4_0.eContents().get(0);
+		private final Assignment cRightExAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cRightExExpressionParserRuleCall_4_1_0 = (RuleCall)cRightExAssignment_4_1.eContents().get(0);
 		
-		//RuleSetup:
-		//	attributeRefLeft=ReferenceCharacter? ruleType=RuleType operator=CompOperator intAttleft=IntAtt lo=LogicOperatorLoop?;
+		//BooleanExpression:
+		//	attributeRefLeft=CharacterAttr? leftEx=Expression? operator=CompOperator attributeRefRight=CharacterAttr?
+		//	(op=LogicOperator? rightEx=Expression)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//attributeRefLeft=ReferenceCharacter? ruleType=RuleType operator=CompOperator intAttleft=IntAtt lo=LogicOperatorLoop?
+		//attributeRefLeft=CharacterAttr? leftEx=Expression? operator=CompOperator attributeRefRight=CharacterAttr?
+		//(op=LogicOperator? rightEx=Expression)?
 		public Group getGroup() { return cGroup; }
 		
-		//attributeRefLeft=ReferenceCharacter?
+		//attributeRefLeft=CharacterAttr?
 		public Assignment getAttributeRefLeftAssignment_0() { return cAttributeRefLeftAssignment_0; }
 		
-		//ReferenceCharacter
-		public RuleCall getAttributeRefLeftReferenceCharacterParserRuleCall_0_0() { return cAttributeRefLeftReferenceCharacterParserRuleCall_0_0; }
+		//CharacterAttr
+		public RuleCall getAttributeRefLeftCharacterAttrParserRuleCall_0_0() { return cAttributeRefLeftCharacterAttrParserRuleCall_0_0; }
 		
-		//ruleType=RuleType
-		public Assignment getRuleTypeAssignment_1() { return cRuleTypeAssignment_1; }
+		//leftEx=Expression?
+		public Assignment getLeftExAssignment_1() { return cLeftExAssignment_1; }
 		
-		//RuleType
-		public RuleCall getRuleTypeRuleTypeParserRuleCall_1_0() { return cRuleTypeRuleTypeParserRuleCall_1_0; }
+		//Expression
+		public RuleCall getLeftExExpressionParserRuleCall_1_0() { return cLeftExExpressionParserRuleCall_1_0; }
 		
 		//operator=CompOperator
 		public Assignment getOperatorAssignment_2() { return cOperatorAssignment_2; }
@@ -654,52 +494,168 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		//CompOperator
 		public RuleCall getOperatorCompOperatorParserRuleCall_2_0() { return cOperatorCompOperatorParserRuleCall_2_0; }
 		
-		//intAttleft=IntAtt
-		public Assignment getIntAttleftAssignment_3() { return cIntAttleftAssignment_3; }
+		//attributeRefRight=CharacterAttr?
+		public Assignment getAttributeRefRightAssignment_3() { return cAttributeRefRightAssignment_3; }
 		
-		//IntAtt
-		public RuleCall getIntAttleftIntAttParserRuleCall_3_0() { return cIntAttleftIntAttParserRuleCall_3_0; }
+		//CharacterAttr
+		public RuleCall getAttributeRefRightCharacterAttrParserRuleCall_3_0() { return cAttributeRefRightCharacterAttrParserRuleCall_3_0; }
 		
-		//lo=LogicOperatorLoop?
-		public Assignment getLoAssignment_4() { return cLoAssignment_4; }
+		//(op=LogicOperator? rightEx=Expression)?
+		public Group getGroup_4() { return cGroup_4; }
 		
-		//LogicOperatorLoop
-		public RuleCall getLoLogicOperatorLoopParserRuleCall_4_0() { return cLoLogicOperatorLoopParserRuleCall_4_0; }
+		//op=LogicOperator?
+		public Assignment getOpAssignment_4_0() { return cOpAssignment_4_0; }
+		
+		//LogicOperator
+		public RuleCall getOpLogicOperatorParserRuleCall_4_0_0() { return cOpLogicOperatorParserRuleCall_4_0_0; }
+		
+		//rightEx=Expression
+		public Assignment getRightExAssignment_4_1() { return cRightExAssignment_4_1; }
+		
+		//Expression
+		public RuleCall getRightExExpressionParserRuleCall_4_1_0() { return cRightExExpressionParserRuleCall_4_1_0; }
 	}
-	public class IntAttElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.IntAtt");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cValueAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final RuleCall cValueINTORDECParserRuleCall_0_0 = (RuleCall)cValueAssignment_0.eContents().get(0);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cSelfKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cAttrIdAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cAttrIdIDTerminalRuleCall_1_1_0 = (RuleCall)cAttrIdAssignment_1_1.eContents().get(0);
+	public class ExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.Expression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTmAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTmTerminalExpressionParserRuleCall_0_0 = (RuleCall)cTmAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cOperationLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOpAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOpLogicOperatorParserRuleCall_1_1_0 = (RuleCall)cOpAssignment_1_1.eContents().get(0);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightTerminalExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//IntAtt:
-		//	value=INTORDEC | 'self' attrId=ID;
+		//Expression:
+		//	tm=TerminalExpression ({Operation.left=current} op=LogicOperator right=TerminalExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//value=INTORDEC | 'self' attrId=ID
-		public Alternatives getAlternatives() { return cAlternatives; }
+		//tm=TerminalExpression ({Operation.left=current} op=LogicOperator right=TerminalExpression)*
+		public Group getGroup() { return cGroup; }
 		
-		//value=INTORDEC
-		public Assignment getValueAssignment_0() { return cValueAssignment_0; }
+		//tm=TerminalExpression
+		public Assignment getTmAssignment_0() { return cTmAssignment_0; }
 		
-		//INTORDEC
-		public RuleCall getValueINTORDECParserRuleCall_0_0() { return cValueINTORDECParserRuleCall_0_0; }
+		//TerminalExpression
+		public RuleCall getTmTerminalExpressionParserRuleCall_0_0() { return cTmTerminalExpressionParserRuleCall_0_0; }
 		
-		//'self' attrId=ID
+		//({Operation.left=current} op=LogicOperator right=TerminalExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//'self'
-		public Keyword getSelfKeyword_1_0() { return cSelfKeyword_1_0; }
+		//{Operation.left=current}
+		public Action getOperationLeftAction_1_0() { return cOperationLeftAction_1_0; }
 		
-		//attrId=ID
-		public Assignment getAttrIdAssignment_1_1() { return cAttrIdAssignment_1_1; }
+		//op=LogicOperator
+		public Assignment getOpAssignment_1_1() { return cOpAssignment_1_1; }
 		
-		//ID
-		public RuleCall getAttrIdIDTerminalRuleCall_1_1_0() { return cAttrIdIDTerminalRuleCall_1_1_0; }
+		//LogicOperator
+		public RuleCall getOpLogicOperatorParserRuleCall_1_1_0() { return cOpLogicOperatorParserRuleCall_1_1_0; }
+		
+		//right=TerminalExpression
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+		
+		//TerminalExpression
+		public RuleCall getRightTerminalExpressionParserRuleCall_1_2_0() { return cRightTerminalExpressionParserRuleCall_1_2_0; }
+	}
+	public class TerminalExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.TerminalExpression");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final RuleCall cExpressionParserRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cIntLiteralAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cValueINTORDECParserRuleCall_1_1_0 = (RuleCall)cValueAssignment_1_1.eContents().get(0);
+		
+		//TerminalExpression Expression:
+		//	'(' Expression ')' | {IntLiteral} value=INTORDEC
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'(' Expression ')' | {IntLiteral} value=INTORDEC
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'(' Expression ')'
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_0_0() { return cLeftParenthesisKeyword_0_0; }
+		
+		//Expression
+		public RuleCall getExpressionParserRuleCall_0_1() { return cExpressionParserRuleCall_0_1; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_0_2() { return cRightParenthesisKeyword_0_2; }
+		
+		//{IntLiteral} value=INTORDEC
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{IntLiteral}
+		public Action getIntLiteralAction_1_0() { return cIntLiteralAction_1_0; }
+		
+		//value=INTORDEC
+		public Assignment getValueAssignment_1_1() { return cValueAssignment_1_1; }
+		
+		//INTORDEC
+		public RuleCall getValueINTORDECParserRuleCall_1_1_0() { return cValueINTORDECParserRuleCall_1_1_0; }
+	}
+	public class ConditionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.Condition");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cIfKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cIfConditionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cIfConditionBooleanExpressionParserRuleCall_2_0 = (RuleCall)cIfConditionAssignment_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cThenAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cThenActionParserRuleCall_4_0 = (RuleCall)cThenAssignment_4.eContents().get(0);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cElseKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cElseIfConditionAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cElseIfConditionConditionParserRuleCall_5_1_0 = (RuleCall)cElseIfConditionAssignment_5_1.eContents().get(0);
+		
+		//Condition:
+		//	'if' '(' ifCondition=BooleanExpression ')'
+		//	then=Action (=> 'else' elseIfCondition=Condition)?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'if' '(' ifCondition=BooleanExpression ')' then=Action (=> 'else' elseIfCondition=Condition)?
+		public Group getGroup() { return cGroup; }
+		
+		//'if'
+		public Keyword getIfKeyword_0() { return cIfKeyword_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//ifCondition=BooleanExpression
+		public Assignment getIfConditionAssignment_2() { return cIfConditionAssignment_2; }
+		
+		//BooleanExpression
+		public RuleCall getIfConditionBooleanExpressionParserRuleCall_2_0() { return cIfConditionBooleanExpressionParserRuleCall_2_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+		
+		//then=Action
+		public Assignment getThenAssignment_4() { return cThenAssignment_4; }
+		
+		//Action
+		public RuleCall getThenActionParserRuleCall_4_0() { return cThenActionParserRuleCall_4_0; }
+		
+		//(=> 'else' elseIfCondition=Condition)?
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//=> 'else'
+		public Keyword getElseKeyword_5_0() { return cElseKeyword_5_0; }
+		
+		//elseIfCondition=Condition
+		public Assignment getElseIfConditionAssignment_5_1() { return cElseIfConditionAssignment_5_1; }
+		
+		//Condition
+		public RuleCall getElseIfConditionConditionParserRuleCall_5_1_0() { return cElseIfConditionConditionParserRuleCall_5_1_0; }
 	}
 	public class DECIMALElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.DECIMAL");
@@ -723,41 +679,6 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//INT
 		public RuleCall getINTTerminalRuleCall_2() { return cINTTerminalRuleCall_2; }
-	}
-	public class LogicOperatorLoopElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.LogicOperatorLoop");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cLogicOpAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cLogicOpLogicOperatorParserRuleCall_0_0 = (RuleCall)cLogicOpAssignment_0.eContents().get(0);
-		private final Assignment cIntAttAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cIntAttIntAttParserRuleCall_1_0 = (RuleCall)cIntAttAssignment_1.eContents().get(0);
-		private final Assignment cLopAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cLopLogicOperatorLoopParserRuleCall_2_0 = (RuleCall)cLopAssignment_2.eContents().get(0);
-		
-		//LogicOperatorLoop:
-		//	logicOp+=LogicOperator intAtt+=IntAtt lop+=LogicOperatorLoop?;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//logicOp+=LogicOperator intAtt+=IntAtt lop+=LogicOperatorLoop?
-		public Group getGroup() { return cGroup; }
-		
-		//logicOp+=LogicOperator
-		public Assignment getLogicOpAssignment_0() { return cLogicOpAssignment_0; }
-		
-		//LogicOperator
-		public RuleCall getLogicOpLogicOperatorParserRuleCall_0_0() { return cLogicOpLogicOperatorParserRuleCall_0_0; }
-		
-		//intAtt+=IntAtt
-		public Assignment getIntAttAssignment_1() { return cIntAttAssignment_1; }
-		
-		//IntAtt
-		public RuleCall getIntAttIntAttParserRuleCall_1_0() { return cIntAttIntAttParserRuleCall_1_0; }
-		
-		//lop+=LogicOperatorLoop?
-		public Assignment getLopAssignment_2() { return cLopAssignment_2; }
-		
-		//LogicOperatorLoop
-		public RuleCall getLopLogicOperatorLoopParserRuleCall_2_0() { return cLopLogicOperatorLoopParserRuleCall_2_0; }
 	}
 	public class ReferenceCharacterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.ReferenceCharacter");
@@ -806,91 +727,96 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		//'self'
 		public Keyword getTargetIdSelfKeyword_1_1_0() { return cTargetIdSelfKeyword_1_1_0; }
 	}
-	public class RuleTypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.RuleType");
-		private final Assignment cRuleTypeIdAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cRuleTypeIdIDTerminalRuleCall_0 = (RuleCall)cRuleTypeIdAssignment.eContents().get(0);
-		
-		//RuleType:
-		//	ruleTypeId=ID;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//ruleTypeId=ID
-		public Assignment getRuleTypeIdAssignment() { return cRuleTypeIdAssignment; }
-		
-		//ID
-		public RuleCall getRuleTypeIdIDTerminalRuleCall_0() { return cRuleTypeIdIDTerminalRuleCall_0; }
-	}
 	public class CompOperatorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.CompOperator");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Action cLTAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final Keyword cLessThanSignKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Assignment cOpAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final Keyword cOpLessThanSignKeyword_0_1_0 = (Keyword)cOpAssignment_0_1.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Action cGTAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cGreaterThanSignKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cOpAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final Keyword cOpGreaterThanSignKeyword_1_1_0 = (Keyword)cOpAssignment_1_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
 		private final Action cLTEAction_2_0 = (Action)cGroup_2.eContents().get(0);
-		private final Keyword cLessThanSignEqualsSignKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
+		private final Assignment cOpAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final Keyword cOpLessThanSignEqualsSignKeyword_2_1_0 = (Keyword)cOpAssignment_2_1.eContents().get(0);
 		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
 		private final Action cGTEAction_3_0 = (Action)cGroup_3.eContents().get(0);
-		private final Keyword cGreaterThanSignEqualsSignKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
+		private final Assignment cOpAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final Keyword cOpGreaterThanSignEqualsSignKeyword_3_1_0 = (Keyword)cOpAssignment_3_1.eContents().get(0);
 		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
 		private final Action cEQAction_4_0 = (Action)cGroup_4.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Assignment cOpAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final Keyword cOpEqualsSignKeyword_4_1_0 = (Keyword)cOpAssignment_4_1.eContents().get(0);
 		
 		//CompOperator:
-		//	{LT} '<' | {GT} '>' | {LTE} '<=' | {GTE} '>=' | {EQ} '=';
+		//	{LT} op='<' | {GT} op='>' | {LTE} op='<=' | {GTE} op='>=' | {EQ} op='=';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{LT} '<' | {GT} '>' | {LTE} '<=' | {GTE} '>=' | {EQ} '='
+		//{LT} op='<' | {GT} op='>' | {LTE} op='<=' | {GTE} op='>=' | {EQ} op='='
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//{LT} '<'
+		//{LT} op='<'
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//{LT}
 		public Action getLTAction_0_0() { return cLTAction_0_0; }
 		
-		//'<'
-		public Keyword getLessThanSignKeyword_0_1() { return cLessThanSignKeyword_0_1; }
+		//op='<'
+		public Assignment getOpAssignment_0_1() { return cOpAssignment_0_1; }
 		
-		//{GT} '>'
+		//'<'
+		public Keyword getOpLessThanSignKeyword_0_1_0() { return cOpLessThanSignKeyword_0_1_0; }
+		
+		//{GT} op='>'
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{GT}
 		public Action getGTAction_1_0() { return cGTAction_1_0; }
 		
-		//'>'
-		public Keyword getGreaterThanSignKeyword_1_1() { return cGreaterThanSignKeyword_1_1; }
+		//op='>'
+		public Assignment getOpAssignment_1_1() { return cOpAssignment_1_1; }
 		
-		//{LTE} '<='
+		//'>'
+		public Keyword getOpGreaterThanSignKeyword_1_1_0() { return cOpGreaterThanSignKeyword_1_1_0; }
+		
+		//{LTE} op='<='
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//{LTE}
 		public Action getLTEAction_2_0() { return cLTEAction_2_0; }
 		
-		//'<='
-		public Keyword getLessThanSignEqualsSignKeyword_2_1() { return cLessThanSignEqualsSignKeyword_2_1; }
+		//op='<='
+		public Assignment getOpAssignment_2_1() { return cOpAssignment_2_1; }
 		
-		//{GTE} '>='
+		//'<='
+		public Keyword getOpLessThanSignEqualsSignKeyword_2_1_0() { return cOpLessThanSignEqualsSignKeyword_2_1_0; }
+		
+		//{GTE} op='>='
 		public Group getGroup_3() { return cGroup_3; }
 		
 		//{GTE}
 		public Action getGTEAction_3_0() { return cGTEAction_3_0; }
 		
-		//'>='
-		public Keyword getGreaterThanSignEqualsSignKeyword_3_1() { return cGreaterThanSignEqualsSignKeyword_3_1; }
+		//op='>='
+		public Assignment getOpAssignment_3_1() { return cOpAssignment_3_1; }
 		
-		//{EQ} '='
+		//'>='
+		public Keyword getOpGreaterThanSignEqualsSignKeyword_3_1_0() { return cOpGreaterThanSignEqualsSignKeyword_3_1_0; }
+		
+		//{EQ} op='='
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//{EQ}
 		public Action getEQAction_4_0() { return cEQAction_4_0; }
 		
+		//op='='
+		public Assignment getOpAssignment_4_1() { return cOpAssignment_4_1; }
+		
 		//'='
-		public Keyword getEqualsSignKeyword_4_1() { return cEqualsSignKeyword_4_1; }
+		public Keyword getOpEqualsSignKeyword_4_1_0() { return cOpEqualsSignKeyword_4_1_0; }
 	}
 	public class ActionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.Action");
@@ -901,15 +827,18 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEqualsSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cCharDecAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cCharDecCharDecParserRuleCall_3_0 = (RuleCall)cCharDecAssignment_3.eContents().get(0);
-		private final Assignment cLoAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cLoLogicOperatorLoopParserRuleCall_4_0 = (RuleCall)cLoAssignment_4.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Assignment cOpAssignment_4_0 = (Assignment)cGroup_4.eContents().get(0);
+		private final RuleCall cOpLogicOperatorParserRuleCall_4_0_0 = (RuleCall)cOpAssignment_4_0.eContents().get(0);
+		private final Assignment cExAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cExExpressionParserRuleCall_4_1_0 = (RuleCall)cExAssignment_4_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Action:
-		//	'(' charAtt=CharacterAttr '=' charDec=CharDec lo+=LogicOperatorLoop? ')';
+		//	'(' charAtt=CharacterAttr '=' charDec=CharDec? (op=LogicOperator? ex=Expression)? ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'(' charAtt=CharacterAttr '=' charDec=CharDec lo+=LogicOperatorLoop? ')'
+		//'(' charAtt=CharacterAttr '=' charDec=CharDec? (op=LogicOperator? ex=Expression)? ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'('
@@ -924,17 +853,26 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		//'='
 		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
 		
-		//charDec=CharDec
+		//charDec=CharDec?
 		public Assignment getCharDecAssignment_3() { return cCharDecAssignment_3; }
 		
 		//CharDec
 		public RuleCall getCharDecCharDecParserRuleCall_3_0() { return cCharDecCharDecParserRuleCall_3_0; }
 		
-		//lo+=LogicOperatorLoop?
-		public Assignment getLoAssignment_4() { return cLoAssignment_4; }
+		//(op=LogicOperator? ex=Expression)?
+		public Group getGroup_4() { return cGroup_4; }
 		
-		//LogicOperatorLoop
-		public RuleCall getLoLogicOperatorLoopParserRuleCall_4_0() { return cLoLogicOperatorLoopParserRuleCall_4_0; }
+		//op=LogicOperator?
+		public Assignment getOpAssignment_4_0() { return cOpAssignment_4_0; }
+		
+		//LogicOperator
+		public RuleCall getOpLogicOperatorParserRuleCall_4_0_0() { return cOpLogicOperatorParserRuleCall_4_0_0; }
+		
+		//ex=Expression
+		public Assignment getExAssignment_4_1() { return cExAssignment_4_1; }
+		
+		//Expression
+		public RuleCall getExExpressionParserRuleCall_4_1_0() { return cExExpressionParserRuleCall_4_1_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
@@ -948,13 +886,13 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValINTORDECParserRuleCall_1_0 = (RuleCall)cValAssignment_1.eContents().get(0);
 		
 		//CharDec:
-		//	charAttResult+=CharacterAttr | val=INTORDEC;
+		//	charAttResult=CharacterAttr | val=INTORDEC;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//charAttResult+=CharacterAttr | val=INTORDEC
+		//charAttResult=CharacterAttr | val=INTORDEC
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//charAttResult+=CharacterAttr
+		//charAttResult=CharacterAttr
 		public Assignment getCharAttResultAssignment_0() { return cCharAttResultAssignment_0; }
 		
 		//CharacterAttr
@@ -998,110 +936,134 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Action cTAction_0_0 = (Action)cGroup_0.eContents().get(0);
-		private final Keyword cAsteriskKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Assignment cLopAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final Keyword cLopAsteriskKeyword_0_1_0 = (Keyword)cLopAssignment_0_1.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Action cAAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cPlusSignKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cLopAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final Keyword cLopPlusSignKeyword_1_1_0 = (Keyword)cLopAssignment_1_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
 		private final Action cMAction_2_0 = (Action)cGroup_2.eContents().get(0);
-		private final Keyword cHyphenMinusKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
+		private final Assignment cLopAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final Keyword cLopHyphenMinusKeyword_2_1_0 = (Keyword)cLopAssignment_2_1.eContents().get(0);
 		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
 		private final Action cDAction_3_0 = (Action)cGroup_3.eContents().get(0);
-		private final Keyword cSolidusKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
+		private final Assignment cLopAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final Keyword cLopSolidusKeyword_3_1_0 = (Keyword)cLopAssignment_3_1.eContents().get(0);
 		
 		//LogicOperator:
-		//	{T} '*' | {A} '+' | {M} '-' | {D} '/';
+		//	{T} lop='*' | {A} lop='+' | {M} lop='-' | {D} lop='/';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{T} '*' | {A} '+' | {M} '-' | {D} '/'
+		//{T} lop='*' | {A} lop='+' | {M} lop='-' | {D} lop='/'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//{T} '*'
+		//{T} lop='*'
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//{T}
 		public Action getTAction_0_0() { return cTAction_0_0; }
 		
-		//'*'
-		public Keyword getAsteriskKeyword_0_1() { return cAsteriskKeyword_0_1; }
+		//lop='*'
+		public Assignment getLopAssignment_0_1() { return cLopAssignment_0_1; }
 		
-		//{A} '+'
+		//'*'
+		public Keyword getLopAsteriskKeyword_0_1_0() { return cLopAsteriskKeyword_0_1_0; }
+		
+		//{A} lop='+'
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{A}
 		public Action getAAction_1_0() { return cAAction_1_0; }
 		
-		//'+'
-		public Keyword getPlusSignKeyword_1_1() { return cPlusSignKeyword_1_1; }
+		//lop='+'
+		public Assignment getLopAssignment_1_1() { return cLopAssignment_1_1; }
 		
-		//{M} '-'
+		//'+'
+		public Keyword getLopPlusSignKeyword_1_1_0() { return cLopPlusSignKeyword_1_1_0; }
+		
+		//{M} lop='-'
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//{M}
 		public Action getMAction_2_0() { return cMAction_2_0; }
 		
-		//'-'
-		public Keyword getHyphenMinusKeyword_2_1() { return cHyphenMinusKeyword_2_1; }
+		//lop='-'
+		public Assignment getLopAssignment_2_1() { return cLopAssignment_2_1; }
 		
-		//{D} '/'
+		//'-'
+		public Keyword getLopHyphenMinusKeyword_2_1_0() { return cLopHyphenMinusKeyword_2_1_0; }
+		
+		//{D} lop='/'
 		public Group getGroup_3() { return cGroup_3; }
 		
 		//{D}
 		public Action getDAction_3_0() { return cDAction_3_0; }
 		
+		//lop='/'
+		public Assignment getLopAssignment_3_1() { return cLopAssignment_3_1; }
+		
 		//'/'
-		public Keyword getSolidusKeyword_3_1() { return cSolidusKeyword_3_1; }
+		public Keyword getLopSolidusKeyword_3_1_0() { return cLopSolidusKeyword_3_1_0; }
 	}
 	public class AttackElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.Attack");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cAttributesAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cAttributesAttributeParserRuleCall_2_0 = (RuleCall)cAttributesAssignment_2.eContents().get(0);
-		private final Assignment cAttributesAttackAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cAttributesAttackAttributeAttackParserRuleCall_3_0 = (RuleCall)cAttributesAttackAssignment_3.eContents().get(0);
-		private final Assignment cRulesAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cRulesRuleSetParserRuleCall_4_0 = (RuleCall)cRulesAssignment_4.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cEntityidAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cEntityidAttackKeyword_0_0 = (Keyword)cEntityidAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cAttributesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cAttributesAttributeParserRuleCall_3_0 = (RuleCall)cAttributesAssignment_3.eContents().get(0);
+		private final Assignment cAttributesAttackAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cAttributesAttackAttributeAttackParserRuleCall_4_0 = (RuleCall)cAttributesAttackAssignment_4.eContents().get(0);
+		private final Assignment cRulesAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cRulesConditionParserRuleCall_5_0 = (RuleCall)cRulesAssignment_5.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//Attack:
-		//	name=ID '{' attributes+=Attribute* attributesAttack+=AttributeAttack* rules+=RuleSet? '}';
+		//	entityid='Attack' name=ID '{' attributes+=Attribute* attributesAttack+=AttributeAttack* rules+=Condition? '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID '{' attributes+=Attribute* attributesAttack+=AttributeAttack* rules+=RuleSet? '}'
+		//entityid='Attack' name=ID '{' attributes+=Attribute* attributesAttack+=AttributeAttack* rules+=Condition? '}'
 		public Group getGroup() { return cGroup; }
 		
+		//entityid='Attack'
+		public Assignment getEntityidAssignment_0() { return cEntityidAssignment_0; }
+		
+		//'Attack'
+		public Keyword getEntityidAttackKeyword_0_0() { return cEntityidAttackKeyword_0_0; }
+		
 		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
 		//attributes+=Attribute*
-		public Assignment getAttributesAssignment_2() { return cAttributesAssignment_2; }
+		public Assignment getAttributesAssignment_3() { return cAttributesAssignment_3; }
 		
 		//Attribute
-		public RuleCall getAttributesAttributeParserRuleCall_2_0() { return cAttributesAttributeParserRuleCall_2_0; }
+		public RuleCall getAttributesAttributeParserRuleCall_3_0() { return cAttributesAttributeParserRuleCall_3_0; }
 		
 		//attributesAttack+=AttributeAttack*
-		public Assignment getAttributesAttackAssignment_3() { return cAttributesAttackAssignment_3; }
+		public Assignment getAttributesAttackAssignment_4() { return cAttributesAttackAssignment_4; }
 		
 		//AttributeAttack
-		public RuleCall getAttributesAttackAttributeAttackParserRuleCall_3_0() { return cAttributesAttackAttributeAttackParserRuleCall_3_0; }
+		public RuleCall getAttributesAttackAttributeAttackParserRuleCall_4_0() { return cAttributesAttackAttributeAttackParserRuleCall_4_0; }
 		
-		//rules+=RuleSet?
-		public Assignment getRulesAssignment_4() { return cRulesAssignment_4; }
+		//rules+=Condition?
+		public Assignment getRulesAssignment_5() { return cRulesAssignment_5; }
 		
-		//RuleSet
-		public RuleCall getRulesRuleSetParserRuleCall_4_0() { return cRulesRuleSetParserRuleCall_4_0; }
+		//Condition
+		public RuleCall getRulesConditionParserRuleCall_5_0() { return cRulesConditionParserRuleCall_5_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
 	public class AttributeAttackElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.AttributeAttack");
@@ -1192,37 +1154,45 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	public class BulletElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.Bullet");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cAttributesBulletAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cAttributesBulletAttributeParserRuleCall_2_0 = (RuleCall)cAttributesBulletAssignment_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cEntityidAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cEntityidBulletKeyword_0_0 = (Keyword)cEntityidAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cAttributesBulletAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cAttributesBulletAttributeParserRuleCall_3_0 = (RuleCall)cAttributesBulletAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Bullet:
-		//	name=ID '{' attributesBullet+=Attribute* '}';
+		//	entityid='Bullet' name=ID '{' attributesBullet+=Attribute* '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID '{' attributesBullet+=Attribute* '}'
+		//entityid='Bullet' name=ID '{' attributesBullet+=Attribute* '}'
 		public Group getGroup() { return cGroup; }
 		
+		//entityid='Bullet'
+		public Assignment getEntityidAssignment_0() { return cEntityidAssignment_0; }
+		
+		//'Bullet'
+		public Keyword getEntityidBulletKeyword_0_0() { return cEntityidBulletKeyword_0_0; }
+		
 		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
 		//attributesBullet+=Attribute*
-		public Assignment getAttributesBulletAssignment_2() { return cAttributesBulletAssignment_2; }
+		public Assignment getAttributesBulletAssignment_3() { return cAttributesBulletAssignment_3; }
 		
 		//Attribute
-		public RuleCall getAttributesBulletAttributeParserRuleCall_2_0() { return cAttributesBulletAttributeParserRuleCall_2_0; }
+		public RuleCall getAttributesBulletAttributeParserRuleCall_3_0() { return cAttributesBulletAttributeParserRuleCall_3_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 	public class InitializerElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "master.mdsd.Game.Initializer");
@@ -1274,10 +1244,10 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTargetTargetRefParserRuleCall_2_0 = (RuleCall)cTargetAssignment_2.eContents().get(0);
 		
 		//AttributeInitializer:
-		//	attributeId=ID amountValueId=INT? target+=TargetRef;
+		//	attributeId=ID amountValueId=INT? target=TargetRef;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//attributeId=ID amountValueId=INT? target+=TargetRef
+		//attributeId=ID amountValueId=INT? target=TargetRef
 		public Group getGroup() { return cGroup; }
 		
 		//attributeId=ID
@@ -1292,7 +1262,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		//INT
 		public RuleCall getAmountValueIdINTTerminalRuleCall_1_0() { return cAmountValueIdINTTerminalRuleCall_1_0; }
 		
-		//target+=TargetRef
+		//target=TargetRef
 		public Assignment getTargetAssignment_2() { return cTargetAssignment_2; }
 		
 		//TargetRef
@@ -1362,20 +1332,13 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTypebAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
 		private final RuleCall cTypebTypeParserRuleCall_1_3_0 = (RuleCall)cTypebAssignment_1_3.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Assignment cCharAttAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
-		private final RuleCall cCharAttAttributeParserRuleCall_2_0_0 = (RuleCall)cCharAttAssignment_2_0.eContents().get(0);
-		private final Assignment cLogicOpAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cLogicOpLogicOperatorParserRuleCall_2_1_0 = (RuleCall)cLogicOpAssignment_2_1.eContents().get(0);
-		private final Assignment cTypecAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
-		private final RuleCall cTypecTypeParserRuleCall_2_2_0 = (RuleCall)cTypecAssignment_2_2.eContents().get(0);
 		
 		//Location:
 		//	locationId='random' |
-		//	'(' typea=Type ',' typeb=Type ')' | charAtt+=Attribute logicOp+=LogicOperator typec+=Type;
+		//	'(' typea=Type ',' typeb=Type ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//locationId='random' | '(' typea=Type ',' typeb=Type ')' | charAtt+=Attribute logicOp+=LogicOperator typec+=Type
+		//locationId='random' | '(' typea=Type ',' typeb=Type ')'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//locationId='random'
@@ -1407,32 +1370,11 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_1_4() { return cRightParenthesisKeyword_1_4; }
-		
-		//charAtt+=Attribute logicOp+=LogicOperator typec+=Type
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//charAtt+=Attribute
-		public Assignment getCharAttAssignment_2_0() { return cCharAttAssignment_2_0; }
-		
-		//Attribute
-		public RuleCall getCharAttAttributeParserRuleCall_2_0_0() { return cCharAttAttributeParserRuleCall_2_0_0; }
-		
-		//logicOp+=LogicOperator
-		public Assignment getLogicOpAssignment_2_1() { return cLogicOpAssignment_2_1; }
-		
-		//LogicOperator
-		public RuleCall getLogicOpLogicOperatorParserRuleCall_2_1_0() { return cLogicOpLogicOperatorParserRuleCall_2_1_0; }
-		
-		//typec+=Type
-		public Assignment getTypecAssignment_2_2() { return cTypecAssignment_2_2; }
-		
-		//Type
-		public RuleCall getTypecTypeParserRuleCall_2_2_0() { return cTypecTypeParserRuleCall_2_2_0; }
 	}
 	
 	
 	private final ModelElements pModel;
-	private final MapElements pMap;
+	private final GameMapElements pGameMap;
 	private final AttributeElements pAttribute;
 	private final EntityElements pEntity;
 	private final DynamicEntityElements pDynamicEntity;
@@ -1445,14 +1387,12 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	private final ObjectElements pObject;
 	private final BehaviourElements pBehaviour;
 	private final PathfindingElements pPathfinding;
-	private final RuleSetElements pRuleSet;
-	private final RuleElements pRule;
-	private final RuleSetupElements pRuleSetup;
-	private final IntAttElements pIntAtt;
+	private final BooleanExpressionElements pBooleanExpression;
+	private final ExpressionElements pExpression;
+	private final TerminalExpressionElements pTerminalExpression;
+	private final ConditionElements pCondition;
 	private final DECIMALElements pDECIMAL;
-	private final LogicOperatorLoopElements pLogicOperatorLoop;
 	private final ReferenceCharacterElements pReferenceCharacter;
-	private final RuleTypeElements pRuleType;
 	private final CompOperatorElements pCompOperator;
 	private final ActionElements pAction;
 	private final CharDecElements pCharDec;
@@ -1477,7 +1417,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
-		this.pMap = new MapElements();
+		this.pGameMap = new GameMapElements();
 		this.pAttribute = new AttributeElements();
 		this.pEntity = new EntityElements();
 		this.pDynamicEntity = new DynamicEntityElements();
@@ -1490,14 +1430,12 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		this.pObject = new ObjectElements();
 		this.pBehaviour = new BehaviourElements();
 		this.pPathfinding = new PathfindingElements();
-		this.pRuleSet = new RuleSetElements();
-		this.pRule = new RuleElements();
-		this.pRuleSetup = new RuleSetupElements();
-		this.pIntAtt = new IntAttElements();
+		this.pBooleanExpression = new BooleanExpressionElements();
+		this.pExpression = new ExpressionElements();
+		this.pTerminalExpression = new TerminalExpressionElements();
+		this.pCondition = new ConditionElements();
 		this.pDECIMAL = new DECIMALElements();
-		this.pLogicOperatorLoop = new LogicOperatorLoopElements();
 		this.pReferenceCharacter = new ReferenceCharacterElements();
-		this.pRuleType = new RuleTypeElements();
 		this.pCompOperator = new CompOperatorElements();
 		this.pAction = new ActionElements();
 		this.pCharDec = new CharDecElements();
@@ -1541,7 +1479,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Model:
-	//	'Game' '{' map=Map entities+=Entity* ini=Initializer '}';
+	//	{Model} 'Game' '{' entities+=Entity* '}';
 	public ModelElements getModelAccess() {
 		return pModel;
 	}
@@ -1550,18 +1488,18 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		return getModelAccess().getRule();
 	}
 	
-	//Map:
-	//	{Map} entityId='Map' '{' attributes+=Attribute* '}';
-	public MapElements getMapAccess() {
-		return pMap;
+	//GameMap:
+	//	entityId='Map' '{' attributeList+=Attribute* '}';
+	public GameMapElements getGameMapAccess() {
+		return pGameMap;
 	}
 	
-	public ParserRule getMapRule() {
-		return getMapAccess().getRule();
+	public ParserRule getGameMapRule() {
+		return getGameMapAccess().getRule();
 	}
 	
 	//Attribute:
-	//	{Attribute} attributename=ID type+=Type;
+	//	{Attribute} attributename=ID type=Type;
 	public AttributeElements getAttributeAccess() {
 		return pAttribute;
 	}
@@ -1581,8 +1519,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//DynamicEntity:
-	//	entityid='Character' character+=Character | entityid='Object' object+=Object | entityid='Behaviour'
-	//	behaviour+=Behaviour;
+	//	Character | Object | Behaviour;
 	public DynamicEntityElements getDynamicEntityAccess() {
 		return pDynamicEntity;
 	}
@@ -1592,7 +1529,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//StaticEntity:
-	//	Map | Initializer;
+	//	GameMap | Initializer;
 	public StaticEntityElements getStaticEntityAccess() {
 		return pStaticEntity;
 	}
@@ -1602,7 +1539,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Character:
-	//	char=CharType name=ID '{' att+=Attribute* '}';
+	//	entityid='Character' charId=CharType name=ID '{' att+=Attribute* '}';
 	public CharacterElements getCharacterAccess() {
 		return pCharacter;
 	}
@@ -1612,7 +1549,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Type:
-	//	valueId=INTORDEC | valueId=ID | valueId=VECTOR;
+	//	valueId=INTORDEC | valueId=ID | valueIdVec=VECTOR;
 	public TypeElements getTypeAccess() {
 		return pType;
 	}
@@ -1622,7 +1559,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//VECTOR:
-	//	INTORDEC INTORDEC;
+	//	xVal=INTORDEC yVal=INTORDEC;
 	public VECTORElements getVECTORAccess() {
 		return pVECTOR;
 	}
@@ -1642,7 +1579,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//CharType:
-	//	charTypeid=ID;
+	//	charTypeId=ID;
 	public CharTypeElements getCharTypeAccess() {
 		return pCharType;
 	}
@@ -1652,7 +1589,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Object:
-	//	name=ID '{' att+=Attribute* '}';
+	//	entityid='Object' name=ID '{' att+=Attribute* '}';
 	public ObjectElements getObjectAccess() {
 		return pObject;
 	}
@@ -1662,8 +1599,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Behaviour:
-	//	behaviourTypeId='Pathfinding' pathfinding=Pathfinding | behaviourTypeId='Attack' attack=Attack |
-	//	behaviourTypeId='Bullet' bullet=Bullet;
+	//	Pathfinding | Attack | Bullet;
 	public BehaviourElements getBehaviourAccess() {
 		return pBehaviour;
 	}
@@ -1673,7 +1609,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Pathfinding:
-	//	name=ID '{' attPathfinding+=Attribute* ruleSets+=RuleSet* '}';
+	//	entityid='Pathfinding' name=ID '{' attPathfinding+=Attribute* conditions+=Condition* '}';
 	public PathfindingElements getPathfindingAccess() {
 		return pPathfinding;
 	}
@@ -1682,44 +1618,46 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		return getPathfindingAccess().getRule();
 	}
 	
-	//RuleSet:
-	//	ifId+='if' rule=Rule (elseIfId+='elseif' elseRules+=Rule)*;
-	public RuleSetElements getRuleSetAccess() {
-		return pRuleSet;
+	//BooleanExpression:
+	//	attributeRefLeft=CharacterAttr? leftEx=Expression? operator=CompOperator attributeRefRight=CharacterAttr?
+	//	(op=LogicOperator? rightEx=Expression)?;
+	public BooleanExpressionElements getBooleanExpressionAccess() {
+		return pBooleanExpression;
 	}
 	
-	public ParserRule getRuleSetRule() {
-		return getRuleSetAccess().getRule();
+	public ParserRule getBooleanExpressionRule() {
+		return getBooleanExpressionAccess().getRule();
 	}
 	
-	//Rule:
-	//	'(' ruleSetup=RuleSetup ')' toDoAction=Action;
-	public RuleElements getRuleAccess() {
-		return pRule;
+	//Expression:
+	//	tm=TerminalExpression ({Operation.left=current} op=LogicOperator right=TerminalExpression)*;
+	public ExpressionElements getExpressionAccess() {
+		return pExpression;
 	}
 	
-	public ParserRule getRuleRule() {
-		return getRuleAccess().getRule();
+	public ParserRule getExpressionRule() {
+		return getExpressionAccess().getRule();
 	}
 	
-	//RuleSetup:
-	//	attributeRefLeft=ReferenceCharacter? ruleType=RuleType operator=CompOperator intAttleft=IntAtt lo=LogicOperatorLoop?;
-	public RuleSetupElements getRuleSetupAccess() {
-		return pRuleSetup;
+	//TerminalExpression Expression:
+	//	'(' Expression ')' | {IntLiteral} value=INTORDEC
+	public TerminalExpressionElements getTerminalExpressionAccess() {
+		return pTerminalExpression;
 	}
 	
-	public ParserRule getRuleSetupRule() {
-		return getRuleSetupAccess().getRule();
+	public ParserRule getTerminalExpressionRule() {
+		return getTerminalExpressionAccess().getRule();
 	}
 	
-	//IntAtt:
-	//	value=INTORDEC | 'self' attrId=ID;
-	public IntAttElements getIntAttAccess() {
-		return pIntAtt;
+	//Condition:
+	//	'if' '(' ifCondition=BooleanExpression ')'
+	//	then=Action (=> 'else' elseIfCondition=Condition)?;
+	public ConditionElements getConditionAccess() {
+		return pCondition;
 	}
 	
-	public ParserRule getIntAttRule() {
-		return getIntAttAccess().getRule();
+	public ParserRule getConditionRule() {
+		return getConditionAccess().getRule();
 	}
 	
 	//DECIMAL:
@@ -1732,16 +1670,6 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		return getDECIMALAccess().getRule();
 	}
 	
-	//LogicOperatorLoop:
-	//	logicOp+=LogicOperator intAtt+=IntAtt lop+=LogicOperatorLoop?;
-	public LogicOperatorLoopElements getLogicOperatorLoopAccess() {
-		return pLogicOperatorLoop;
-	}
-	
-	public ParserRule getLogicOperatorLoopRule() {
-		return getLogicOperatorLoopAccess().getRule();
-	}
-	
 	//ReferenceCharacter:
 	//	{ReferenceCharacter} characterId=[Character] | {ReferenceCharacter} targetId='self';
 	public ReferenceCharacterElements getReferenceCharacterAccess() {
@@ -1752,18 +1680,8 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 		return getReferenceCharacterAccess().getRule();
 	}
 	
-	//RuleType:
-	//	ruleTypeId=ID;
-	public RuleTypeElements getRuleTypeAccess() {
-		return pRuleType;
-	}
-	
-	public ParserRule getRuleTypeRule() {
-		return getRuleTypeAccess().getRule();
-	}
-	
 	//CompOperator:
-	//	{LT} '<' | {GT} '>' | {LTE} '<=' | {GTE} '>=' | {EQ} '=';
+	//	{LT} op='<' | {GT} op='>' | {LTE} op='<=' | {GTE} op='>=' | {EQ} op='=';
 	public CompOperatorElements getCompOperatorAccess() {
 		return pCompOperator;
 	}
@@ -1773,7 +1691,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Action:
-	//	'(' charAtt=CharacterAttr '=' charDec=CharDec lo+=LogicOperatorLoop? ')';
+	//	'(' charAtt=CharacterAttr '=' charDec=CharDec? (op=LogicOperator? ex=Expression)? ')';
 	public ActionElements getActionAccess() {
 		return pAction;
 	}
@@ -1783,7 +1701,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//CharDec:
-	//	charAttResult+=CharacterAttr | val=INTORDEC;
+	//	charAttResult=CharacterAttr | val=INTORDEC;
 	public CharDecElements getCharDecAccess() {
 		return pCharDec;
 	}
@@ -1803,7 +1721,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//LogicOperator:
-	//	{T} '*' | {A} '+' | {M} '-' | {D} '/';
+	//	{T} lop='*' | {A} lop='+' | {M} lop='-' | {D} lop='/';
 	public LogicOperatorElements getLogicOperatorAccess() {
 		return pLogicOperator;
 	}
@@ -1813,7 +1731,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Attack:
-	//	name=ID '{' attributes+=Attribute* attributesAttack+=AttributeAttack* rules+=RuleSet? '}';
+	//	entityid='Attack' name=ID '{' attributes+=Attribute* attributesAttack+=AttributeAttack* rules+=Condition? '}';
 	public AttackElements getAttackAccess() {
 		return pAttack;
 	}
@@ -1843,7 +1761,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Bullet:
-	//	name=ID '{' attributesBullet+=Attribute* '}';
+	//	entityid='Bullet' name=ID '{' attributesBullet+=Attribute* '}';
 	public BulletElements getBulletAccess() {
 		return pBullet;
 	}
@@ -1863,7 +1781,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//AttributeInitializer:
-	//	attributeId=ID amountValueId=INT? target+=TargetRef;
+	//	attributeId=ID amountValueId=INT? target=TargetRef;
 	public AttributeInitializerElements getAttributeInitializerAccess() {
 		return pAttributeInitializer;
 	}
@@ -1884,7 +1802,7 @@ public class GameGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Location:
 	//	locationId='random' |
-	//	'(' typea=Type ',' typeb=Type ')' | charAtt+=Attribute logicOp+=LogicOperator typec+=Type;
+	//	'(' typea=Type ',' typeb=Type ')';
 	public LocationElements getLocationAccess() {
 		return pLocation;
 	}

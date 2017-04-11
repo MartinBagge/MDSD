@@ -5,8 +5,6 @@ package master.mdsd.game;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Attack</b></em>'.
@@ -16,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link master.mdsd.game.Attack#getName <em>Name</em>}</li>
  *   <li>{@link master.mdsd.game.Attack#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link master.mdsd.game.Attack#getAttributesAttack <em>Attributes Attack</em>}</li>
  *   <li>{@link master.mdsd.game.Attack#getRules <em>Rules</em>}</li>
@@ -26,34 +23,8 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Attack extends EObject
+public interface Attack extends Behaviour
 {
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see master.mdsd.game.GamePackage#getAttack_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link master.mdsd.game.Attack#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
   /**
    * Returns the value of the '<em><b>Attributes</b></em>' containment reference list.
    * The list contents are of type {@link master.mdsd.game.Attribute}.
@@ -88,7 +59,7 @@ public interface Attack extends EObject
 
   /**
    * Returns the value of the '<em><b>Rules</b></em>' containment reference list.
-   * The list contents are of type {@link master.mdsd.game.RuleSet}.
+   * The list contents are of type {@link master.mdsd.game.Condition}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Rules</em>' containment reference list isn't clear,
@@ -100,6 +71,6 @@ public interface Attack extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<RuleSet> getRules();
+  EList<Condition> getRules();
 
 } // Attack

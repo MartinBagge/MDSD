@@ -3,8 +3,6 @@
  */
 package master.mdsd.game;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -27,20 +25,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface CharDec extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Char Att Result</b></em>' containment reference list.
-   * The list contents are of type {@link master.mdsd.game.CharacterAttr}.
+   * Returns the value of the '<em><b>Char Att Result</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Char Att Result</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Char Att Result</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Char Att Result</em>' containment reference list.
+   * @return the value of the '<em>Char Att Result</em>' containment reference.
+   * @see #setCharAttResult(CharacterAttr)
    * @see master.mdsd.game.GamePackage#getCharDec_CharAttResult()
    * @model containment="true"
    * @generated
    */
-  EList<CharacterAttr> getCharAttResult();
+  CharacterAttr getCharAttResult();
+
+  /**
+   * Sets the value of the '{@link master.mdsd.game.CharDec#getCharAttResult <em>Char Att Result</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Char Att Result</em>' containment reference.
+   * @see #getCharAttResult()
+   * @generated
+   */
+  void setCharAttResult(CharacterAttr value);
 
   /**
    * Returns the value of the '<em><b>Val</b></em>' attribute.

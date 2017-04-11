@@ -1,0 +1,150 @@
+grammar master.mdsd.Game with org.eclipse.xtext.common.Terminals
+
+generate game "http://www.mdsd.master/Game"
+
+Model:
+	{Model}'Game' '{' entities+=Entity* '}' 
+;
+
+GameMap:
+	entityId = 'Map''{' attributeList+=Attribute* '}'
+;
+
+Attribute:
+	{Attribute} attributename=ID type=Type
+;
+
+
+
+Entity:
+	 DynamicEntity | StaticEntity
+;
+
+DynamicEntity:
+	Character | 
+	Object |  
+	Behaviour
+;
+
+StaticEntity:
+	GameMap | Initializer
+;
+
+Character:
+	 entityid = 'Character' charId=CharType name=ID '{' att+=Attribute*'}'
+;
+
+Type:
+	valueId = INTORDEC | valueId = ID | valueIdVec = VECTOR
+;
+
+VECTOR:
+	xVal = INTORDEC yVal = INTORDEC
+;
+
+INTORDEC:
+	INT | DECIMAL
+;
+
+CharType:
+	charTypeId = ID
+;
+
+Object:
+	entityid = 'Object' name=ID '{' att+=Attribute* '}'
+;
+
+
+Behaviour:
+	Pathfinding| 
+	Attack | 
+	Bullet
+;
+
+
+Pathfinding:
+	 entityid = 'Pathfinding' name=ID '{' (attPathfinding += Attribute)*  (conditions+=Condition)* '}'
+;
+
+BooleanExpression:
+	(attributeRefLeft = CharacterAttr)? (leftEx = Expression)? operator=CompOperator (attributeRefRight = CharacterAttr)? ((op=LogicOperator)? rightEx = Expression)?
+;
+
+Expression:
+    tm = TerminalExpression ({Operation.left=current} 
+    op=LogicOperator right=TerminalExpression)*
+ ;
+ 
+TerminalExpression returns Expression:
+    '(' Expression ')' |
+    {IntLiteral} value=INTORDEC
+;
+
+Condition:
+	'if' '(' ifCondition = BooleanExpression ')'
+	then = Action
+	(=> 'else'  elseIfCondition+=Condition)*
+;
+
+DECIMAL:
+	INT '.' INT
+;
+
+
+ReferenceCharacter:
+	{ReferenceCharacter} characterId = [Character] | {ReferenceCharacter} targetId = 'self'
+;
+
+CompOperator:
+	{LT} op='<' | {GT} op='>' | {LTE} op='<=' | {GTE} op='>=' | {EQ} op='='
+;
+
+Action:
+'(' charAtt= CharacterAttr  '=' (charDec = CharDec)? ((op=LogicOperator)? lo=Expression)? ')'
+;
+
+CharDec:
+	charAttResult= CharacterAttr | val =INTORDEC
+;
+
+CharacterAttr:
+	reference= ReferenceCharacter  attributename = ID
+;
+
+LogicOperator:
+	{T} lop='*' |{A} lop='+' |{M} lop='-' |{D} lop='/'
+;
+
+Attack:
+	entityid ='Attack' name=ID '{' (attributes += Attribute)* (attributesAttack += AttributeAttack)* (rules+=Condition)? '}'
+;
+
+AttributeAttack:
+	attributeTypesAttack+=AttributeTypeAttack (type+=Type)?
+;
+
+AttributeTypeAttack:
+	{Ammo}'Ammunition' |{AttS}'Attackspeed' | {Bullet}'Bullet' bulletRef = [Bullet]
+;
+
+Bullet:
+	entityid = 'Bullet' name=ID '{' attributesBullet += Attribute* '}'
+;
+
+Initializer:
+	{Initializer} entityId = 'Initializer' '{' attributesInitializer +=AttributeInitializer* '}'
+;
+
+AttributeInitializer:
+	attributeId = ID (amountValueId=INT?) target = TargetRef 
+;
+
+TargetRef:
+	targetId = ID '{' (locationsId += Location) (',' locationsId+=Location)* '}'
+;
+
+Location:
+	locationId = 'random'  | 
+	'(' typea=Type ',' typeb=Type ')'
+;
+

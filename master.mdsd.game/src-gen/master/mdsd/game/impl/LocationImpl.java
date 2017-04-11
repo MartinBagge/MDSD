@@ -3,27 +3,18 @@
  */
 package master.mdsd.game.impl;
 
-import java.util.Collection;
-
-import master.mdsd.game.Attribute;
 import master.mdsd.game.GamePackage;
 import master.mdsd.game.Location;
-import master.mdsd.game.LogicOperator;
 import master.mdsd.game.Type;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,9 +27,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link master.mdsd.game.impl.LocationImpl#getLocationId <em>Location Id</em>}</li>
  *   <li>{@link master.mdsd.game.impl.LocationImpl#getTypea <em>Typea</em>}</li>
  *   <li>{@link master.mdsd.game.impl.LocationImpl#getTypeb <em>Typeb</em>}</li>
- *   <li>{@link master.mdsd.game.impl.LocationImpl#getCharAtt <em>Char Att</em>}</li>
- *   <li>{@link master.mdsd.game.impl.LocationImpl#getLogicOp <em>Logic Op</em>}</li>
- *   <li>{@link master.mdsd.game.impl.LocationImpl#getTypec <em>Typec</em>}</li>
  * </ul>
  *
  * @generated
@@ -84,36 +72,6 @@ public class LocationImpl extends MinimalEObjectImpl.Container implements Locati
    * @ordered
    */
   protected Type typeb;
-
-  /**
-   * The cached value of the '{@link #getCharAtt() <em>Char Att</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCharAtt()
-   * @generated
-   * @ordered
-   */
-  protected EList<Attribute> charAtt;
-
-  /**
-   * The cached value of the '{@link #getLogicOp() <em>Logic Op</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getLogicOp()
-   * @generated
-   * @ordered
-   */
-  protected EList<LogicOperator> logicOp;
-
-  /**
-   * The cached value of the '{@link #getTypec() <em>Typec</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTypec()
-   * @generated
-   * @ordered
-   */
-  protected EList<Type> typec;
 
   /**
    * <!-- begin-user-doc -->
@@ -260,48 +218,6 @@ public class LocationImpl extends MinimalEObjectImpl.Container implements Locati
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Attribute> getCharAtt()
-  {
-    if (charAtt == null)
-    {
-      charAtt = new EObjectContainmentEList<Attribute>(Attribute.class, this, GamePackage.LOCATION__CHAR_ATT);
-    }
-    return charAtt;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<LogicOperator> getLogicOp()
-  {
-    if (logicOp == null)
-    {
-      logicOp = new EObjectContainmentEList<LogicOperator>(LogicOperator.class, this, GamePackage.LOCATION__LOGIC_OP);
-    }
-    return logicOp;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Type> getTypec()
-  {
-    if (typec == null)
-    {
-      typec = new EObjectContainmentEList<Type>(Type.class, this, GamePackage.LOCATION__TYPEC);
-    }
-    return typec;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -311,12 +227,6 @@ public class LocationImpl extends MinimalEObjectImpl.Container implements Locati
         return basicSetTypea(null, msgs);
       case GamePackage.LOCATION__TYPEB:
         return basicSetTypeb(null, msgs);
-      case GamePackage.LOCATION__CHAR_ATT:
-        return ((InternalEList<?>)getCharAtt()).basicRemove(otherEnd, msgs);
-      case GamePackage.LOCATION__LOGIC_OP:
-        return ((InternalEList<?>)getLogicOp()).basicRemove(otherEnd, msgs);
-      case GamePackage.LOCATION__TYPEC:
-        return ((InternalEList<?>)getTypec()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -337,12 +247,6 @@ public class LocationImpl extends MinimalEObjectImpl.Container implements Locati
         return getTypea();
       case GamePackage.LOCATION__TYPEB:
         return getTypeb();
-      case GamePackage.LOCATION__CHAR_ATT:
-        return getCharAtt();
-      case GamePackage.LOCATION__LOGIC_OP:
-        return getLogicOp();
-      case GamePackage.LOCATION__TYPEC:
-        return getTypec();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -352,7 +256,6 @@ public class LocationImpl extends MinimalEObjectImpl.Container implements Locati
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -366,18 +269,6 @@ public class LocationImpl extends MinimalEObjectImpl.Container implements Locati
         return;
       case GamePackage.LOCATION__TYPEB:
         setTypeb((Type)newValue);
-        return;
-      case GamePackage.LOCATION__CHAR_ATT:
-        getCharAtt().clear();
-        getCharAtt().addAll((Collection<? extends Attribute>)newValue);
-        return;
-      case GamePackage.LOCATION__LOGIC_OP:
-        getLogicOp().clear();
-        getLogicOp().addAll((Collection<? extends LogicOperator>)newValue);
-        return;
-      case GamePackage.LOCATION__TYPEC:
-        getTypec().clear();
-        getTypec().addAll((Collection<? extends Type>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -402,15 +293,6 @@ public class LocationImpl extends MinimalEObjectImpl.Container implements Locati
       case GamePackage.LOCATION__TYPEB:
         setTypeb((Type)null);
         return;
-      case GamePackage.LOCATION__CHAR_ATT:
-        getCharAtt().clear();
-        return;
-      case GamePackage.LOCATION__LOGIC_OP:
-        getLogicOp().clear();
-        return;
-      case GamePackage.LOCATION__TYPEC:
-        getTypec().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -431,12 +313,6 @@ public class LocationImpl extends MinimalEObjectImpl.Container implements Locati
         return typea != null;
       case GamePackage.LOCATION__TYPEB:
         return typeb != null;
-      case GamePackage.LOCATION__CHAR_ATT:
-        return charAtt != null && !charAtt.isEmpty();
-      case GamePackage.LOCATION__LOGIC_OP:
-        return logicOp != null && !logicOp.isEmpty();
-      case GamePackage.LOCATION__TYPEC:
-        return typec != null && !typec.isEmpty();
     }
     return super.eIsSet(featureID);
   }

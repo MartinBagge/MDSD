@@ -3,7 +3,6 @@
  */
 package master.mdsd.game;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,9 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link master.mdsd.game.DynamicEntity#getEntityid <em>Entityid</em>}</li>
- *   <li>{@link master.mdsd.game.DynamicEntity#getCharacter <em>Character</em>}</li>
- *   <li>{@link master.mdsd.game.DynamicEntity#getObject <em>Object</em>}</li>
- *   <li>{@link master.mdsd.game.DynamicEntity#getBehaviour <em>Behaviour</em>}</li>
+ *   <li>{@link master.mdsd.game.DynamicEntity#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see master.mdsd.game.GamePackage#getDynamicEntity()
@@ -53,51 +50,29 @@ public interface DynamicEntity extends Entity
   void setEntityid(String value);
 
   /**
-   * Returns the value of the '<em><b>Character</b></em>' containment reference list.
-   * The list contents are of type {@link master.mdsd.game.Character}.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Character</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Character</em>' containment reference list.
-   * @see master.mdsd.game.GamePackage#getDynamicEntity_Character()
-   * @model containment="true"
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see master.mdsd.game.GamePackage#getDynamicEntity_Name()
+   * @model
    * @generated
    */
-  EList<master.mdsd.game.Character> getCharacter();
+  String getName();
 
   /**
-   * Returns the value of the '<em><b>Object</b></em>' containment reference list.
-   * The list contents are of type {@link master.mdsd.game.Object}.
+   * Sets the value of the '{@link master.mdsd.game.DynamicEntity#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Object</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Object</em>' containment reference list.
-   * @see master.mdsd.game.GamePackage#getDynamicEntity_Object()
-   * @model containment="true"
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
    * @generated
    */
-  EList<master.mdsd.game.Object> getObject();
-
-  /**
-   * Returns the value of the '<em><b>Behaviour</b></em>' containment reference list.
-   * The list contents are of type {@link master.mdsd.game.Behaviour}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Behaviour</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Behaviour</em>' containment reference list.
-   * @see master.mdsd.game.GamePackage#getDynamicEntity_Behaviour()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Behaviour> getBehaviour();
+  void setName(String value);
 
 } // DynamicEntity

@@ -7,11 +7,8 @@ import java.util.Collection;
 
 import master.mdsd.game.Entity;
 import master.mdsd.game.GamePackage;
-import master.mdsd.game.Initializer;
-import master.mdsd.game.Map;
 import master.mdsd.game.Model;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -19,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -33,25 +29,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link master.mdsd.game.impl.ModelImpl#getMap <em>Map</em>}</li>
  *   <li>{@link master.mdsd.game.impl.ModelImpl#getEntities <em>Entities</em>}</li>
- *   <li>{@link master.mdsd.game.impl.ModelImpl#getIni <em>Ini</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ModelImpl extends MinimalEObjectImpl.Container implements Model
 {
-  /**
-   * The cached value of the '{@link #getMap() <em>Map</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMap()
-   * @generated
-   * @ordered
-   */
-  protected Map map;
-
   /**
    * The cached value of the '{@link #getEntities() <em>Entities</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -61,16 +45,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @ordered
    */
   protected EList<Entity> entities;
-
-  /**
-   * The cached value of the '{@link #getIni() <em>Ini</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getIni()
-   * @generated
-   * @ordered
-   */
-  protected Initializer ini;
 
   /**
    * <!-- begin-user-doc -->
@@ -98,54 +72,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public Map getMap()
-  {
-    return map;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetMap(Map newMap, NotificationChain msgs)
-  {
-    Map oldMap = map;
-    map = newMap;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.MODEL__MAP, oldMap, newMap);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setMap(Map newMap)
-  {
-    if (newMap != map)
-    {
-      NotificationChain msgs = null;
-      if (map != null)
-        msgs = ((InternalEObject)map).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.MODEL__MAP, null, msgs);
-      if (newMap != null)
-        msgs = ((InternalEObject)newMap).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.MODEL__MAP, null, msgs);
-      msgs = basicSetMap(newMap, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.MODEL__MAP, newMap, newMap));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EList<Entity> getEntities()
   {
     if (entities == null)
@@ -160,65 +86,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public Initializer getIni()
-  {
-    return ini;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetIni(Initializer newIni, NotificationChain msgs)
-  {
-    Initializer oldIni = ini;
-    ini = newIni;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.MODEL__INI, oldIni, newIni);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setIni(Initializer newIni)
-  {
-    if (newIni != ini)
-    {
-      NotificationChain msgs = null;
-      if (ini != null)
-        msgs = ((InternalEObject)ini).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.MODEL__INI, null, msgs);
-      if (newIni != null)
-        msgs = ((InternalEObject)newIni).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.MODEL__INI, null, msgs);
-      msgs = basicSetIni(newIni, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.MODEL__INI, newIni, newIni));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
-      case GamePackage.MODEL__MAP:
-        return basicSetMap(null, msgs);
       case GamePackage.MODEL__ENTITIES:
         return ((InternalEList<?>)getEntities()).basicRemove(otherEnd, msgs);
-      case GamePackage.MODEL__INI:
-        return basicSetIni(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -233,12 +107,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case GamePackage.MODEL__MAP:
-        return getMap();
       case GamePackage.MODEL__ENTITIES:
         return getEntities();
-      case GamePackage.MODEL__INI:
-        return getIni();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -254,15 +124,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case GamePackage.MODEL__MAP:
-        setMap((Map)newValue);
-        return;
       case GamePackage.MODEL__ENTITIES:
         getEntities().clear();
         getEntities().addAll((Collection<? extends Entity>)newValue);
-        return;
-      case GamePackage.MODEL__INI:
-        setIni((Initializer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -278,14 +142,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case GamePackage.MODEL__MAP:
-        setMap((Map)null);
-        return;
       case GamePackage.MODEL__ENTITIES:
         getEntities().clear();
-        return;
-      case GamePackage.MODEL__INI:
-        setIni((Initializer)null);
         return;
     }
     super.eUnset(featureID);
@@ -301,12 +159,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case GamePackage.MODEL__MAP:
-        return map != null;
       case GamePackage.MODEL__ENTITIES:
         return entities != null && !entities.isEmpty();
-      case GamePackage.MODEL__INI:
-        return ini != null;
     }
     return super.eIsSet(featureID);
   }

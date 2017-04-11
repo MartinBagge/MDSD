@@ -7,12 +7,10 @@
   <genPackages prefix="Game" basePackage="master.mdsd" disposableProviderFactory="true"
       fileExtensions="ga" ecorePackage="Game.ecore#/">
     <genClasses ecoreClass="Game.ecore#//Model">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Model/map"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Model/entities"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Model/ini"/>
     </genClasses>
-    <genClasses ecoreClass="Game.ecore#//Map">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Map/attributes"/>
+    <genClasses ecoreClass="Game.ecore#//GameMap">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//GameMap/attributeList"/>
     </genClasses>
     <genClasses ecoreClass="Game.ecore#//Attribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//Attribute/attributename"/>
@@ -21,77 +19,62 @@
     <genClasses ecoreClass="Game.ecore#//Entity"/>
     <genClasses ecoreClass="Game.ecore#//DynamicEntity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//DynamicEntity/entityid"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//DynamicEntity/character"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//DynamicEntity/object"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//DynamicEntity/behaviour"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//DynamicEntity/name"/>
     </genClasses>
     <genClasses ecoreClass="Game.ecore#//StaticEntity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//StaticEntity/entityId"/>
     </genClasses>
     <genClasses ecoreClass="Game.ecore#//Character">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Character/char"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//Character/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Character/charId"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Character/att"/>
     </genClasses>
     <genClasses ecoreClass="Game.ecore#//Type">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//Type/valueId"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Type/valueIdVec"/>
+    </genClasses>
+    <genClasses ecoreClass="Game.ecore#//VECTOR">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//VECTOR/xVal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//VECTOR/yVal"/>
     </genClasses>
     <genClasses ecoreClass="Game.ecore#//CharType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//CharType/charTypeid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//CharType/charTypeId"/>
     </genClasses>
     <genClasses ecoreClass="Game.ecore#//Object">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//Object/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Object/att"/>
     </genClasses>
-    <genClasses ecoreClass="Game.ecore#//Behaviour">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//Behaviour/behaviourTypeId"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Behaviour/pathfinding"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Behaviour/attack"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Behaviour/bullet"/>
-    </genClasses>
+    <genClasses ecoreClass="Game.ecore#//Behaviour"/>
     <genClasses ecoreClass="Game.ecore#//Pathfinding">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//Pathfinding/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Pathfinding/attPathfinding"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Pathfinding/ruleSets"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Pathfinding/conditions"/>
     </genClasses>
-    <genClasses ecoreClass="Game.ecore#//RuleSet">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//RuleSet/ifId"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//RuleSet/rule"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//RuleSet/elseIfId"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//RuleSet/elseRules"/>
+    <genClasses ecoreClass="Game.ecore#//BooleanExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//BooleanExpression/attributeRefLeft"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//BooleanExpression/leftEx"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//BooleanExpression/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//BooleanExpression/attributeRefRight"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//BooleanExpression/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//BooleanExpression/rightEx"/>
     </genClasses>
-    <genClasses ecoreClass="Game.ecore#//Rule">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Rule/ruleSetup"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Rule/toDoAction"/>
+    <genClasses ecoreClass="Game.ecore#//Expression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Expression/tm"/>
     </genClasses>
-    <genClasses ecoreClass="Game.ecore#//RuleSetup">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//RuleSetup/attributeRefLeft"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//RuleSetup/ruleType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//RuleSetup/operator"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//RuleSetup/intAttleft"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//RuleSetup/lo"/>
-    </genClasses>
-    <genClasses ecoreClass="Game.ecore#//IntAtt">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//IntAtt/value"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//IntAtt/attrId"/>
-    </genClasses>
-    <genClasses ecoreClass="Game.ecore#//LogicOperatorLoop">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//LogicOperatorLoop/logicOp"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//LogicOperatorLoop/intAtt"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//LogicOperatorLoop/lop"/>
+    <genClasses ecoreClass="Game.ecore#//Condition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Condition/ifCondition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Condition/then"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Condition/elseIfCondition"/>
     </genClasses>
     <genClasses ecoreClass="Game.ecore#//ReferenceCharacter">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Game.ecore#//ReferenceCharacter/characterId"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//ReferenceCharacter/targetId"/>
     </genClasses>
-    <genClasses ecoreClass="Game.ecore#//RuleType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//RuleType/ruleTypeId"/>
+    <genClasses ecoreClass="Game.ecore#//CompOperator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//CompOperator/op"/>
     </genClasses>
-    <genClasses ecoreClass="Game.ecore#//CompOperator"/>
     <genClasses ecoreClass="Game.ecore#//Action">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Action/charAtt"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Action/charDec"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Action/lo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Action/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Action/ex"/>
     </genClasses>
     <genClasses ecoreClass="Game.ecore#//CharDec">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//CharDec/charAttResult"/>
@@ -101,9 +84,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//CharacterAttr/reference"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//CharacterAttr/attributename"/>
     </genClasses>
-    <genClasses ecoreClass="Game.ecore#//LogicOperator"/>
+    <genClasses ecoreClass="Game.ecore#//LogicOperator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//LogicOperator/lop"/>
+    </genClasses>
     <genClasses ecoreClass="Game.ecore#//Attack">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//Attack/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Attack/attributes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Attack/attributesAttack"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Attack/rules"/>
@@ -115,7 +99,6 @@
     <genClasses ecoreClass="Game.ecore#//AttributeTypeAttack"/>
     <genClasses ecoreClass="Game.ecore#//Bullet">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Game.ecore#//Bullet/bulletRef"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//Bullet/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Bullet/attributesBullet"/>
     </genClasses>
     <genClasses ecoreClass="Game.ecore#//Initializer">
@@ -134,9 +117,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//Location/locationId"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Location/typea"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Location/typeb"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Location/charAtt"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Location/logicOp"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Location/typec"/>
+    </genClasses>
+    <genClasses ecoreClass="Game.ecore#//Operation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Operation/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Operation/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Game.ecore#//Operation/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Game.ecore#//IntLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Game.ecore#//IntLiteral/value"/>
     </genClasses>
     <genClasses ecoreClass="Game.ecore#//LT"/>
     <genClasses ecoreClass="Game.ecore#//GT"/>

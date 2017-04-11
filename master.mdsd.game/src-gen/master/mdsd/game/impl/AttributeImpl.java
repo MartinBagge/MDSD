@@ -3,8 +3,6 @@
  */
 package master.mdsd.game.impl;
 
-import java.util.Collection;
-
 import master.mdsd.game.Attribute;
 import master.mdsd.game.GamePackage;
 import master.mdsd.game.Type;
@@ -12,16 +10,11 @@ import master.mdsd.game.Type;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -60,14 +53,14 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
   protected String attributename = ATTRIBUTENAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference list.
+   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getType()
    * @generated
    * @ordered
    */
-  protected EList<Type> type;
+  protected Type type;
 
   /**
    * <!-- begin-user-doc -->
@@ -118,13 +111,47 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Type> getType()
+  public Type getType()
   {
-    if (type == null)
-    {
-      type = new EObjectContainmentEList<Type>(Type.class, this, GamePackage.ATTRIBUTE__TYPE);
-    }
     return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetType(Type newType, NotificationChain msgs)
+  {
+    Type oldType = type;
+    type = newType;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.ATTRIBUTE__TYPE, oldType, newType);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(Type newType)
+  {
+    if (newType != type)
+    {
+      NotificationChain msgs = null;
+      if (type != null)
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.ATTRIBUTE__TYPE, null, msgs);
+      if (newType != null)
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.ATTRIBUTE__TYPE, null, msgs);
+      msgs = basicSetType(newType, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.ATTRIBUTE__TYPE, newType, newType));
   }
 
   /**
@@ -138,7 +165,7 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
     switch (featureID)
     {
       case GamePackage.ATTRIBUTE__TYPE:
-        return ((InternalEList<?>)getType()).basicRemove(otherEnd, msgs);
+        return basicSetType(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -166,7 +193,6 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -176,8 +202,7 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         setAttributename((String)newValue);
         return;
       case GamePackage.ATTRIBUTE__TYPE:
-        getType().clear();
-        getType().addAll((Collection<? extends Type>)newValue);
+        setType((Type)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -197,7 +222,7 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
         setAttributename(ATTRIBUTENAME_EDEFAULT);
         return;
       case GamePackage.ATTRIBUTE__TYPE:
-        getType().clear();
+        setType((Type)null);
         return;
     }
     super.eUnset(featureID);
@@ -216,7 +241,7 @@ public class AttributeImpl extends MinimalEObjectImpl.Container implements Attri
       case GamePackage.ATTRIBUTE__ATTRIBUTENAME:
         return ATTRIBUTENAME_EDEFAULT == null ? attributename != null : !ATTRIBUTENAME_EDEFAULT.equals(attributename);
       case GamePackage.ATTRIBUTE__TYPE:
-        return type != null && !type.isEmpty();
+        return type != null;
     }
     return super.eIsSet(featureID);
   }

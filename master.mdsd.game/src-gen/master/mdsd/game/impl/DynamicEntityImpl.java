@@ -3,24 +3,14 @@
  */
 package master.mdsd.game.impl;
 
-import java.util.Collection;
-
-import master.mdsd.game.Behaviour;
 import master.mdsd.game.DynamicEntity;
 import master.mdsd.game.GamePackage;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,9 +21,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link master.mdsd.game.impl.DynamicEntityImpl#getEntityid <em>Entityid</em>}</li>
- *   <li>{@link master.mdsd.game.impl.DynamicEntityImpl#getCharacter <em>Character</em>}</li>
- *   <li>{@link master.mdsd.game.impl.DynamicEntityImpl#getObject <em>Object</em>}</li>
- *   <li>{@link master.mdsd.game.impl.DynamicEntityImpl#getBehaviour <em>Behaviour</em>}</li>
+ *   <li>{@link master.mdsd.game.impl.DynamicEntityImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -61,34 +49,24 @@ public class DynamicEntityImpl extends EntityImpl implements DynamicEntity
   protected String entityid = ENTITYID_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getCharacter() <em>Character</em>}' containment reference list.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCharacter()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected EList<master.mdsd.game.Character> character;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getObject() <em>Object</em>}' containment reference list.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getObject()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected EList<master.mdsd.game.Object> object;
-
-  /**
-   * The cached value of the '{@link #getBehaviour() <em>Behaviour</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getBehaviour()
-   * @generated
-   * @ordered
-   */
-  protected EList<Behaviour> behaviour;
+  protected String name = NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -139,13 +117,9 @@ public class DynamicEntityImpl extends EntityImpl implements DynamicEntity
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<master.mdsd.game.Character> getCharacter()
+  public String getName()
   {
-    if (character == null)
-    {
-      character = new EObjectContainmentEList<master.mdsd.game.Character>(master.mdsd.game.Character.class, this, GamePackage.DYNAMIC_ENTITY__CHARACTER);
-    }
-    return character;
+    return name;
   }
 
   /**
@@ -153,47 +127,12 @@ public class DynamicEntityImpl extends EntityImpl implements DynamicEntity
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<master.mdsd.game.Object> getObject()
+  public void setName(String newName)
   {
-    if (object == null)
-    {
-      object = new EObjectContainmentEList<master.mdsd.game.Object>(master.mdsd.game.Object.class, this, GamePackage.DYNAMIC_ENTITY__OBJECT);
-    }
-    return object;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Behaviour> getBehaviour()
-  {
-    if (behaviour == null)
-    {
-      behaviour = new EObjectContainmentEList<Behaviour>(Behaviour.class, this, GamePackage.DYNAMIC_ENTITY__BEHAVIOUR);
-    }
-    return behaviour;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case GamePackage.DYNAMIC_ENTITY__CHARACTER:
-        return ((InternalEList<?>)getCharacter()).basicRemove(otherEnd, msgs);
-      case GamePackage.DYNAMIC_ENTITY__OBJECT:
-        return ((InternalEList<?>)getObject()).basicRemove(otherEnd, msgs);
-      case GamePackage.DYNAMIC_ENTITY__BEHAVIOUR:
-        return ((InternalEList<?>)getBehaviour()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.DYNAMIC_ENTITY__NAME, oldName, name));
   }
 
   /**
@@ -208,12 +147,8 @@ public class DynamicEntityImpl extends EntityImpl implements DynamicEntity
     {
       case GamePackage.DYNAMIC_ENTITY__ENTITYID:
         return getEntityid();
-      case GamePackage.DYNAMIC_ENTITY__CHARACTER:
-        return getCharacter();
-      case GamePackage.DYNAMIC_ENTITY__OBJECT:
-        return getObject();
-      case GamePackage.DYNAMIC_ENTITY__BEHAVIOUR:
-        return getBehaviour();
+      case GamePackage.DYNAMIC_ENTITY__NAME:
+        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -223,7 +158,6 @@ public class DynamicEntityImpl extends EntityImpl implements DynamicEntity
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -232,17 +166,8 @@ public class DynamicEntityImpl extends EntityImpl implements DynamicEntity
       case GamePackage.DYNAMIC_ENTITY__ENTITYID:
         setEntityid((String)newValue);
         return;
-      case GamePackage.DYNAMIC_ENTITY__CHARACTER:
-        getCharacter().clear();
-        getCharacter().addAll((Collection<? extends master.mdsd.game.Character>)newValue);
-        return;
-      case GamePackage.DYNAMIC_ENTITY__OBJECT:
-        getObject().clear();
-        getObject().addAll((Collection<? extends master.mdsd.game.Object>)newValue);
-        return;
-      case GamePackage.DYNAMIC_ENTITY__BEHAVIOUR:
-        getBehaviour().clear();
-        getBehaviour().addAll((Collection<? extends Behaviour>)newValue);
+      case GamePackage.DYNAMIC_ENTITY__NAME:
+        setName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -261,14 +186,8 @@ public class DynamicEntityImpl extends EntityImpl implements DynamicEntity
       case GamePackage.DYNAMIC_ENTITY__ENTITYID:
         setEntityid(ENTITYID_EDEFAULT);
         return;
-      case GamePackage.DYNAMIC_ENTITY__CHARACTER:
-        getCharacter().clear();
-        return;
-      case GamePackage.DYNAMIC_ENTITY__OBJECT:
-        getObject().clear();
-        return;
-      case GamePackage.DYNAMIC_ENTITY__BEHAVIOUR:
-        getBehaviour().clear();
+      case GamePackage.DYNAMIC_ENTITY__NAME:
+        setName(NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -286,12 +205,8 @@ public class DynamicEntityImpl extends EntityImpl implements DynamicEntity
     {
       case GamePackage.DYNAMIC_ENTITY__ENTITYID:
         return ENTITYID_EDEFAULT == null ? entityid != null : !ENTITYID_EDEFAULT.equals(entityid);
-      case GamePackage.DYNAMIC_ENTITY__CHARACTER:
-        return character != null && !character.isEmpty();
-      case GamePackage.DYNAMIC_ENTITY__OBJECT:
-        return object != null && !object.isEmpty();
-      case GamePackage.DYNAMIC_ENTITY__BEHAVIOUR:
-        return behaviour != null && !behaviour.isEmpty();
+      case GamePackage.DYNAMIC_ENTITY__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
   }
@@ -309,6 +224,8 @@ public class DynamicEntityImpl extends EntityImpl implements DynamicEntity
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (entityid: ");
     result.append(entityid);
+    result.append(", name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }

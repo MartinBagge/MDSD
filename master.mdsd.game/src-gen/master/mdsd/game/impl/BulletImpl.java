@@ -31,13 +31,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link master.mdsd.game.impl.BulletImpl#getBulletRef <em>Bullet Ref</em>}</li>
- *   <li>{@link master.mdsd.game.impl.BulletImpl#getName <em>Name</em>}</li>
  *   <li>{@link master.mdsd.game.impl.BulletImpl#getAttributesBullet <em>Attributes Bullet</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class BulletImpl extends AttributeTypeAttackImpl implements Bullet
+public class BulletImpl extends BehaviourImpl implements Bullet
 {
   /**
    * The cached value of the '{@link #getBulletRef() <em>Bullet Ref</em>}' reference.
@@ -48,26 +47,6 @@ public class BulletImpl extends AttributeTypeAttackImpl implements Bullet
    * @ordered
    */
   protected Bullet bulletRef;
-
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getAttributesBullet() <em>Attributes Bullet</em>}' containment reference list.
@@ -148,29 +127,6 @@ public class BulletImpl extends AttributeTypeAttackImpl implements Bullet
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.BULLET__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EList<Attribute> getAttributesBullet()
   {
     if (attributesBullet == null)
@@ -209,8 +165,6 @@ public class BulletImpl extends AttributeTypeAttackImpl implements Bullet
       case GamePackage.BULLET__BULLET_REF:
         if (resolve) return getBulletRef();
         return basicGetBulletRef();
-      case GamePackage.BULLET__NAME:
-        return getName();
       case GamePackage.BULLET__ATTRIBUTES_BULLET:
         return getAttributesBullet();
     }
@@ -230,9 +184,6 @@ public class BulletImpl extends AttributeTypeAttackImpl implements Bullet
     {
       case GamePackage.BULLET__BULLET_REF:
         setBulletRef((Bullet)newValue);
-        return;
-      case GamePackage.BULLET__NAME:
-        setName((String)newValue);
         return;
       case GamePackage.BULLET__ATTRIBUTES_BULLET:
         getAttributesBullet().clear();
@@ -255,9 +206,6 @@ public class BulletImpl extends AttributeTypeAttackImpl implements Bullet
       case GamePackage.BULLET__BULLET_REF:
         setBulletRef((Bullet)null);
         return;
-      case GamePackage.BULLET__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case GamePackage.BULLET__ATTRIBUTES_BULLET:
         getAttributesBullet().clear();
         return;
@@ -277,29 +225,10 @@ public class BulletImpl extends AttributeTypeAttackImpl implements Bullet
     {
       case GamePackage.BULLET__BULLET_REF:
         return bulletRef != null;
-      case GamePackage.BULLET__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GamePackage.BULLET__ATTRIBUTES_BULLET:
         return attributesBullet != null && !attributesBullet.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //BulletImpl

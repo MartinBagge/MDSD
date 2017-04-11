@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -31,44 +30,23 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link master.mdsd.game.impl.CharacterImpl#getChar <em>Char</em>}</li>
- *   <li>{@link master.mdsd.game.impl.CharacterImpl#getName <em>Name</em>}</li>
+ *   <li>{@link master.mdsd.game.impl.CharacterImpl#getCharId <em>Char Id</em>}</li>
  *   <li>{@link master.mdsd.game.impl.CharacterImpl#getAtt <em>Att</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class CharacterImpl extends MinimalEObjectImpl.Container implements master.mdsd.game.Character
+public class CharacterImpl extends DynamicEntityImpl implements master.mdsd.game.Character
 {
   /**
-   * The cached value of the '{@link #getChar() <em>Char</em>}' containment reference.
+   * The cached value of the '{@link #getCharId() <em>Char Id</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getChar()
+   * @see #getCharId()
    * @generated
    * @ordered
    */
-  protected CharType char_;
-
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
+  protected CharType charId;
 
   /**
    * The cached value of the '{@link #getAtt() <em>Att</em>}' containment reference list.
@@ -106,9 +84,9 @@ public class CharacterImpl extends MinimalEObjectImpl.Container implements maste
    * <!-- end-user-doc -->
    * @generated
    */
-  public CharType getChar()
+  public CharType getCharId()
   {
-    return char_;
+    return charId;
   }
 
   /**
@@ -116,13 +94,13 @@ public class CharacterImpl extends MinimalEObjectImpl.Container implements maste
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetChar(CharType newChar, NotificationChain msgs)
+  public NotificationChain basicSetCharId(CharType newCharId, NotificationChain msgs)
   {
-    CharType oldChar = char_;
-    char_ = newChar;
+    CharType oldCharId = charId;
+    charId = newCharId;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.CHARACTER__CHAR, oldChar, newChar);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.CHARACTER__CHAR_ID, oldCharId, newCharId);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -133,43 +111,20 @@ public class CharacterImpl extends MinimalEObjectImpl.Container implements maste
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setChar(CharType newChar)
+  public void setCharId(CharType newCharId)
   {
-    if (newChar != char_)
+    if (newCharId != charId)
     {
       NotificationChain msgs = null;
-      if (char_ != null)
-        msgs = ((InternalEObject)char_).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHARACTER__CHAR, null, msgs);
-      if (newChar != null)
-        msgs = ((InternalEObject)newChar).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHARACTER__CHAR, null, msgs);
-      msgs = basicSetChar(newChar, msgs);
+      if (charId != null)
+        msgs = ((InternalEObject)charId).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHARACTER__CHAR_ID, null, msgs);
+      if (newCharId != null)
+        msgs = ((InternalEObject)newCharId).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHARACTER__CHAR_ID, null, msgs);
+      msgs = basicSetCharId(newCharId, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHARACTER__CHAR, newChar, newChar));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHARACTER__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHARACTER__CHAR_ID, newCharId, newCharId));
   }
 
   /**
@@ -196,8 +151,8 @@ public class CharacterImpl extends MinimalEObjectImpl.Container implements maste
   {
     switch (featureID)
     {
-      case GamePackage.CHARACTER__CHAR:
-        return basicSetChar(null, msgs);
+      case GamePackage.CHARACTER__CHAR_ID:
+        return basicSetCharId(null, msgs);
       case GamePackage.CHARACTER__ATT:
         return ((InternalEList<?>)getAtt()).basicRemove(otherEnd, msgs);
     }
@@ -214,10 +169,8 @@ public class CharacterImpl extends MinimalEObjectImpl.Container implements maste
   {
     switch (featureID)
     {
-      case GamePackage.CHARACTER__CHAR:
-        return getChar();
-      case GamePackage.CHARACTER__NAME:
-        return getName();
+      case GamePackage.CHARACTER__CHAR_ID:
+        return getCharId();
       case GamePackage.CHARACTER__ATT:
         return getAtt();
     }
@@ -235,11 +188,8 @@ public class CharacterImpl extends MinimalEObjectImpl.Container implements maste
   {
     switch (featureID)
     {
-      case GamePackage.CHARACTER__CHAR:
-        setChar((CharType)newValue);
-        return;
-      case GamePackage.CHARACTER__NAME:
-        setName((String)newValue);
+      case GamePackage.CHARACTER__CHAR_ID:
+        setCharId((CharType)newValue);
         return;
       case GamePackage.CHARACTER__ATT:
         getAtt().clear();
@@ -259,11 +209,8 @@ public class CharacterImpl extends MinimalEObjectImpl.Container implements maste
   {
     switch (featureID)
     {
-      case GamePackage.CHARACTER__CHAR:
-        setChar((CharType)null);
-        return;
-      case GamePackage.CHARACTER__NAME:
-        setName(NAME_EDEFAULT);
+      case GamePackage.CHARACTER__CHAR_ID:
+        setCharId((CharType)null);
         return;
       case GamePackage.CHARACTER__ATT:
         getAtt().clear();
@@ -282,31 +229,12 @@ public class CharacterImpl extends MinimalEObjectImpl.Container implements maste
   {
     switch (featureID)
     {
-      case GamePackage.CHARACTER__CHAR:
-        return char_ != null;
-      case GamePackage.CHARACTER__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case GamePackage.CHARACTER__CHAR_ID:
+        return charId != null;
       case GamePackage.CHARACTER__ATT:
         return att != null && !att.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //CharacterImpl

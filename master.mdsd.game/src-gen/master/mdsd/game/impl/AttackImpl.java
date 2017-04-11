@@ -8,19 +8,15 @@ import java.util.Collection;
 import master.mdsd.game.Attack;
 import master.mdsd.game.Attribute;
 import master.mdsd.game.AttributeAttack;
+import master.mdsd.game.Condition;
 import master.mdsd.game.GamePackage;
-import master.mdsd.game.RuleSet;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -33,7 +29,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link master.mdsd.game.impl.AttackImpl#getName <em>Name</em>}</li>
  *   <li>{@link master.mdsd.game.impl.AttackImpl#getAttributes <em>Attributes</em>}</li>
  *   <li>{@link master.mdsd.game.impl.AttackImpl#getAttributesAttack <em>Attributes Attack</em>}</li>
  *   <li>{@link master.mdsd.game.impl.AttackImpl#getRules <em>Rules</em>}</li>
@@ -41,28 +36,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class AttackImpl extends MinimalEObjectImpl.Container implements Attack
+public class AttackImpl extends BehaviourImpl implements Attack
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getAttributes() <em>Attributes</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -91,7 +66,7 @@ public class AttackImpl extends MinimalEObjectImpl.Container implements Attack
    * @generated
    * @ordered
    */
-  protected EList<RuleSet> rules;
+  protected EList<Condition> rules;
 
   /**
    * <!-- begin-user-doc -->
@@ -112,29 +87,6 @@ public class AttackImpl extends MinimalEObjectImpl.Container implements Attack
   protected EClass eStaticClass()
   {
     return GamePackage.Literals.ATTACK;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.ATTACK__NAME, oldName, name));
   }
 
   /**
@@ -170,11 +122,11 @@ public class AttackImpl extends MinimalEObjectImpl.Container implements Attack
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<RuleSet> getRules()
+  public EList<Condition> getRules()
   {
     if (rules == null)
     {
-      rules = new EObjectContainmentEList<RuleSet>(RuleSet.class, this, GamePackage.ATTACK__RULES);
+      rules = new EObjectContainmentEList<Condition>(Condition.class, this, GamePackage.ATTACK__RULES);
     }
     return rules;
   }
@@ -209,8 +161,6 @@ public class AttackImpl extends MinimalEObjectImpl.Container implements Attack
   {
     switch (featureID)
     {
-      case GamePackage.ATTACK__NAME:
-        return getName();
       case GamePackage.ATTACK__ATTRIBUTES:
         return getAttributes();
       case GamePackage.ATTACK__ATTRIBUTES_ATTACK:
@@ -232,9 +182,6 @@ public class AttackImpl extends MinimalEObjectImpl.Container implements Attack
   {
     switch (featureID)
     {
-      case GamePackage.ATTACK__NAME:
-        setName((String)newValue);
-        return;
       case GamePackage.ATTACK__ATTRIBUTES:
         getAttributes().clear();
         getAttributes().addAll((Collection<? extends Attribute>)newValue);
@@ -245,7 +192,7 @@ public class AttackImpl extends MinimalEObjectImpl.Container implements Attack
         return;
       case GamePackage.ATTACK__RULES:
         getRules().clear();
-        getRules().addAll((Collection<? extends RuleSet>)newValue);
+        getRules().addAll((Collection<? extends Condition>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -261,9 +208,6 @@ public class AttackImpl extends MinimalEObjectImpl.Container implements Attack
   {
     switch (featureID)
     {
-      case GamePackage.ATTACK__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case GamePackage.ATTACK__ATTRIBUTES:
         getAttributes().clear();
         return;
@@ -287,8 +231,6 @@ public class AttackImpl extends MinimalEObjectImpl.Container implements Attack
   {
     switch (featureID)
     {
-      case GamePackage.ATTACK__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GamePackage.ATTACK__ATTRIBUTES:
         return attributes != null && !attributes.isEmpty();
       case GamePackage.ATTACK__ATTRIBUTES_ATTACK:
@@ -297,23 +239,6 @@ public class AttackImpl extends MinimalEObjectImpl.Container implements Attack
         return rules != null && !rules.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //AttackImpl

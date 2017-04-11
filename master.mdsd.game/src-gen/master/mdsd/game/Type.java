@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link master.mdsd.game.Type#getValueId <em>Value Id</em>}</li>
+ *   <li>{@link master.mdsd.game.Type#getValueIdVec <em>Value Id Vec</em>}</li>
  * </ul>
  *
  * @see master.mdsd.game.GamePackage#getType()
@@ -48,5 +49,31 @@ public interface Type extends EObject
    * @generated
    */
   void setValueId(String value);
+
+  /**
+   * Returns the value of the '<em><b>Value Id Vec</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Value Id Vec</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Value Id Vec</em>' containment reference.
+   * @see #setValueIdVec(VECTOR)
+   * @see master.mdsd.game.GamePackage#getType_ValueIdVec()
+   * @model containment="true"
+   * @generated
+   */
+  VECTOR getValueIdVec();
+
+  /**
+   * Sets the value of the '{@link master.mdsd.game.Type#getValueIdVec <em>Value Id Vec</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Value Id Vec</em>' containment reference.
+   * @see #getValueIdVec()
+   * @generated
+   */
+  void setValueIdVec(VECTOR value);
 
 } // Type

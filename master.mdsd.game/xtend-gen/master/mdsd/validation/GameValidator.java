@@ -3,7 +3,12 @@
  */
 package master.mdsd.validation;
 
+import com.google.common.base.Objects;
+import master.mdsd.game.CharType;
+import master.mdsd.game.DynamicEntity;
+import master.mdsd.game.GamePackage;
 import master.mdsd.validation.AbstractGameValidator;
+import org.eclipse.xtext.validation.Check;
 
 /**
  * This class contains custom validation rules.
@@ -12,4 +17,21 @@ import master.mdsd.validation.AbstractGameValidator;
  */
 @SuppressWarnings("all")
 public class GameValidator extends AbstractGameValidator {
+  @Check
+  public void checkCharacterTypeIsNotEmpty(final master.mdsd.game.Character character) {
+    CharType _charId = character.getCharId();
+    boolean _equals = Objects.equal(_charId, null);
+    if (_equals) {
+      this.error("The character has to have a type. ex: Character [Type] hostile", GamePackage.Literals.CHARACTER__CHAR_ID, "invalidType");
+    }
+  }
+  
+  @Check
+  public void checkDynamicEntityNameIsNotEmpty(final DynamicEntity dynamic) {
+    String _name = dynamic.getName();
+    boolean _equals = Objects.equal(_name, null);
+    if (_equals) {
+      this.error("The character has to have an identifier. ex: Character Neutral [identifier]", GamePackage.Literals.DYNAMIC_ENTITY__NAME, "invalidNAME");
+    }
+  }
 }

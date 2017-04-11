@@ -3,8 +3,6 @@
  */
 package master.mdsd.game.impl;
 
-import java.util.Collection;
-
 import master.mdsd.game.CharDec;
 import master.mdsd.game.CharacterAttr;
 import master.mdsd.game.GamePackage;
@@ -12,16 +10,11 @@ import master.mdsd.game.GamePackage;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,14 +33,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class CharDecImpl extends MinimalEObjectImpl.Container implements CharDec
 {
   /**
-   * The cached value of the '{@link #getCharAttResult() <em>Char Att Result</em>}' containment reference list.
+   * The cached value of the '{@link #getCharAttResult() <em>Char Att Result</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getCharAttResult()
    * @generated
    * @ordered
    */
-  protected EList<CharacterAttr> charAttResult;
+  protected CharacterAttr charAttResult;
 
   /**
    * The default value of the '{@link #getVal() <em>Val</em>}' attribute.
@@ -95,13 +88,47 @@ public class CharDecImpl extends MinimalEObjectImpl.Container implements CharDec
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<CharacterAttr> getCharAttResult()
+  public CharacterAttr getCharAttResult()
   {
-    if (charAttResult == null)
-    {
-      charAttResult = new EObjectContainmentEList<CharacterAttr>(CharacterAttr.class, this, GamePackage.CHAR_DEC__CHAR_ATT_RESULT);
-    }
     return charAttResult;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetCharAttResult(CharacterAttr newCharAttResult, NotificationChain msgs)
+  {
+    CharacterAttr oldCharAttResult = charAttResult;
+    charAttResult = newCharAttResult;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.CHAR_DEC__CHAR_ATT_RESULT, oldCharAttResult, newCharAttResult);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCharAttResult(CharacterAttr newCharAttResult)
+  {
+    if (newCharAttResult != charAttResult)
+    {
+      NotificationChain msgs = null;
+      if (charAttResult != null)
+        msgs = ((InternalEObject)charAttResult).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHAR_DEC__CHAR_ATT_RESULT, null, msgs);
+      if (newCharAttResult != null)
+        msgs = ((InternalEObject)newCharAttResult).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.CHAR_DEC__CHAR_ATT_RESULT, null, msgs);
+      msgs = basicSetCharAttResult(newCharAttResult, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHAR_DEC__CHAR_ATT_RESULT, newCharAttResult, newCharAttResult));
   }
 
   /**
@@ -138,7 +165,7 @@ public class CharDecImpl extends MinimalEObjectImpl.Container implements CharDec
     switch (featureID)
     {
       case GamePackage.CHAR_DEC__CHAR_ATT_RESULT:
-        return ((InternalEList<?>)getCharAttResult()).basicRemove(otherEnd, msgs);
+        return basicSetCharAttResult(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -166,15 +193,13 @@ public class CharDecImpl extends MinimalEObjectImpl.Container implements CharDec
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case GamePackage.CHAR_DEC__CHAR_ATT_RESULT:
-        getCharAttResult().clear();
-        getCharAttResult().addAll((Collection<? extends CharacterAttr>)newValue);
+        setCharAttResult((CharacterAttr)newValue);
         return;
       case GamePackage.CHAR_DEC__VAL:
         setVal((String)newValue);
@@ -194,7 +219,7 @@ public class CharDecImpl extends MinimalEObjectImpl.Container implements CharDec
     switch (featureID)
     {
       case GamePackage.CHAR_DEC__CHAR_ATT_RESULT:
-        getCharAttResult().clear();
+        setCharAttResult((CharacterAttr)null);
         return;
       case GamePackage.CHAR_DEC__VAL:
         setVal(VAL_EDEFAULT);
@@ -214,7 +239,7 @@ public class CharDecImpl extends MinimalEObjectImpl.Container implements CharDec
     switch (featureID)
     {
       case GamePackage.CHAR_DEC__CHAR_ATT_RESULT:
-        return charAttResult != null && !charAttResult.isEmpty();
+        return charAttResult != null;
       case GamePackage.CHAR_DEC__VAL:
         return VAL_EDEFAULT == null ? val != null : !VAL_EDEFAULT.equals(val);
     }

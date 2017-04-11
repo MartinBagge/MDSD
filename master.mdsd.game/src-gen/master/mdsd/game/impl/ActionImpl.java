@@ -3,27 +3,21 @@
  */
 package master.mdsd.game.impl;
 
-import java.util.Collection;
-
 import master.mdsd.game.Action;
 import master.mdsd.game.CharDec;
 import master.mdsd.game.CharacterAttr;
+import master.mdsd.game.Expression;
 import master.mdsd.game.GamePackage;
-import master.mdsd.game.LogicOperatorLoop;
+import master.mdsd.game.LogicOperator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,7 +29,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link master.mdsd.game.impl.ActionImpl#getCharAtt <em>Char Att</em>}</li>
  *   <li>{@link master.mdsd.game.impl.ActionImpl#getCharDec <em>Char Dec</em>}</li>
- *   <li>{@link master.mdsd.game.impl.ActionImpl#getLo <em>Lo</em>}</li>
+ *   <li>{@link master.mdsd.game.impl.ActionImpl#getOp <em>Op</em>}</li>
+ *   <li>{@link master.mdsd.game.impl.ActionImpl#getEx <em>Ex</em>}</li>
  * </ul>
  *
  * @generated
@@ -63,14 +58,24 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
   protected CharDec charDec;
 
   /**
-   * The cached value of the '{@link #getLo() <em>Lo</em>}' containment reference list.
+   * The cached value of the '{@link #getOp() <em>Op</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLo()
+   * @see #getOp()
    * @generated
    * @ordered
    */
-  protected EList<LogicOperatorLoop> lo;
+  protected LogicOperator op;
+
+  /**
+   * The cached value of the '{@link #getEx() <em>Ex</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEx()
+   * @generated
+   * @ordered
+   */
+  protected Expression ex;
 
   /**
    * <!-- begin-user-doc -->
@@ -194,13 +199,95 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<LogicOperatorLoop> getLo()
+  public LogicOperator getOp()
   {
-    if (lo == null)
+    return op;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetOp(LogicOperator newOp, NotificationChain msgs)
+  {
+    LogicOperator oldOp = op;
+    op = newOp;
+    if (eNotificationRequired())
     {
-      lo = new EObjectContainmentEList<LogicOperatorLoop>(LogicOperatorLoop.class, this, GamePackage.ACTION__LO);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.ACTION__OP, oldOp, newOp);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return lo;
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOp(LogicOperator newOp)
+  {
+    if (newOp != op)
+    {
+      NotificationChain msgs = null;
+      if (op != null)
+        msgs = ((InternalEObject)op).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.ACTION__OP, null, msgs);
+      if (newOp != null)
+        msgs = ((InternalEObject)newOp).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.ACTION__OP, null, msgs);
+      msgs = basicSetOp(newOp, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.ACTION__OP, newOp, newOp));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Expression getEx()
+  {
+    return ex;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetEx(Expression newEx, NotificationChain msgs)
+  {
+    Expression oldEx = ex;
+    ex = newEx;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.ACTION__EX, oldEx, newEx);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEx(Expression newEx)
+  {
+    if (newEx != ex)
+    {
+      NotificationChain msgs = null;
+      if (ex != null)
+        msgs = ((InternalEObject)ex).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.ACTION__EX, null, msgs);
+      if (newEx != null)
+        msgs = ((InternalEObject)newEx).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.ACTION__EX, null, msgs);
+      msgs = basicSetEx(newEx, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.ACTION__EX, newEx, newEx));
   }
 
   /**
@@ -217,8 +304,10 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return basicSetCharAtt(null, msgs);
       case GamePackage.ACTION__CHAR_DEC:
         return basicSetCharDec(null, msgs);
-      case GamePackage.ACTION__LO:
-        return ((InternalEList<?>)getLo()).basicRemove(otherEnd, msgs);
+      case GamePackage.ACTION__OP:
+        return basicSetOp(null, msgs);
+      case GamePackage.ACTION__EX:
+        return basicSetEx(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -237,8 +326,10 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return getCharAtt();
       case GamePackage.ACTION__CHAR_DEC:
         return getCharDec();
-      case GamePackage.ACTION__LO:
-        return getLo();
+      case GamePackage.ACTION__OP:
+        return getOp();
+      case GamePackage.ACTION__EX:
+        return getEx();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -248,7 +339,6 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -260,9 +350,11 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
       case GamePackage.ACTION__CHAR_DEC:
         setCharDec((CharDec)newValue);
         return;
-      case GamePackage.ACTION__LO:
-        getLo().clear();
-        getLo().addAll((Collection<? extends LogicOperatorLoop>)newValue);
+      case GamePackage.ACTION__OP:
+        setOp((LogicOperator)newValue);
+        return;
+      case GamePackage.ACTION__EX:
+        setEx((Expression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -284,8 +376,11 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
       case GamePackage.ACTION__CHAR_DEC:
         setCharDec((CharDec)null);
         return;
-      case GamePackage.ACTION__LO:
-        getLo().clear();
+      case GamePackage.ACTION__OP:
+        setOp((LogicOperator)null);
+        return;
+      case GamePackage.ACTION__EX:
+        setEx((Expression)null);
         return;
     }
     super.eUnset(featureID);
@@ -305,8 +400,10 @@ public class ActionImpl extends MinimalEObjectImpl.Container implements Action
         return charAtt != null;
       case GamePackage.ACTION__CHAR_DEC:
         return charDec != null;
-      case GamePackage.ACTION__LO:
-        return lo != null && !lo.isEmpty();
+      case GamePackage.ACTION__OP:
+        return op != null;
+      case GamePackage.ACTION__EX:
+        return ex != null;
     }
     return super.eIsSet(featureID);
   }

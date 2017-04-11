@@ -8,16 +8,12 @@ import java.util.Collection;
 import master.mdsd.game.Attribute;
 import master.mdsd.game.GamePackage;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -30,34 +26,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link master.mdsd.game.impl.ObjectImpl#getName <em>Name</em>}</li>
  *   <li>{@link master.mdsd.game.impl.ObjectImpl#getAtt <em>Att</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ObjectImpl extends MinimalEObjectImpl.Container implements master.mdsd.game.Object
+public class ObjectImpl extends DynamicEntityImpl implements master.mdsd.game.Object
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getAtt() <em>Att</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -87,29 +62,6 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements master.m
   protected EClass eStaticClass()
   {
     return GamePackage.Literals.OBJECT;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.OBJECT__NAME, oldName, name));
   }
 
   /**
@@ -152,8 +104,6 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements master.m
   {
     switch (featureID)
     {
-      case GamePackage.OBJECT__NAME:
-        return getName();
       case GamePackage.OBJECT__ATT:
         return getAtt();
     }
@@ -171,9 +121,6 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements master.m
   {
     switch (featureID)
     {
-      case GamePackage.OBJECT__NAME:
-        setName((String)newValue);
-        return;
       case GamePackage.OBJECT__ATT:
         getAtt().clear();
         getAtt().addAll((Collection<? extends Attribute>)newValue);
@@ -192,9 +139,6 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements master.m
   {
     switch (featureID)
     {
-      case GamePackage.OBJECT__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case GamePackage.OBJECT__ATT:
         getAtt().clear();
         return;
@@ -212,29 +156,10 @@ public class ObjectImpl extends MinimalEObjectImpl.Container implements master.m
   {
     switch (featureID)
     {
-      case GamePackage.OBJECT__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GamePackage.OBJECT__ATT:
         return att != null && !att.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //ObjectImpl

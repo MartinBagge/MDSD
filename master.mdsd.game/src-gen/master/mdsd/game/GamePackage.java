@@ -68,31 +68,13 @@ public interface GamePackage extends EPackage
   int MODEL = 0;
 
   /**
-   * The feature id for the '<em><b>Map</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODEL__MAP = 0;
-
-  /**
    * The feature id for the '<em><b>Entities</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__ENTITIES = 1;
-
-  /**
-   * The feature id for the '<em><b>Ini</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODEL__INI = 2;
+  int MODEL__ENTITIES = 0;
 
   /**
    * The number of structural features of the '<em>Model</em>' class.
@@ -101,7 +83,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 3;
+  int MODEL_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link master.mdsd.game.impl.EntityImpl <em>Entity</em>}' class.
@@ -151,14 +133,14 @@ public interface GamePackage extends EPackage
   int STATIC_ENTITY_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link master.mdsd.game.impl.MapImpl <em>Map</em>}' class.
+   * The meta object id for the '{@link master.mdsd.game.impl.GameMapImpl <em>Map</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see master.mdsd.game.impl.MapImpl
-   * @see master.mdsd.game.impl.GamePackageImpl#getMap()
+   * @see master.mdsd.game.impl.GameMapImpl
+   * @see master.mdsd.game.impl.GamePackageImpl#getGameMap()
    * @generated
    */
-  int MAP = 1;
+  int GAME_MAP = 1;
 
   /**
    * The feature id for the '<em><b>Entity Id</b></em>' attribute.
@@ -167,16 +149,16 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MAP__ENTITY_ID = STATIC_ENTITY__ENTITY_ID;
+  int GAME_MAP__ENTITY_ID = STATIC_ENTITY__ENTITY_ID;
 
   /**
-   * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+   * The feature id for the '<em><b>Attribute List</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MAP__ATTRIBUTES = STATIC_ENTITY_FEATURE_COUNT + 0;
+  int GAME_MAP__ATTRIBUTE_LIST = STATIC_ENTITY_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Map</em>' class.
@@ -185,7 +167,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MAP_FEATURE_COUNT = STATIC_ENTITY_FEATURE_COUNT + 1;
+  int GAME_MAP_FEATURE_COUNT = STATIC_ENTITY_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link master.mdsd.game.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -207,7 +189,7 @@ public interface GamePackage extends EPackage
   int ATTRIBUTE__ATTRIBUTENAME = 0;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference list.
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -244,31 +226,13 @@ public interface GamePackage extends EPackage
   int DYNAMIC_ENTITY__ENTITYID = ENTITY_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Character</b></em>' containment reference list.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DYNAMIC_ENTITY__CHARACTER = ENTITY_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Object</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DYNAMIC_ENTITY__OBJECT = ENTITY_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Behaviour</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DYNAMIC_ENTITY__BEHAVIOUR = ENTITY_FEATURE_COUNT + 3;
+  int DYNAMIC_ENTITY__NAME = ENTITY_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Dynamic Entity</em>' class.
@@ -277,7 +241,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DYNAMIC_ENTITY_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 4;
+  int DYNAMIC_ENTITY_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link master.mdsd.game.impl.CharacterImpl <em>Character</em>}' class.
@@ -290,13 +254,13 @@ public interface GamePackage extends EPackage
   int CHARACTER = 6;
 
   /**
-   * The feature id for the '<em><b>Char</b></em>' containment reference.
+   * The feature id for the '<em><b>Entityid</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CHARACTER__CHAR = 0;
+  int CHARACTER__ENTITYID = DYNAMIC_ENTITY__ENTITYID;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -305,7 +269,16 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHARACTER__NAME = 1;
+  int CHARACTER__NAME = DYNAMIC_ENTITY__NAME;
+
+  /**
+   * The feature id for the '<em><b>Char Id</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHARACTER__CHAR_ID = DYNAMIC_ENTITY_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Att</b></em>' containment reference list.
@@ -314,7 +287,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHARACTER__ATT = 2;
+  int CHARACTER__ATT = DYNAMIC_ENTITY_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Character</em>' class.
@@ -323,7 +296,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHARACTER_FEATURE_COUNT = 3;
+  int CHARACTER_FEATURE_COUNT = DYNAMIC_ENTITY_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link master.mdsd.game.impl.TypeImpl <em>Type</em>}' class.
@@ -345,13 +318,59 @@ public interface GamePackage extends EPackage
   int TYPE__VALUE_ID = 0;
 
   /**
+   * The feature id for the '<em><b>Value Id Vec</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE__VALUE_ID_VEC = 1;
+
+  /**
    * The number of structural features of the '<em>Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TYPE_FEATURE_COUNT = 1;
+  int TYPE_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link master.mdsd.game.impl.VECTORImpl <em>VECTOR</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see master.mdsd.game.impl.VECTORImpl
+   * @see master.mdsd.game.impl.GamePackageImpl#getVECTOR()
+   * @generated
+   */
+  int VECTOR = 8;
+
+  /**
+   * The feature id for the '<em><b>XVal</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VECTOR__XVAL = 0;
+
+  /**
+   * The feature id for the '<em><b>YVal</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VECTOR__YVAL = 1;
+
+  /**
+   * The number of structural features of the '<em>VECTOR</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VECTOR_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link master.mdsd.game.impl.CharTypeImpl <em>Char Type</em>}' class.
@@ -361,16 +380,16 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getCharType()
    * @generated
    */
-  int CHAR_TYPE = 8;
+  int CHAR_TYPE = 9;
 
   /**
-   * The feature id for the '<em><b>Char Typeid</b></em>' attribute.
+   * The feature id for the '<em><b>Char Type Id</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CHAR_TYPE__CHAR_TYPEID = 0;
+  int CHAR_TYPE__CHAR_TYPE_ID = 0;
 
   /**
    * The number of structural features of the '<em>Char Type</em>' class.
@@ -389,7 +408,16 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getObject()
    * @generated
    */
-  int OBJECT = 9;
+  int OBJECT = 10;
+
+  /**
+   * The feature id for the '<em><b>Entityid</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OBJECT__ENTITYID = DYNAMIC_ENTITY__ENTITYID;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -398,7 +426,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OBJECT__NAME = 0;
+  int OBJECT__NAME = DYNAMIC_ENTITY__NAME;
 
   /**
    * The feature id for the '<em><b>Att</b></em>' containment reference list.
@@ -407,7 +435,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OBJECT__ATT = 1;
+  int OBJECT__ATT = DYNAMIC_ENTITY_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Object</em>' class.
@@ -416,7 +444,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OBJECT_FEATURE_COUNT = 2;
+  int OBJECT_FEATURE_COUNT = DYNAMIC_ENTITY_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link master.mdsd.game.impl.BehaviourImpl <em>Behaviour</em>}' class.
@@ -426,43 +454,25 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getBehaviour()
    * @generated
    */
-  int BEHAVIOUR = 10;
+  int BEHAVIOUR = 11;
 
   /**
-   * The feature id for the '<em><b>Behaviour Type Id</b></em>' attribute.
+   * The feature id for the '<em><b>Entityid</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BEHAVIOUR__BEHAVIOUR_TYPE_ID = 0;
+  int BEHAVIOUR__ENTITYID = DYNAMIC_ENTITY__ENTITYID;
 
   /**
-   * The feature id for the '<em><b>Pathfinding</b></em>' containment reference.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BEHAVIOUR__PATHFINDING = 1;
-
-  /**
-   * The feature id for the '<em><b>Attack</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BEHAVIOUR__ATTACK = 2;
-
-  /**
-   * The feature id for the '<em><b>Bullet</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BEHAVIOUR__BULLET = 3;
+  int BEHAVIOUR__NAME = DYNAMIC_ENTITY__NAME;
 
   /**
    * The number of structural features of the '<em>Behaviour</em>' class.
@@ -471,7 +481,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int BEHAVIOUR_FEATURE_COUNT = 4;
+  int BEHAVIOUR_FEATURE_COUNT = DYNAMIC_ENTITY_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link master.mdsd.game.impl.PathfindingImpl <em>Pathfinding</em>}' class.
@@ -481,7 +491,16 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getPathfinding()
    * @generated
    */
-  int PATHFINDING = 11;
+  int PATHFINDING = 12;
+
+  /**
+   * The feature id for the '<em><b>Entityid</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PATHFINDING__ENTITYID = BEHAVIOUR__ENTITYID;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -490,7 +509,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PATHFINDING__NAME = 0;
+  int PATHFINDING__NAME = BEHAVIOUR__NAME;
 
   /**
    * The feature id for the '<em><b>Att Pathfinding</b></em>' containment reference list.
@@ -499,16 +518,16 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PATHFINDING__ATT_PATHFINDING = 1;
+  int PATHFINDING__ATT_PATHFINDING = BEHAVIOUR_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Rule Sets</b></em>' containment reference list.
+   * The feature id for the '<em><b>Conditions</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PATHFINDING__RULE_SETS = 2;
+  int PATHFINDING__CONDITIONS = BEHAVIOUR_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Pathfinding</em>' class.
@@ -517,109 +536,17 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PATHFINDING_FEATURE_COUNT = 3;
+  int PATHFINDING_FEATURE_COUNT = BEHAVIOUR_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link master.mdsd.game.impl.RuleSetImpl <em>Rule Set</em>}' class.
+   * The meta object id for the '{@link master.mdsd.game.impl.BooleanExpressionImpl <em>Boolean Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see master.mdsd.game.impl.RuleSetImpl
-   * @see master.mdsd.game.impl.GamePackageImpl#getRuleSet()
+   * @see master.mdsd.game.impl.BooleanExpressionImpl
+   * @see master.mdsd.game.impl.GamePackageImpl#getBooleanExpression()
    * @generated
    */
-  int RULE_SET = 12;
-
-  /**
-   * The feature id for the '<em><b>If Id</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RULE_SET__IF_ID = 0;
-
-  /**
-   * The feature id for the '<em><b>Rule</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RULE_SET__RULE = 1;
-
-  /**
-   * The feature id for the '<em><b>Else If Id</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RULE_SET__ELSE_IF_ID = 2;
-
-  /**
-   * The feature id for the '<em><b>Else Rules</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RULE_SET__ELSE_RULES = 3;
-
-  /**
-   * The number of structural features of the '<em>Rule Set</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RULE_SET_FEATURE_COUNT = 4;
-
-  /**
-   * The meta object id for the '{@link master.mdsd.game.impl.RuleImpl <em>Rule</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see master.mdsd.game.impl.RuleImpl
-   * @see master.mdsd.game.impl.GamePackageImpl#getRule()
-   * @generated
-   */
-  int RULE = 13;
-
-  /**
-   * The feature id for the '<em><b>Rule Setup</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RULE__RULE_SETUP = 0;
-
-  /**
-   * The feature id for the '<em><b>To Do Action</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RULE__TO_DO_ACTION = 1;
-
-  /**
-   * The number of structural features of the '<em>Rule</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RULE_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link master.mdsd.game.impl.RuleSetupImpl <em>Rule Setup</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see master.mdsd.game.impl.RuleSetupImpl
-   * @see master.mdsd.game.impl.GamePackageImpl#getRuleSetup()
-   * @generated
-   */
-  int RULE_SETUP = 14;
+  int BOOLEAN_EXPRESSION = 13;
 
   /**
    * The feature id for the '<em><b>Attribute Ref Left</b></em>' containment reference.
@@ -628,16 +555,16 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int RULE_SETUP__ATTRIBUTE_REF_LEFT = 0;
+  int BOOLEAN_EXPRESSION__ATTRIBUTE_REF_LEFT = 0;
 
   /**
-   * The feature id for the '<em><b>Rule Type</b></em>' containment reference.
+   * The feature id for the '<em><b>Left Ex</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RULE_SETUP__RULE_TYPE = 1;
+  int BOOLEAN_EXPRESSION__LEFT_EX = 1;
 
   /**
    * The feature id for the '<em><b>Operator</b></em>' containment reference.
@@ -646,117 +573,117 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int RULE_SETUP__OPERATOR = 2;
+  int BOOLEAN_EXPRESSION__OPERATOR = 2;
 
   /**
-   * The feature id for the '<em><b>Int Attleft</b></em>' containment reference.
+   * The feature id for the '<em><b>Attribute Ref Right</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RULE_SETUP__INT_ATTLEFT = 3;
+  int BOOLEAN_EXPRESSION__ATTRIBUTE_REF_RIGHT = 3;
 
   /**
-   * The feature id for the '<em><b>Lo</b></em>' containment reference.
+   * The feature id for the '<em><b>Op</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RULE_SETUP__LO = 4;
+  int BOOLEAN_EXPRESSION__OP = 4;
 
   /**
-   * The number of structural features of the '<em>Rule Setup</em>' class.
+   * The feature id for the '<em><b>Right Ex</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RULE_SETUP_FEATURE_COUNT = 5;
+  int BOOLEAN_EXPRESSION__RIGHT_EX = 5;
 
   /**
-   * The meta object id for the '{@link master.mdsd.game.impl.IntAttImpl <em>Int Att</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see master.mdsd.game.impl.IntAttImpl
-   * @see master.mdsd.game.impl.GamePackageImpl#getIntAtt()
-   * @generated
-   */
-  int INT_ATT = 15;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The number of structural features of the '<em>Boolean Expression</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INT_ATT__VALUE = 0;
+  int BOOLEAN_EXPRESSION_FEATURE_COUNT = 6;
 
   /**
-   * The feature id for the '<em><b>Attr Id</b></em>' attribute.
+   * The meta object id for the '{@link master.mdsd.game.impl.ExpressionImpl <em>Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see master.mdsd.game.impl.ExpressionImpl
+   * @see master.mdsd.game.impl.GamePackageImpl#getExpression()
+   * @generated
+   */
+  int EXPRESSION = 14;
+
+  /**
+   * The feature id for the '<em><b>Tm</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INT_ATT__ATTR_ID = 1;
+  int EXPRESSION__TM = 0;
 
   /**
-   * The number of structural features of the '<em>Int Att</em>' class.
+   * The number of structural features of the '<em>Expression</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INT_ATT_FEATURE_COUNT = 2;
+  int EXPRESSION_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link master.mdsd.game.impl.LogicOperatorLoopImpl <em>Logic Operator Loop</em>}' class.
+   * The meta object id for the '{@link master.mdsd.game.impl.ConditionImpl <em>Condition</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see master.mdsd.game.impl.LogicOperatorLoopImpl
-   * @see master.mdsd.game.impl.GamePackageImpl#getLogicOperatorLoop()
+   * @see master.mdsd.game.impl.ConditionImpl
+   * @see master.mdsd.game.impl.GamePackageImpl#getCondition()
    * @generated
    */
-  int LOGIC_OPERATOR_LOOP = 16;
+  int CONDITION = 15;
 
   /**
-   * The feature id for the '<em><b>Logic Op</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGIC_OPERATOR_LOOP__LOGIC_OP = 0;
-
-  /**
-   * The feature id for the '<em><b>Int Att</b></em>' containment reference list.
+   * The feature id for the '<em><b>If Condition</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOGIC_OPERATOR_LOOP__INT_ATT = 1;
+  int CONDITION__IF_CONDITION = 0;
 
   /**
-   * The feature id for the '<em><b>Lop</b></em>' containment reference list.
+   * The feature id for the '<em><b>Then</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOGIC_OPERATOR_LOOP__LOP = 2;
+  int CONDITION__THEN = 1;
 
   /**
-   * The number of structural features of the '<em>Logic Operator Loop</em>' class.
+   * The feature id for the '<em><b>Else If Condition</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOGIC_OPERATOR_LOOP_FEATURE_COUNT = 3;
+  int CONDITION__ELSE_IF_CONDITION = 2;
+
+  /**
+   * The number of structural features of the '<em>Condition</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDITION_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link master.mdsd.game.impl.ReferenceCharacterImpl <em>Reference Character</em>}' class.
@@ -766,7 +693,7 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getReferenceCharacter()
    * @generated
    */
-  int REFERENCE_CHARACTER = 17;
+  int REFERENCE_CHARACTER = 16;
 
   /**
    * The feature id for the '<em><b>Character Id</b></em>' reference.
@@ -796,34 +723,6 @@ public interface GamePackage extends EPackage
   int REFERENCE_CHARACTER_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link master.mdsd.game.impl.RuleTypeImpl <em>Rule Type</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see master.mdsd.game.impl.RuleTypeImpl
-   * @see master.mdsd.game.impl.GamePackageImpl#getRuleType()
-   * @generated
-   */
-  int RULE_TYPE = 18;
-
-  /**
-   * The feature id for the '<em><b>Rule Type Id</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RULE_TYPE__RULE_TYPE_ID = 0;
-
-  /**
-   * The number of structural features of the '<em>Rule Type</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RULE_TYPE_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link master.mdsd.game.impl.CompOperatorImpl <em>Comp Operator</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -831,7 +730,16 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getCompOperator()
    * @generated
    */
-  int COMP_OPERATOR = 19;
+  int COMP_OPERATOR = 17;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMP_OPERATOR__OP = 0;
 
   /**
    * The number of structural features of the '<em>Comp Operator</em>' class.
@@ -840,7 +748,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMP_OPERATOR_FEATURE_COUNT = 0;
+  int COMP_OPERATOR_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link master.mdsd.game.impl.ActionImpl <em>Action</em>}' class.
@@ -850,7 +758,7 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getAction()
    * @generated
    */
-  int ACTION = 20;
+  int ACTION = 18;
 
   /**
    * The feature id for the '<em><b>Char Att</b></em>' containment reference.
@@ -871,13 +779,22 @@ public interface GamePackage extends EPackage
   int ACTION__CHAR_DEC = 1;
 
   /**
-   * The feature id for the '<em><b>Lo</b></em>' containment reference list.
+   * The feature id for the '<em><b>Op</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ACTION__LO = 2;
+  int ACTION__OP = 2;
+
+  /**
+   * The feature id for the '<em><b>Ex</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ACTION__EX = 3;
 
   /**
    * The number of structural features of the '<em>Action</em>' class.
@@ -886,7 +803,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ACTION_FEATURE_COUNT = 3;
+  int ACTION_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link master.mdsd.game.impl.CharDecImpl <em>Char Dec</em>}' class.
@@ -896,10 +813,10 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getCharDec()
    * @generated
    */
-  int CHAR_DEC = 21;
+  int CHAR_DEC = 19;
 
   /**
-   * The feature id for the '<em><b>Char Att Result</b></em>' containment reference list.
+   * The feature id for the '<em><b>Char Att Result</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -933,7 +850,7 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getCharacterAttr()
    * @generated
    */
-  int CHARACTER_ATTR = 22;
+  int CHARACTER_ATTR = 20;
 
   /**
    * The feature id for the '<em><b>Reference</b></em>' containment reference.
@@ -970,7 +887,16 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getLogicOperator()
    * @generated
    */
-  int LOGIC_OPERATOR = 23;
+  int LOGIC_OPERATOR = 21;
+
+  /**
+   * The feature id for the '<em><b>Lop</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOGIC_OPERATOR__LOP = 0;
 
   /**
    * The number of structural features of the '<em>Logic Operator</em>' class.
@@ -979,7 +905,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int LOGIC_OPERATOR_FEATURE_COUNT = 0;
+  int LOGIC_OPERATOR_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link master.mdsd.game.impl.AttackImpl <em>Attack</em>}' class.
@@ -989,7 +915,16 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getAttack()
    * @generated
    */
-  int ATTACK = 24;
+  int ATTACK = 22;
+
+  /**
+   * The feature id for the '<em><b>Entityid</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTACK__ENTITYID = BEHAVIOUR__ENTITYID;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -998,7 +933,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTACK__NAME = 0;
+  int ATTACK__NAME = BEHAVIOUR__NAME;
 
   /**
    * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -1007,7 +942,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTACK__ATTRIBUTES = 1;
+  int ATTACK__ATTRIBUTES = BEHAVIOUR_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Attributes Attack</b></em>' containment reference list.
@@ -1016,7 +951,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTACK__ATTRIBUTES_ATTACK = 2;
+  int ATTACK__ATTRIBUTES_ATTACK = BEHAVIOUR_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Rules</b></em>' containment reference list.
@@ -1025,7 +960,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTACK__RULES = 3;
+  int ATTACK__RULES = BEHAVIOUR_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Attack</em>' class.
@@ -1034,7 +969,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ATTACK_FEATURE_COUNT = 4;
+  int ATTACK_FEATURE_COUNT = BEHAVIOUR_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link master.mdsd.game.impl.AttributeAttackImpl <em>Attribute Attack</em>}' class.
@@ -1044,7 +979,7 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getAttributeAttack()
    * @generated
    */
-  int ATTRIBUTE_ATTACK = 25;
+  int ATTRIBUTE_ATTACK = 23;
 
   /**
    * The feature id for the '<em><b>Attribute Types Attack</b></em>' containment reference list.
@@ -1081,7 +1016,7 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getAttributeTypeAttack()
    * @generated
    */
-  int ATTRIBUTE_TYPE_ATTACK = 26;
+  int ATTRIBUTE_TYPE_ATTACK = 24;
 
   /**
    * The number of structural features of the '<em>Attribute Type Attack</em>' class.
@@ -1100,16 +1035,16 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getBullet()
    * @generated
    */
-  int BULLET = 27;
+  int BULLET = 25;
 
   /**
-   * The feature id for the '<em><b>Bullet Ref</b></em>' reference.
+   * The feature id for the '<em><b>Entityid</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BULLET__BULLET_REF = ATTRIBUTE_TYPE_ATTACK_FEATURE_COUNT + 0;
+  int BULLET__ENTITYID = BEHAVIOUR__ENTITYID;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1118,7 +1053,16 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int BULLET__NAME = ATTRIBUTE_TYPE_ATTACK_FEATURE_COUNT + 1;
+  int BULLET__NAME = BEHAVIOUR__NAME;
+
+  /**
+   * The feature id for the '<em><b>Bullet Ref</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BULLET__BULLET_REF = BEHAVIOUR_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Attributes Bullet</b></em>' containment reference list.
@@ -1127,7 +1071,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int BULLET__ATTRIBUTES_BULLET = ATTRIBUTE_TYPE_ATTACK_FEATURE_COUNT + 2;
+  int BULLET__ATTRIBUTES_BULLET = BEHAVIOUR_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Bullet</em>' class.
@@ -1136,7 +1080,7 @@ public interface GamePackage extends EPackage
    * @generated
    * @ordered
    */
-  int BULLET_FEATURE_COUNT = ATTRIBUTE_TYPE_ATTACK_FEATURE_COUNT + 3;
+  int BULLET_FEATURE_COUNT = BEHAVIOUR_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link master.mdsd.game.impl.InitializerImpl <em>Initializer</em>}' class.
@@ -1146,7 +1090,7 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getInitializer()
    * @generated
    */
-  int INITIALIZER = 28;
+  int INITIALIZER = 26;
 
   /**
    * The feature id for the '<em><b>Entity Id</b></em>' attribute.
@@ -1183,7 +1127,7 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getAttributeInitializer()
    * @generated
    */
-  int ATTRIBUTE_INITIALIZER = 29;
+  int ATTRIBUTE_INITIALIZER = 27;
 
   /**
    * The feature id for the '<em><b>Attribute Id</b></em>' attribute.
@@ -1204,7 +1148,7 @@ public interface GamePackage extends EPackage
   int ATTRIBUTE_INITIALIZER__AMOUNT_VALUE_ID = 1;
 
   /**
-   * The feature id for the '<em><b>Target</b></em>' containment reference list.
+   * The feature id for the '<em><b>Target</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1229,7 +1173,7 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getTargetRef()
    * @generated
    */
-  int TARGET_REF = 30;
+  int TARGET_REF = 28;
 
   /**
    * The feature id for the '<em><b>Target Id</b></em>' attribute.
@@ -1266,7 +1210,7 @@ public interface GamePackage extends EPackage
    * @see master.mdsd.game.impl.GamePackageImpl#getLocation()
    * @generated
    */
-  int LOCATION = 31;
+  int LOCATION = 29;
 
   /**
    * The feature id for the '<em><b>Location Id</b></em>' attribute.
@@ -1296,40 +1240,105 @@ public interface GamePackage extends EPackage
   int LOCATION__TYPEB = 2;
 
   /**
-   * The feature id for the '<em><b>Char Att</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOCATION__CHAR_ATT = 3;
-
-  /**
-   * The feature id for the '<em><b>Logic Op</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOCATION__LOGIC_OP = 4;
-
-  /**
-   * The feature id for the '<em><b>Typec</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOCATION__TYPEC = 5;
-
-  /**
    * The number of structural features of the '<em>Location</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOCATION_FEATURE_COUNT = 6;
+  int LOCATION_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link master.mdsd.game.impl.OperationImpl <em>Operation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see master.mdsd.game.impl.OperationImpl
+   * @see master.mdsd.game.impl.GamePackageImpl#getOperation()
+   * @generated
+   */
+  int OPERATION = 30;
+
+  /**
+   * The feature id for the '<em><b>Tm</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPERATION__TM = EXPRESSION__TM;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPERATION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPERATION__OP = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPERATION__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Operation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPERATION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link master.mdsd.game.impl.IntLiteralImpl <em>Int Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see master.mdsd.game.impl.IntLiteralImpl
+   * @see master.mdsd.game.impl.GamePackageImpl#getIntLiteral()
+   * @generated
+   */
+  int INT_LITERAL = 31;
+
+  /**
+   * The feature id for the '<em><b>Tm</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_LITERAL__TM = EXPRESSION__TM;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_LITERAL__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Int Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link master.mdsd.game.impl.LTImpl <em>LT</em>}' class.
@@ -1340,6 +1349,15 @@ public interface GamePackage extends EPackage
    * @generated
    */
   int LT = 32;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LT__OP = COMP_OPERATOR__OP;
 
   /**
    * The number of structural features of the '<em>LT</em>' class.
@@ -1361,6 +1379,15 @@ public interface GamePackage extends EPackage
   int GT = 33;
 
   /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GT__OP = COMP_OPERATOR__OP;
+
+  /**
    * The number of structural features of the '<em>GT</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1378,6 +1405,15 @@ public interface GamePackage extends EPackage
    * @generated
    */
   int LTE = 34;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LTE__OP = COMP_OPERATOR__OP;
 
   /**
    * The number of structural features of the '<em>LTE</em>' class.
@@ -1399,6 +1435,15 @@ public interface GamePackage extends EPackage
   int GTE = 35;
 
   /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GTE__OP = COMP_OPERATOR__OP;
+
+  /**
    * The number of structural features of the '<em>GTE</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1416,6 +1461,15 @@ public interface GamePackage extends EPackage
    * @generated
    */
   int EQ = 36;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQ__OP = COMP_OPERATOR__OP;
 
   /**
    * The number of structural features of the '<em>EQ</em>' class.
@@ -1437,6 +1491,15 @@ public interface GamePackage extends EPackage
   int T = 37;
 
   /**
+   * The feature id for the '<em><b>Lop</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int T__LOP = LOGIC_OPERATOR__LOP;
+
+  /**
    * The number of structural features of the '<em>T</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1454,6 +1517,15 @@ public interface GamePackage extends EPackage
    * @generated
    */
   int A = 38;
+
+  /**
+   * The feature id for the '<em><b>Lop</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int A__LOP = LOGIC_OPERATOR__LOP;
 
   /**
    * The number of structural features of the '<em>A</em>' class.
@@ -1475,6 +1547,15 @@ public interface GamePackage extends EPackage
   int M = 39;
 
   /**
+   * The feature id for the '<em><b>Lop</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int M__LOP = LOGIC_OPERATOR__LOP;
+
+  /**
    * The number of structural features of the '<em>M</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1492,6 +1573,15 @@ public interface GamePackage extends EPackage
    * @generated
    */
   int D = 40;
+
+  /**
+   * The feature id for the '<em><b>Lop</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int D__LOP = LOGIC_OPERATOR__LOP;
 
   /**
    * The number of structural features of the '<em>D</em>' class.
@@ -1552,17 +1642,6 @@ public interface GamePackage extends EPackage
   EClass getModel();
 
   /**
-   * Returns the meta object for the containment reference '{@link master.mdsd.game.Model#getMap <em>Map</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Map</em>'.
-   * @see master.mdsd.game.Model#getMap()
-   * @see #getModel()
-   * @generated
-   */
-  EReference getModel_Map();
-
-  /**
    * Returns the meta object for the containment reference list '{@link master.mdsd.game.Model#getEntities <em>Entities</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1574,36 +1653,25 @@ public interface GamePackage extends EPackage
   EReference getModel_Entities();
 
   /**
-   * Returns the meta object for the containment reference '{@link master.mdsd.game.Model#getIni <em>Ini</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Ini</em>'.
-   * @see master.mdsd.game.Model#getIni()
-   * @see #getModel()
-   * @generated
-   */
-  EReference getModel_Ini();
-
-  /**
-   * Returns the meta object for class '{@link master.mdsd.game.Map <em>Map</em>}'.
+   * Returns the meta object for class '{@link master.mdsd.game.GameMap <em>Map</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Map</em>'.
-   * @see master.mdsd.game.Map
+   * @see master.mdsd.game.GameMap
    * @generated
    */
-  EClass getMap();
+  EClass getGameMap();
 
   /**
-   * Returns the meta object for the containment reference list '{@link master.mdsd.game.Map#getAttributes <em>Attributes</em>}'.
+   * Returns the meta object for the containment reference list '{@link master.mdsd.game.GameMap#getAttributeList <em>Attribute List</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Attributes</em>'.
-   * @see master.mdsd.game.Map#getAttributes()
-   * @see #getMap()
+   * @return the meta object for the containment reference list '<em>Attribute List</em>'.
+   * @see master.mdsd.game.GameMap#getAttributeList()
+   * @see #getGameMap()
    * @generated
    */
-  EReference getMap_Attributes();
+  EReference getGameMap_AttributeList();
 
   /**
    * Returns the meta object for class '{@link master.mdsd.game.Attribute <em>Attribute</em>}'.
@@ -1627,10 +1695,10 @@ public interface GamePackage extends EPackage
   EAttribute getAttribute_Attributename();
 
   /**
-   * Returns the meta object for the containment reference list '{@link master.mdsd.game.Attribute#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.Attribute#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Type</em>'.
+   * @return the meta object for the containment reference '<em>Type</em>'.
    * @see master.mdsd.game.Attribute#getType()
    * @see #getAttribute()
    * @generated
@@ -1669,37 +1737,15 @@ public interface GamePackage extends EPackage
   EAttribute getDynamicEntity_Entityid();
 
   /**
-   * Returns the meta object for the containment reference list '{@link master.mdsd.game.DynamicEntity#getCharacter <em>Character</em>}'.
+   * Returns the meta object for the attribute '{@link master.mdsd.game.DynamicEntity#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Character</em>'.
-   * @see master.mdsd.game.DynamicEntity#getCharacter()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see master.mdsd.game.DynamicEntity#getName()
    * @see #getDynamicEntity()
    * @generated
    */
-  EReference getDynamicEntity_Character();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link master.mdsd.game.DynamicEntity#getObject <em>Object</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Object</em>'.
-   * @see master.mdsd.game.DynamicEntity#getObject()
-   * @see #getDynamicEntity()
-   * @generated
-   */
-  EReference getDynamicEntity_Object();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link master.mdsd.game.DynamicEntity#getBehaviour <em>Behaviour</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Behaviour</em>'.
-   * @see master.mdsd.game.DynamicEntity#getBehaviour()
-   * @see #getDynamicEntity()
-   * @generated
-   */
-  EReference getDynamicEntity_Behaviour();
+  EAttribute getDynamicEntity_Name();
 
   /**
    * Returns the meta object for class '{@link master.mdsd.game.StaticEntity <em>Static Entity</em>}'.
@@ -1733,26 +1779,15 @@ public interface GamePackage extends EPackage
   EClass getCharacter();
 
   /**
-   * Returns the meta object for the containment reference '{@link master.mdsd.game.Character#getChar <em>Char</em>}'.
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.Character#getCharId <em>Char Id</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Char</em>'.
-   * @see master.mdsd.game.Character#getChar()
+   * @return the meta object for the containment reference '<em>Char Id</em>'.
+   * @see master.mdsd.game.Character#getCharId()
    * @see #getCharacter()
    * @generated
    */
-  EReference getCharacter_Char();
-
-  /**
-   * Returns the meta object for the attribute '{@link master.mdsd.game.Character#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see master.mdsd.game.Character#getName()
-   * @see #getCharacter()
-   * @generated
-   */
-  EAttribute getCharacter_Name();
+  EReference getCharacter_CharId();
 
   /**
    * Returns the meta object for the containment reference list '{@link master.mdsd.game.Character#getAtt <em>Att</em>}'.
@@ -1787,6 +1822,49 @@ public interface GamePackage extends EPackage
   EAttribute getType_ValueId();
 
   /**
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.Type#getValueIdVec <em>Value Id Vec</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value Id Vec</em>'.
+   * @see master.mdsd.game.Type#getValueIdVec()
+   * @see #getType()
+   * @generated
+   */
+  EReference getType_ValueIdVec();
+
+  /**
+   * Returns the meta object for class '{@link master.mdsd.game.VECTOR <em>VECTOR</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>VECTOR</em>'.
+   * @see master.mdsd.game.VECTOR
+   * @generated
+   */
+  EClass getVECTOR();
+
+  /**
+   * Returns the meta object for the attribute '{@link master.mdsd.game.VECTOR#getXVal <em>XVal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>XVal</em>'.
+   * @see master.mdsd.game.VECTOR#getXVal()
+   * @see #getVECTOR()
+   * @generated
+   */
+  EAttribute getVECTOR_XVal();
+
+  /**
+   * Returns the meta object for the attribute '{@link master.mdsd.game.VECTOR#getYVal <em>YVal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>YVal</em>'.
+   * @see master.mdsd.game.VECTOR#getYVal()
+   * @see #getVECTOR()
+   * @generated
+   */
+  EAttribute getVECTOR_YVal();
+
+  /**
    * Returns the meta object for class '{@link master.mdsd.game.CharType <em>Char Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1797,15 +1875,15 @@ public interface GamePackage extends EPackage
   EClass getCharType();
 
   /**
-   * Returns the meta object for the attribute '{@link master.mdsd.game.CharType#getCharTypeid <em>Char Typeid</em>}'.
+   * Returns the meta object for the attribute '{@link master.mdsd.game.CharType#getCharTypeId <em>Char Type Id</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Char Typeid</em>'.
-   * @see master.mdsd.game.CharType#getCharTypeid()
+   * @return the meta object for the attribute '<em>Char Type Id</em>'.
+   * @see master.mdsd.game.CharType#getCharTypeId()
    * @see #getCharType()
    * @generated
    */
-  EAttribute getCharType_CharTypeid();
+  EAttribute getCharType_CharTypeId();
 
   /**
    * Returns the meta object for class '{@link master.mdsd.game.Object <em>Object</em>}'.
@@ -1816,17 +1894,6 @@ public interface GamePackage extends EPackage
    * @generated
    */
   EClass getObject();
-
-  /**
-   * Returns the meta object for the attribute '{@link master.mdsd.game.Object#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see master.mdsd.game.Object#getName()
-   * @see #getObject()
-   * @generated
-   */
-  EAttribute getObject_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link master.mdsd.game.Object#getAtt <em>Att</em>}'.
@@ -1850,50 +1917,6 @@ public interface GamePackage extends EPackage
   EClass getBehaviour();
 
   /**
-   * Returns the meta object for the attribute '{@link master.mdsd.game.Behaviour#getBehaviourTypeId <em>Behaviour Type Id</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Behaviour Type Id</em>'.
-   * @see master.mdsd.game.Behaviour#getBehaviourTypeId()
-   * @see #getBehaviour()
-   * @generated
-   */
-  EAttribute getBehaviour_BehaviourTypeId();
-
-  /**
-   * Returns the meta object for the containment reference '{@link master.mdsd.game.Behaviour#getPathfinding <em>Pathfinding</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Pathfinding</em>'.
-   * @see master.mdsd.game.Behaviour#getPathfinding()
-   * @see #getBehaviour()
-   * @generated
-   */
-  EReference getBehaviour_Pathfinding();
-
-  /**
-   * Returns the meta object for the containment reference '{@link master.mdsd.game.Behaviour#getAttack <em>Attack</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Attack</em>'.
-   * @see master.mdsd.game.Behaviour#getAttack()
-   * @see #getBehaviour()
-   * @generated
-   */
-  EReference getBehaviour_Attack();
-
-  /**
-   * Returns the meta object for the containment reference '{@link master.mdsd.game.Behaviour#getBullet <em>Bullet</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Bullet</em>'.
-   * @see master.mdsd.game.Behaviour#getBullet()
-   * @see #getBehaviour()
-   * @generated
-   */
-  EReference getBehaviour_Bullet();
-
-  /**
    * Returns the meta object for class '{@link master.mdsd.game.Pathfinding <em>Pathfinding</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1902,17 +1925,6 @@ public interface GamePackage extends EPackage
    * @generated
    */
   EClass getPathfinding();
-
-  /**
-   * Returns the meta object for the attribute '{@link master.mdsd.game.Pathfinding#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see master.mdsd.game.Pathfinding#getName()
-   * @see #getPathfinding()
-   * @generated
-   */
-  EAttribute getPathfinding_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link master.mdsd.game.Pathfinding#getAttPathfinding <em>Att Pathfinding</em>}'.
@@ -1926,241 +1938,155 @@ public interface GamePackage extends EPackage
   EReference getPathfinding_AttPathfinding();
 
   /**
-   * Returns the meta object for the containment reference list '{@link master.mdsd.game.Pathfinding#getRuleSets <em>Rule Sets</em>}'.
+   * Returns the meta object for the containment reference list '{@link master.mdsd.game.Pathfinding#getConditions <em>Conditions</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Rule Sets</em>'.
-   * @see master.mdsd.game.Pathfinding#getRuleSets()
+   * @return the meta object for the containment reference list '<em>Conditions</em>'.
+   * @see master.mdsd.game.Pathfinding#getConditions()
    * @see #getPathfinding()
    * @generated
    */
-  EReference getPathfinding_RuleSets();
+  EReference getPathfinding_Conditions();
 
   /**
-   * Returns the meta object for class '{@link master.mdsd.game.RuleSet <em>Rule Set</em>}'.
+   * Returns the meta object for class '{@link master.mdsd.game.BooleanExpression <em>Boolean Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Rule Set</em>'.
-   * @see master.mdsd.game.RuleSet
+   * @return the meta object for class '<em>Boolean Expression</em>'.
+   * @see master.mdsd.game.BooleanExpression
    * @generated
    */
-  EClass getRuleSet();
+  EClass getBooleanExpression();
 
   /**
-   * Returns the meta object for the attribute list '{@link master.mdsd.game.RuleSet#getIfId <em>If Id</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>If Id</em>'.
-   * @see master.mdsd.game.RuleSet#getIfId()
-   * @see #getRuleSet()
-   * @generated
-   */
-  EAttribute getRuleSet_IfId();
-
-  /**
-   * Returns the meta object for the containment reference '{@link master.mdsd.game.RuleSet#getRule <em>Rule</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Rule</em>'.
-   * @see master.mdsd.game.RuleSet#getRule()
-   * @see #getRuleSet()
-   * @generated
-   */
-  EReference getRuleSet_Rule();
-
-  /**
-   * Returns the meta object for the attribute list '{@link master.mdsd.game.RuleSet#getElseIfId <em>Else If Id</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Else If Id</em>'.
-   * @see master.mdsd.game.RuleSet#getElseIfId()
-   * @see #getRuleSet()
-   * @generated
-   */
-  EAttribute getRuleSet_ElseIfId();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link master.mdsd.game.RuleSet#getElseRules <em>Else Rules</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Else Rules</em>'.
-   * @see master.mdsd.game.RuleSet#getElseRules()
-   * @see #getRuleSet()
-   * @generated
-   */
-  EReference getRuleSet_ElseRules();
-
-  /**
-   * Returns the meta object for class '{@link master.mdsd.game.Rule <em>Rule</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Rule</em>'.
-   * @see master.mdsd.game.Rule
-   * @generated
-   */
-  EClass getRule();
-
-  /**
-   * Returns the meta object for the containment reference '{@link master.mdsd.game.Rule#getRuleSetup <em>Rule Setup</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Rule Setup</em>'.
-   * @see master.mdsd.game.Rule#getRuleSetup()
-   * @see #getRule()
-   * @generated
-   */
-  EReference getRule_RuleSetup();
-
-  /**
-   * Returns the meta object for the containment reference '{@link master.mdsd.game.Rule#getToDoAction <em>To Do Action</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>To Do Action</em>'.
-   * @see master.mdsd.game.Rule#getToDoAction()
-   * @see #getRule()
-   * @generated
-   */
-  EReference getRule_ToDoAction();
-
-  /**
-   * Returns the meta object for class '{@link master.mdsd.game.RuleSetup <em>Rule Setup</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Rule Setup</em>'.
-   * @see master.mdsd.game.RuleSetup
-   * @generated
-   */
-  EClass getRuleSetup();
-
-  /**
-   * Returns the meta object for the containment reference '{@link master.mdsd.game.RuleSetup#getAttributeRefLeft <em>Attribute Ref Left</em>}'.
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.BooleanExpression#getAttributeRefLeft <em>Attribute Ref Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Attribute Ref Left</em>'.
-   * @see master.mdsd.game.RuleSetup#getAttributeRefLeft()
-   * @see #getRuleSetup()
+   * @see master.mdsd.game.BooleanExpression#getAttributeRefLeft()
+   * @see #getBooleanExpression()
    * @generated
    */
-  EReference getRuleSetup_AttributeRefLeft();
+  EReference getBooleanExpression_AttributeRefLeft();
 
   /**
-   * Returns the meta object for the containment reference '{@link master.mdsd.game.RuleSetup#getRuleType <em>Rule Type</em>}'.
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.BooleanExpression#getLeftEx <em>Left Ex</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Rule Type</em>'.
-   * @see master.mdsd.game.RuleSetup#getRuleType()
-   * @see #getRuleSetup()
+   * @return the meta object for the containment reference '<em>Left Ex</em>'.
+   * @see master.mdsd.game.BooleanExpression#getLeftEx()
+   * @see #getBooleanExpression()
    * @generated
    */
-  EReference getRuleSetup_RuleType();
+  EReference getBooleanExpression_LeftEx();
 
   /**
-   * Returns the meta object for the containment reference '{@link master.mdsd.game.RuleSetup#getOperator <em>Operator</em>}'.
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.BooleanExpression#getOperator <em>Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Operator</em>'.
-   * @see master.mdsd.game.RuleSetup#getOperator()
-   * @see #getRuleSetup()
+   * @see master.mdsd.game.BooleanExpression#getOperator()
+   * @see #getBooleanExpression()
    * @generated
    */
-  EReference getRuleSetup_Operator();
+  EReference getBooleanExpression_Operator();
 
   /**
-   * Returns the meta object for the containment reference '{@link master.mdsd.game.RuleSetup#getIntAttleft <em>Int Attleft</em>}'.
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.BooleanExpression#getAttributeRefRight <em>Attribute Ref Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Int Attleft</em>'.
-   * @see master.mdsd.game.RuleSetup#getIntAttleft()
-   * @see #getRuleSetup()
+   * @return the meta object for the containment reference '<em>Attribute Ref Right</em>'.
+   * @see master.mdsd.game.BooleanExpression#getAttributeRefRight()
+   * @see #getBooleanExpression()
    * @generated
    */
-  EReference getRuleSetup_IntAttleft();
+  EReference getBooleanExpression_AttributeRefRight();
 
   /**
-   * Returns the meta object for the containment reference '{@link master.mdsd.game.RuleSetup#getLo <em>Lo</em>}'.
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.BooleanExpression#getOp <em>Op</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Lo</em>'.
-   * @see master.mdsd.game.RuleSetup#getLo()
-   * @see #getRuleSetup()
+   * @return the meta object for the containment reference '<em>Op</em>'.
+   * @see master.mdsd.game.BooleanExpression#getOp()
+   * @see #getBooleanExpression()
    * @generated
    */
-  EReference getRuleSetup_Lo();
+  EReference getBooleanExpression_Op();
 
   /**
-   * Returns the meta object for class '{@link master.mdsd.game.IntAtt <em>Int Att</em>}'.
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.BooleanExpression#getRightEx <em>Right Ex</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Int Att</em>'.
-   * @see master.mdsd.game.IntAtt
+   * @return the meta object for the containment reference '<em>Right Ex</em>'.
+   * @see master.mdsd.game.BooleanExpression#getRightEx()
+   * @see #getBooleanExpression()
    * @generated
    */
-  EClass getIntAtt();
+  EReference getBooleanExpression_RightEx();
 
   /**
-   * Returns the meta object for the attribute '{@link master.mdsd.game.IntAtt#getValue <em>Value</em>}'.
+   * Returns the meta object for class '{@link master.mdsd.game.Expression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see master.mdsd.game.IntAtt#getValue()
-   * @see #getIntAtt()
+   * @return the meta object for class '<em>Expression</em>'.
+   * @see master.mdsd.game.Expression
    * @generated
    */
-  EAttribute getIntAtt_Value();
+  EClass getExpression();
 
   /**
-   * Returns the meta object for the attribute '{@link master.mdsd.game.IntAtt#getAttrId <em>Attr Id</em>}'.
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.Expression#getTm <em>Tm</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Attr Id</em>'.
-   * @see master.mdsd.game.IntAtt#getAttrId()
-   * @see #getIntAtt()
+   * @return the meta object for the containment reference '<em>Tm</em>'.
+   * @see master.mdsd.game.Expression#getTm()
+   * @see #getExpression()
    * @generated
    */
-  EAttribute getIntAtt_AttrId();
+  EReference getExpression_Tm();
 
   /**
-   * Returns the meta object for class '{@link master.mdsd.game.LogicOperatorLoop <em>Logic Operator Loop</em>}'.
+   * Returns the meta object for class '{@link master.mdsd.game.Condition <em>Condition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Logic Operator Loop</em>'.
-   * @see master.mdsd.game.LogicOperatorLoop
+   * @return the meta object for class '<em>Condition</em>'.
+   * @see master.mdsd.game.Condition
    * @generated
    */
-  EClass getLogicOperatorLoop();
+  EClass getCondition();
 
   /**
-   * Returns the meta object for the containment reference list '{@link master.mdsd.game.LogicOperatorLoop#getLogicOp <em>Logic Op</em>}'.
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.Condition#getIfCondition <em>If Condition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Logic Op</em>'.
-   * @see master.mdsd.game.LogicOperatorLoop#getLogicOp()
-   * @see #getLogicOperatorLoop()
+   * @return the meta object for the containment reference '<em>If Condition</em>'.
+   * @see master.mdsd.game.Condition#getIfCondition()
+   * @see #getCondition()
    * @generated
    */
-  EReference getLogicOperatorLoop_LogicOp();
+  EReference getCondition_IfCondition();
 
   /**
-   * Returns the meta object for the containment reference list '{@link master.mdsd.game.LogicOperatorLoop#getIntAtt <em>Int Att</em>}'.
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.Condition#getThen <em>Then</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Int Att</em>'.
-   * @see master.mdsd.game.LogicOperatorLoop#getIntAtt()
-   * @see #getLogicOperatorLoop()
+   * @return the meta object for the containment reference '<em>Then</em>'.
+   * @see master.mdsd.game.Condition#getThen()
+   * @see #getCondition()
    * @generated
    */
-  EReference getLogicOperatorLoop_IntAtt();
+  EReference getCondition_Then();
 
   /**
-   * Returns the meta object for the containment reference list '{@link master.mdsd.game.LogicOperatorLoop#getLop <em>Lop</em>}'.
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.Condition#getElseIfCondition <em>Else If Condition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Lop</em>'.
-   * @see master.mdsd.game.LogicOperatorLoop#getLop()
-   * @see #getLogicOperatorLoop()
+   * @return the meta object for the containment reference '<em>Else If Condition</em>'.
+   * @see master.mdsd.game.Condition#getElseIfCondition()
+   * @see #getCondition()
    * @generated
    */
-  EReference getLogicOperatorLoop_Lop();
+  EReference getCondition_ElseIfCondition();
 
   /**
    * Returns the meta object for class '{@link master.mdsd.game.ReferenceCharacter <em>Reference Character</em>}'.
@@ -2195,27 +2121,6 @@ public interface GamePackage extends EPackage
   EAttribute getReferenceCharacter_TargetId();
 
   /**
-   * Returns the meta object for class '{@link master.mdsd.game.RuleType <em>Rule Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Rule Type</em>'.
-   * @see master.mdsd.game.RuleType
-   * @generated
-   */
-  EClass getRuleType();
-
-  /**
-   * Returns the meta object for the attribute '{@link master.mdsd.game.RuleType#getRuleTypeId <em>Rule Type Id</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Rule Type Id</em>'.
-   * @see master.mdsd.game.RuleType#getRuleTypeId()
-   * @see #getRuleType()
-   * @generated
-   */
-  EAttribute getRuleType_RuleTypeId();
-
-  /**
    * Returns the meta object for class '{@link master.mdsd.game.CompOperator <em>Comp Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2224,6 +2129,17 @@ public interface GamePackage extends EPackage
    * @generated
    */
   EClass getCompOperator();
+
+  /**
+   * Returns the meta object for the attribute '{@link master.mdsd.game.CompOperator#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see master.mdsd.game.CompOperator#getOp()
+   * @see #getCompOperator()
+   * @generated
+   */
+  EAttribute getCompOperator_Op();
 
   /**
    * Returns the meta object for class '{@link master.mdsd.game.Action <em>Action</em>}'.
@@ -2258,15 +2174,26 @@ public interface GamePackage extends EPackage
   EReference getAction_CharDec();
 
   /**
-   * Returns the meta object for the containment reference list '{@link master.mdsd.game.Action#getLo <em>Lo</em>}'.
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.Action#getOp <em>Op</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Lo</em>'.
-   * @see master.mdsd.game.Action#getLo()
+   * @return the meta object for the containment reference '<em>Op</em>'.
+   * @see master.mdsd.game.Action#getOp()
    * @see #getAction()
    * @generated
    */
-  EReference getAction_Lo();
+  EReference getAction_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.Action#getEx <em>Ex</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Ex</em>'.
+   * @see master.mdsd.game.Action#getEx()
+   * @see #getAction()
+   * @generated
+   */
+  EReference getAction_Ex();
 
   /**
    * Returns the meta object for class '{@link master.mdsd.game.CharDec <em>Char Dec</em>}'.
@@ -2279,10 +2206,10 @@ public interface GamePackage extends EPackage
   EClass getCharDec();
 
   /**
-   * Returns the meta object for the containment reference list '{@link master.mdsd.game.CharDec#getCharAttResult <em>Char Att Result</em>}'.
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.CharDec#getCharAttResult <em>Char Att Result</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Char Att Result</em>'.
+   * @return the meta object for the containment reference '<em>Char Att Result</em>'.
    * @see master.mdsd.game.CharDec#getCharAttResult()
    * @see #getCharDec()
    * @generated
@@ -2343,6 +2270,17 @@ public interface GamePackage extends EPackage
   EClass getLogicOperator();
 
   /**
+   * Returns the meta object for the attribute '{@link master.mdsd.game.LogicOperator#getLop <em>Lop</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Lop</em>'.
+   * @see master.mdsd.game.LogicOperator#getLop()
+   * @see #getLogicOperator()
+   * @generated
+   */
+  EAttribute getLogicOperator_Lop();
+
+  /**
    * Returns the meta object for class '{@link master.mdsd.game.Attack <em>Attack</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2351,17 +2289,6 @@ public interface GamePackage extends EPackage
    * @generated
    */
   EClass getAttack();
-
-  /**
-   * Returns the meta object for the attribute '{@link master.mdsd.game.Attack#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see master.mdsd.game.Attack#getName()
-   * @see #getAttack()
-   * @generated
-   */
-  EAttribute getAttack_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link master.mdsd.game.Attack#getAttributes <em>Attributes</em>}'.
@@ -2460,17 +2387,6 @@ public interface GamePackage extends EPackage
   EReference getBullet_BulletRef();
 
   /**
-   * Returns the meta object for the attribute '{@link master.mdsd.game.Bullet#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see master.mdsd.game.Bullet#getName()
-   * @see #getBullet()
-   * @generated
-   */
-  EAttribute getBullet_Name();
-
-  /**
    * Returns the meta object for the containment reference list '{@link master.mdsd.game.Bullet#getAttributesBullet <em>Attributes Bullet</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2535,10 +2451,10 @@ public interface GamePackage extends EPackage
   EAttribute getAttributeInitializer_AmountValueId();
 
   /**
-   * Returns the meta object for the containment reference list '{@link master.mdsd.game.AttributeInitializer#getTarget <em>Target</em>}'.
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.AttributeInitializer#getTarget <em>Target</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Target</em>'.
+   * @return the meta object for the containment reference '<em>Target</em>'.
    * @see master.mdsd.game.AttributeInitializer#getTarget()
    * @see #getAttributeInitializer()
    * @generated
@@ -2621,37 +2537,68 @@ public interface GamePackage extends EPackage
   EReference getLocation_Typeb();
 
   /**
-   * Returns the meta object for the containment reference list '{@link master.mdsd.game.Location#getCharAtt <em>Char Att</em>}'.
+   * Returns the meta object for class '{@link master.mdsd.game.Operation <em>Operation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Char Att</em>'.
-   * @see master.mdsd.game.Location#getCharAtt()
-   * @see #getLocation()
+   * @return the meta object for class '<em>Operation</em>'.
+   * @see master.mdsd.game.Operation
    * @generated
    */
-  EReference getLocation_CharAtt();
+  EClass getOperation();
 
   /**
-   * Returns the meta object for the containment reference list '{@link master.mdsd.game.Location#getLogicOp <em>Logic Op</em>}'.
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.Operation#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Logic Op</em>'.
-   * @see master.mdsd.game.Location#getLogicOp()
-   * @see #getLocation()
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see master.mdsd.game.Operation#getLeft()
+   * @see #getOperation()
    * @generated
    */
-  EReference getLocation_LogicOp();
+  EReference getOperation_Left();
 
   /**
-   * Returns the meta object for the containment reference list '{@link master.mdsd.game.Location#getTypec <em>Typec</em>}'.
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.Operation#getOp <em>Op</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Typec</em>'.
-   * @see master.mdsd.game.Location#getTypec()
-   * @see #getLocation()
+   * @return the meta object for the containment reference '<em>Op</em>'.
+   * @see master.mdsd.game.Operation#getOp()
+   * @see #getOperation()
    * @generated
    */
-  EReference getLocation_Typec();
+  EReference getOperation_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link master.mdsd.game.Operation#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see master.mdsd.game.Operation#getRight()
+   * @see #getOperation()
+   * @generated
+   */
+  EReference getOperation_Right();
+
+  /**
+   * Returns the meta object for class '{@link master.mdsd.game.IntLiteral <em>Int Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Int Literal</em>'.
+   * @see master.mdsd.game.IntLiteral
+   * @generated
+   */
+  EClass getIntLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link master.mdsd.game.IntLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see master.mdsd.game.IntLiteral#getValue()
+   * @see #getIntLiteral()
+   * @generated
+   */
+  EAttribute getIntLiteral_Value();
 
   /**
    * Returns the meta object for class '{@link master.mdsd.game.LT <em>LT</em>}'.
@@ -2797,14 +2744,6 @@ public interface GamePackage extends EPackage
     EClass MODEL = eINSTANCE.getModel();
 
     /**
-     * The meta object literal for the '<em><b>Map</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MODEL__MAP = eINSTANCE.getModel_Map();
-
-    /**
      * The meta object literal for the '<em><b>Entities</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2813,30 +2752,22 @@ public interface GamePackage extends EPackage
     EReference MODEL__ENTITIES = eINSTANCE.getModel_Entities();
 
     /**
-     * The meta object literal for the '<em><b>Ini</b></em>' containment reference feature.
+     * The meta object literal for the '{@link master.mdsd.game.impl.GameMapImpl <em>Map</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see master.mdsd.game.impl.GameMapImpl
+     * @see master.mdsd.game.impl.GamePackageImpl#getGameMap()
      * @generated
      */
-    EReference MODEL__INI = eINSTANCE.getModel_Ini();
+    EClass GAME_MAP = eINSTANCE.getGameMap();
 
     /**
-     * The meta object literal for the '{@link master.mdsd.game.impl.MapImpl <em>Map</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see master.mdsd.game.impl.MapImpl
-     * @see master.mdsd.game.impl.GamePackageImpl#getMap()
-     * @generated
-     */
-    EClass MAP = eINSTANCE.getMap();
-
-    /**
-     * The meta object literal for the '<em><b>Attributes</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Attribute List</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MAP__ATTRIBUTES = eINSTANCE.getMap_Attributes();
+    EReference GAME_MAP__ATTRIBUTE_LIST = eINSTANCE.getGameMap_AttributeList();
 
     /**
      * The meta object literal for the '{@link master.mdsd.game.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -2857,7 +2788,7 @@ public interface GamePackage extends EPackage
     EAttribute ATTRIBUTE__ATTRIBUTENAME = eINSTANCE.getAttribute_Attributename();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2893,28 +2824,12 @@ public interface GamePackage extends EPackage
     EAttribute DYNAMIC_ENTITY__ENTITYID = eINSTANCE.getDynamicEntity_Entityid();
 
     /**
-     * The meta object literal for the '<em><b>Character</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference DYNAMIC_ENTITY__CHARACTER = eINSTANCE.getDynamicEntity_Character();
-
-    /**
-     * The meta object literal for the '<em><b>Object</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference DYNAMIC_ENTITY__OBJECT = eINSTANCE.getDynamicEntity_Object();
-
-    /**
-     * The meta object literal for the '<em><b>Behaviour</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference DYNAMIC_ENTITY__BEHAVIOUR = eINSTANCE.getDynamicEntity_Behaviour();
+    EAttribute DYNAMIC_ENTITY__NAME = eINSTANCE.getDynamicEntity_Name();
 
     /**
      * The meta object literal for the '{@link master.mdsd.game.impl.StaticEntityImpl <em>Static Entity</em>}' class.
@@ -2945,20 +2860,12 @@ public interface GamePackage extends EPackage
     EClass CHARACTER = eINSTANCE.getCharacter();
 
     /**
-     * The meta object literal for the '<em><b>Char</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Char Id</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CHARACTER__CHAR = eINSTANCE.getCharacter_Char();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CHARACTER__NAME = eINSTANCE.getCharacter_Name();
+    EReference CHARACTER__CHAR_ID = eINSTANCE.getCharacter_CharId();
 
     /**
      * The meta object literal for the '<em><b>Att</b></em>' containment reference list feature.
@@ -2987,6 +2894,40 @@ public interface GamePackage extends EPackage
     EAttribute TYPE__VALUE_ID = eINSTANCE.getType_ValueId();
 
     /**
+     * The meta object literal for the '<em><b>Value Id Vec</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TYPE__VALUE_ID_VEC = eINSTANCE.getType_ValueIdVec();
+
+    /**
+     * The meta object literal for the '{@link master.mdsd.game.impl.VECTORImpl <em>VECTOR</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see master.mdsd.game.impl.VECTORImpl
+     * @see master.mdsd.game.impl.GamePackageImpl#getVECTOR()
+     * @generated
+     */
+    EClass VECTOR = eINSTANCE.getVECTOR();
+
+    /**
+     * The meta object literal for the '<em><b>XVal</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VECTOR__XVAL = eINSTANCE.getVECTOR_XVal();
+
+    /**
+     * The meta object literal for the '<em><b>YVal</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute VECTOR__YVAL = eINSTANCE.getVECTOR_YVal();
+
+    /**
      * The meta object literal for the '{@link master.mdsd.game.impl.CharTypeImpl <em>Char Type</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2997,12 +2938,12 @@ public interface GamePackage extends EPackage
     EClass CHAR_TYPE = eINSTANCE.getCharType();
 
     /**
-     * The meta object literal for the '<em><b>Char Typeid</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Char Type Id</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CHAR_TYPE__CHAR_TYPEID = eINSTANCE.getCharType_CharTypeid();
+    EAttribute CHAR_TYPE__CHAR_TYPE_ID = eINSTANCE.getCharType_CharTypeId();
 
     /**
      * The meta object literal for the '{@link master.mdsd.game.impl.ObjectImpl <em>Object</em>}' class.
@@ -3013,14 +2954,6 @@ public interface GamePackage extends EPackage
      * @generated
      */
     EClass OBJECT = eINSTANCE.getObject();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute OBJECT__NAME = eINSTANCE.getObject_Name();
 
     /**
      * The meta object literal for the '<em><b>Att</b></em>' containment reference list feature.
@@ -3041,38 +2974,6 @@ public interface GamePackage extends EPackage
     EClass BEHAVIOUR = eINSTANCE.getBehaviour();
 
     /**
-     * The meta object literal for the '<em><b>Behaviour Type Id</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute BEHAVIOUR__BEHAVIOUR_TYPE_ID = eINSTANCE.getBehaviour_BehaviourTypeId();
-
-    /**
-     * The meta object literal for the '<em><b>Pathfinding</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference BEHAVIOUR__PATHFINDING = eINSTANCE.getBehaviour_Pathfinding();
-
-    /**
-     * The meta object literal for the '<em><b>Attack</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference BEHAVIOUR__ATTACK = eINSTANCE.getBehaviour_Attack();
-
-    /**
-     * The meta object literal for the '<em><b>Bullet</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference BEHAVIOUR__BULLET = eINSTANCE.getBehaviour_Bullet();
-
-    /**
      * The meta object literal for the '{@link master.mdsd.game.impl.PathfindingImpl <em>Pathfinding</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3083,14 +2984,6 @@ public interface GamePackage extends EPackage
     EClass PATHFINDING = eINSTANCE.getPathfinding();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PATHFINDING__NAME = eINSTANCE.getPathfinding_Name();
-
-    /**
      * The meta object literal for the '<em><b>Att Pathfinding</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3099,90 +2992,22 @@ public interface GamePackage extends EPackage
     EReference PATHFINDING__ATT_PATHFINDING = eINSTANCE.getPathfinding_AttPathfinding();
 
     /**
-     * The meta object literal for the '<em><b>Rule Sets</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Conditions</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PATHFINDING__RULE_SETS = eINSTANCE.getPathfinding_RuleSets();
+    EReference PATHFINDING__CONDITIONS = eINSTANCE.getPathfinding_Conditions();
 
     /**
-     * The meta object literal for the '{@link master.mdsd.game.impl.RuleSetImpl <em>Rule Set</em>}' class.
+     * The meta object literal for the '{@link master.mdsd.game.impl.BooleanExpressionImpl <em>Boolean Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see master.mdsd.game.impl.RuleSetImpl
-     * @see master.mdsd.game.impl.GamePackageImpl#getRuleSet()
+     * @see master.mdsd.game.impl.BooleanExpressionImpl
+     * @see master.mdsd.game.impl.GamePackageImpl#getBooleanExpression()
      * @generated
      */
-    EClass RULE_SET = eINSTANCE.getRuleSet();
-
-    /**
-     * The meta object literal for the '<em><b>If Id</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute RULE_SET__IF_ID = eINSTANCE.getRuleSet_IfId();
-
-    /**
-     * The meta object literal for the '<em><b>Rule</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference RULE_SET__RULE = eINSTANCE.getRuleSet_Rule();
-
-    /**
-     * The meta object literal for the '<em><b>Else If Id</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute RULE_SET__ELSE_IF_ID = eINSTANCE.getRuleSet_ElseIfId();
-
-    /**
-     * The meta object literal for the '<em><b>Else Rules</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference RULE_SET__ELSE_RULES = eINSTANCE.getRuleSet_ElseRules();
-
-    /**
-     * The meta object literal for the '{@link master.mdsd.game.impl.RuleImpl <em>Rule</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see master.mdsd.game.impl.RuleImpl
-     * @see master.mdsd.game.impl.GamePackageImpl#getRule()
-     * @generated
-     */
-    EClass RULE = eINSTANCE.getRule();
-
-    /**
-     * The meta object literal for the '<em><b>Rule Setup</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference RULE__RULE_SETUP = eINSTANCE.getRule_RuleSetup();
-
-    /**
-     * The meta object literal for the '<em><b>To Do Action</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference RULE__TO_DO_ACTION = eINSTANCE.getRule_ToDoAction();
-
-    /**
-     * The meta object literal for the '{@link master.mdsd.game.impl.RuleSetupImpl <em>Rule Setup</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see master.mdsd.game.impl.RuleSetupImpl
-     * @see master.mdsd.game.impl.GamePackageImpl#getRuleSetup()
-     * @generated
-     */
-    EClass RULE_SETUP = eINSTANCE.getRuleSetup();
+    EClass BOOLEAN_EXPRESSION = eINSTANCE.getBooleanExpression();
 
     /**
      * The meta object literal for the '<em><b>Attribute Ref Left</b></em>' containment reference feature.
@@ -3190,15 +3015,15 @@ public interface GamePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference RULE_SETUP__ATTRIBUTE_REF_LEFT = eINSTANCE.getRuleSetup_AttributeRefLeft();
+    EReference BOOLEAN_EXPRESSION__ATTRIBUTE_REF_LEFT = eINSTANCE.getBooleanExpression_AttributeRefLeft();
 
     /**
-     * The meta object literal for the '<em><b>Rule Type</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Left Ex</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference RULE_SETUP__RULE_TYPE = eINSTANCE.getRuleSetup_RuleType();
+    EReference BOOLEAN_EXPRESSION__LEFT_EX = eINSTANCE.getBooleanExpression_LeftEx();
 
     /**
      * The meta object literal for the '<em><b>Operator</b></em>' containment reference feature.
@@ -3206,83 +3031,83 @@ public interface GamePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference RULE_SETUP__OPERATOR = eINSTANCE.getRuleSetup_Operator();
+    EReference BOOLEAN_EXPRESSION__OPERATOR = eINSTANCE.getBooleanExpression_Operator();
 
     /**
-     * The meta object literal for the '<em><b>Int Attleft</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Attribute Ref Right</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference RULE_SETUP__INT_ATTLEFT = eINSTANCE.getRuleSetup_IntAttleft();
+    EReference BOOLEAN_EXPRESSION__ATTRIBUTE_REF_RIGHT = eINSTANCE.getBooleanExpression_AttributeRefRight();
 
     /**
-     * The meta object literal for the '<em><b>Lo</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Op</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference RULE_SETUP__LO = eINSTANCE.getRuleSetup_Lo();
+    EReference BOOLEAN_EXPRESSION__OP = eINSTANCE.getBooleanExpression_Op();
 
     /**
-     * The meta object literal for the '{@link master.mdsd.game.impl.IntAttImpl <em>Int Att</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see master.mdsd.game.impl.IntAttImpl
-     * @see master.mdsd.game.impl.GamePackageImpl#getIntAtt()
-     * @generated
-     */
-    EClass INT_ATT = eINSTANCE.getIntAtt();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Right Ex</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute INT_ATT__VALUE = eINSTANCE.getIntAtt_Value();
+    EReference BOOLEAN_EXPRESSION__RIGHT_EX = eINSTANCE.getBooleanExpression_RightEx();
 
     /**
-     * The meta object literal for the '<em><b>Attr Id</b></em>' attribute feature.
+     * The meta object literal for the '{@link master.mdsd.game.impl.ExpressionImpl <em>Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see master.mdsd.game.impl.ExpressionImpl
+     * @see master.mdsd.game.impl.GamePackageImpl#getExpression()
+     * @generated
+     */
+    EClass EXPRESSION = eINSTANCE.getExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Tm</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute INT_ATT__ATTR_ID = eINSTANCE.getIntAtt_AttrId();
+    EReference EXPRESSION__TM = eINSTANCE.getExpression_Tm();
 
     /**
-     * The meta object literal for the '{@link master.mdsd.game.impl.LogicOperatorLoopImpl <em>Logic Operator Loop</em>}' class.
+     * The meta object literal for the '{@link master.mdsd.game.impl.ConditionImpl <em>Condition</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see master.mdsd.game.impl.LogicOperatorLoopImpl
-     * @see master.mdsd.game.impl.GamePackageImpl#getLogicOperatorLoop()
+     * @see master.mdsd.game.impl.ConditionImpl
+     * @see master.mdsd.game.impl.GamePackageImpl#getCondition()
      * @generated
      */
-    EClass LOGIC_OPERATOR_LOOP = eINSTANCE.getLogicOperatorLoop();
+    EClass CONDITION = eINSTANCE.getCondition();
 
     /**
-     * The meta object literal for the '<em><b>Logic Op</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference LOGIC_OPERATOR_LOOP__LOGIC_OP = eINSTANCE.getLogicOperatorLoop_LogicOp();
-
-    /**
-     * The meta object literal for the '<em><b>Int Att</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>If Condition</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference LOGIC_OPERATOR_LOOP__INT_ATT = eINSTANCE.getLogicOperatorLoop_IntAtt();
+    EReference CONDITION__IF_CONDITION = eINSTANCE.getCondition_IfCondition();
 
     /**
-     * The meta object literal for the '<em><b>Lop</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Then</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference LOGIC_OPERATOR_LOOP__LOP = eINSTANCE.getLogicOperatorLoop_Lop();
+    EReference CONDITION__THEN = eINSTANCE.getCondition_Then();
+
+    /**
+     * The meta object literal for the '<em><b>Else If Condition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONDITION__ELSE_IF_CONDITION = eINSTANCE.getCondition_ElseIfCondition();
 
     /**
      * The meta object literal for the '{@link master.mdsd.game.impl.ReferenceCharacterImpl <em>Reference Character</em>}' class.
@@ -3311,24 +3136,6 @@ public interface GamePackage extends EPackage
     EAttribute REFERENCE_CHARACTER__TARGET_ID = eINSTANCE.getReferenceCharacter_TargetId();
 
     /**
-     * The meta object literal for the '{@link master.mdsd.game.impl.RuleTypeImpl <em>Rule Type</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see master.mdsd.game.impl.RuleTypeImpl
-     * @see master.mdsd.game.impl.GamePackageImpl#getRuleType()
-     * @generated
-     */
-    EClass RULE_TYPE = eINSTANCE.getRuleType();
-
-    /**
-     * The meta object literal for the '<em><b>Rule Type Id</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute RULE_TYPE__RULE_TYPE_ID = eINSTANCE.getRuleType_RuleTypeId();
-
-    /**
      * The meta object literal for the '{@link master.mdsd.game.impl.CompOperatorImpl <em>Comp Operator</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3337,6 +3144,14 @@ public interface GamePackage extends EPackage
      * @generated
      */
     EClass COMP_OPERATOR = eINSTANCE.getCompOperator();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMP_OPERATOR__OP = eINSTANCE.getCompOperator_Op();
 
     /**
      * The meta object literal for the '{@link master.mdsd.game.impl.ActionImpl <em>Action</em>}' class.
@@ -3365,12 +3180,20 @@ public interface GamePackage extends EPackage
     EReference ACTION__CHAR_DEC = eINSTANCE.getAction_CharDec();
 
     /**
-     * The meta object literal for the '<em><b>Lo</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Op</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ACTION__LO = eINSTANCE.getAction_Lo();
+    EReference ACTION__OP = eINSTANCE.getAction_Op();
+
+    /**
+     * The meta object literal for the '<em><b>Ex</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ACTION__EX = eINSTANCE.getAction_Ex();
 
     /**
      * The meta object literal for the '{@link master.mdsd.game.impl.CharDecImpl <em>Char Dec</em>}' class.
@@ -3383,7 +3206,7 @@ public interface GamePackage extends EPackage
     EClass CHAR_DEC = eINSTANCE.getCharDec();
 
     /**
-     * The meta object literal for the '<em><b>Char Att Result</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Char Att Result</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3435,6 +3258,14 @@ public interface GamePackage extends EPackage
     EClass LOGIC_OPERATOR = eINSTANCE.getLogicOperator();
 
     /**
+     * The meta object literal for the '<em><b>Lop</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LOGIC_OPERATOR__LOP = eINSTANCE.getLogicOperator_Lop();
+
+    /**
      * The meta object literal for the '{@link master.mdsd.game.impl.AttackImpl <em>Attack</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3443,14 +3274,6 @@ public interface GamePackage extends EPackage
      * @generated
      */
     EClass ATTACK = eINSTANCE.getAttack();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ATTACK__NAME = eINSTANCE.getAttack_Name();
 
     /**
      * The meta object literal for the '<em><b>Attributes</b></em>' containment reference list feature.
@@ -3531,14 +3354,6 @@ public interface GamePackage extends EPackage
     EReference BULLET__BULLET_REF = eINSTANCE.getBullet_BulletRef();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute BULLET__NAME = eINSTANCE.getBullet_Name();
-
-    /**
      * The meta object literal for the '<em><b>Attributes Bullet</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3591,7 +3406,7 @@ public interface GamePackage extends EPackage
     EAttribute ATTRIBUTE_INITIALIZER__AMOUNT_VALUE_ID = eINSTANCE.getAttributeInitializer_AmountValueId();
 
     /**
-     * The meta object literal for the '<em><b>Target</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Target</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3659,28 +3474,56 @@ public interface GamePackage extends EPackage
     EReference LOCATION__TYPEB = eINSTANCE.getLocation_Typeb();
 
     /**
-     * The meta object literal for the '<em><b>Char Att</b></em>' containment reference list feature.
+     * The meta object literal for the '{@link master.mdsd.game.impl.OperationImpl <em>Operation</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see master.mdsd.game.impl.OperationImpl
+     * @see master.mdsd.game.impl.GamePackageImpl#getOperation()
      * @generated
      */
-    EReference LOCATION__CHAR_ATT = eINSTANCE.getLocation_CharAtt();
+    EClass OPERATION = eINSTANCE.getOperation();
 
     /**
-     * The meta object literal for the '<em><b>Logic Op</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference LOCATION__LOGIC_OP = eINSTANCE.getLocation_LogicOp();
+    EReference OPERATION__LEFT = eINSTANCE.getOperation_Left();
 
     /**
-     * The meta object literal for the '<em><b>Typec</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Op</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference LOCATION__TYPEC = eINSTANCE.getLocation_Typec();
+    EReference OPERATION__OP = eINSTANCE.getOperation_Op();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OPERATION__RIGHT = eINSTANCE.getOperation_Right();
+
+    /**
+     * The meta object literal for the '{@link master.mdsd.game.impl.IntLiteralImpl <em>Int Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see master.mdsd.game.impl.IntLiteralImpl
+     * @see master.mdsd.game.impl.GamePackageImpl#getIntLiteral()
+     * @generated
+     */
+    EClass INT_LITERAL = eINSTANCE.getIntLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INT_LITERAL__VALUE = eINSTANCE.getIntLiteral_Value();
 
     /**
      * The meta object literal for the '{@link master.mdsd.game.impl.LTImpl <em>LT</em>}' class.

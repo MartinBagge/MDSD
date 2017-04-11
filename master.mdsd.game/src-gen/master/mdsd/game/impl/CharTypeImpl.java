@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link master.mdsd.game.impl.CharTypeImpl#getCharTypeid <em>Char Typeid</em>}</li>
+ *   <li>{@link master.mdsd.game.impl.CharTypeImpl#getCharTypeId <em>Char Type Id</em>}</li>
  * </ul>
  *
  * @generated
@@ -29,24 +29,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class CharTypeImpl extends MinimalEObjectImpl.Container implements CharType
 {
   /**
-   * The default value of the '{@link #getCharTypeid() <em>Char Typeid</em>}' attribute.
+   * The default value of the '{@link #getCharTypeId() <em>Char Type Id</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCharTypeid()
+   * @see #getCharTypeId()
    * @generated
    * @ordered
    */
-  protected static final String CHAR_TYPEID_EDEFAULT = null;
+  protected static final String CHAR_TYPE_ID_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getCharTypeid() <em>Char Typeid</em>}' attribute.
+   * The cached value of the '{@link #getCharTypeId() <em>Char Type Id</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCharTypeid()
+   * @see #getCharTypeId()
    * @generated
    * @ordered
    */
-  protected String charTypeid = CHAR_TYPEID_EDEFAULT;
+  protected String charTypeId = CHAR_TYPE_ID_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -74,9 +74,9 @@ public class CharTypeImpl extends MinimalEObjectImpl.Container implements CharTy
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getCharTypeid()
+  public String getCharTypeId()
   {
-    return charTypeid;
+    return charTypeId;
   }
 
   /**
@@ -84,12 +84,12 @@ public class CharTypeImpl extends MinimalEObjectImpl.Container implements CharTy
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCharTypeid(String newCharTypeid)
+  public void setCharTypeId(String newCharTypeId)
   {
-    String oldCharTypeid = charTypeid;
-    charTypeid = newCharTypeid;
+    String oldCharTypeId = charTypeId;
+    charTypeId = newCharTypeId;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHAR_TYPE__CHAR_TYPEID, oldCharTypeid, charTypeid));
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.CHAR_TYPE__CHAR_TYPE_ID, oldCharTypeId, charTypeId));
   }
 
   /**
@@ -102,8 +102,8 @@ public class CharTypeImpl extends MinimalEObjectImpl.Container implements CharTy
   {
     switch (featureID)
     {
-      case GamePackage.CHAR_TYPE__CHAR_TYPEID:
-        return getCharTypeid();
+      case GamePackage.CHAR_TYPE__CHAR_TYPE_ID:
+        return getCharTypeId();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,8 +118,8 @@ public class CharTypeImpl extends MinimalEObjectImpl.Container implements CharTy
   {
     switch (featureID)
     {
-      case GamePackage.CHAR_TYPE__CHAR_TYPEID:
-        setCharTypeid((String)newValue);
+      case GamePackage.CHAR_TYPE__CHAR_TYPE_ID:
+        setCharTypeId((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -135,8 +135,8 @@ public class CharTypeImpl extends MinimalEObjectImpl.Container implements CharTy
   {
     switch (featureID)
     {
-      case GamePackage.CHAR_TYPE__CHAR_TYPEID:
-        setCharTypeid(CHAR_TYPEID_EDEFAULT);
+      case GamePackage.CHAR_TYPE__CHAR_TYPE_ID:
+        setCharTypeId(CHAR_TYPE_ID_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -152,8 +152,8 @@ public class CharTypeImpl extends MinimalEObjectImpl.Container implements CharTy
   {
     switch (featureID)
     {
-      case GamePackage.CHAR_TYPE__CHAR_TYPEID:
-        return CHAR_TYPEID_EDEFAULT == null ? charTypeid != null : !CHAR_TYPEID_EDEFAULT.equals(charTypeid);
+      case GamePackage.CHAR_TYPE__CHAR_TYPE_ID:
+        return CHAR_TYPE_ID_EDEFAULT == null ? charTypeId != null : !CHAR_TYPE_ID_EDEFAULT.equals(charTypeId);
     }
     return super.eIsSet(featureID);
   }
@@ -169,8 +169,8 @@ public class CharTypeImpl extends MinimalEObjectImpl.Container implements CharTy
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (charTypeid: ");
-    result.append(charTypeid);
+    result.append(" (charTypeId: ");
+    result.append(charTypeId);
     result.append(')');
     return result.toString();
   }

@@ -39,7 +39,7 @@ public interface GameFactory extends EFactory
    * @return a new object of class '<em>Map</em>'.
    * @generated
    */
-  Map createMap();
+  GameMap createGameMap();
 
   /**
    * Returns a new object of class '<em>Attribute</em>'.
@@ -96,6 +96,15 @@ public interface GameFactory extends EFactory
   Type createType();
 
   /**
+   * Returns a new object of class '<em>VECTOR</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>VECTOR</em>'.
+   * @generated
+   */
+  VECTOR createVECTOR();
+
+  /**
    * Returns a new object of class '<em>Char Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -132,49 +141,31 @@ public interface GameFactory extends EFactory
   Pathfinding createPathfinding();
 
   /**
-   * Returns a new object of class '<em>Rule Set</em>'.
+   * Returns a new object of class '<em>Boolean Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Rule Set</em>'.
+   * @return a new object of class '<em>Boolean Expression</em>'.
    * @generated
    */
-  RuleSet createRuleSet();
+  BooleanExpression createBooleanExpression();
 
   /**
-   * Returns a new object of class '<em>Rule</em>'.
+   * Returns a new object of class '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Rule</em>'.
+   * @return a new object of class '<em>Expression</em>'.
    * @generated
    */
-  Rule createRule();
+  Expression createExpression();
 
   /**
-   * Returns a new object of class '<em>Rule Setup</em>'.
+   * Returns a new object of class '<em>Condition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Rule Setup</em>'.
+   * @return a new object of class '<em>Condition</em>'.
    * @generated
    */
-  RuleSetup createRuleSetup();
-
-  /**
-   * Returns a new object of class '<em>Int Att</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Int Att</em>'.
-   * @generated
-   */
-  IntAtt createIntAtt();
-
-  /**
-   * Returns a new object of class '<em>Logic Operator Loop</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Logic Operator Loop</em>'.
-   * @generated
-   */
-  LogicOperatorLoop createLogicOperatorLoop();
+  Condition createCondition();
 
   /**
    * Returns a new object of class '<em>Reference Character</em>'.
@@ -184,15 +175,6 @@ public interface GameFactory extends EFactory
    * @generated
    */
   ReferenceCharacter createReferenceCharacter();
-
-  /**
-   * Returns a new object of class '<em>Rule Type</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Rule Type</em>'.
-   * @generated
-   */
-  RuleType createRuleType();
 
   /**
    * Returns a new object of class '<em>Comp Operator</em>'.
@@ -310,6 +292,24 @@ public interface GameFactory extends EFactory
    * @generated
    */
   Location createLocation();
+
+  /**
+   * Returns a new object of class '<em>Operation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Operation</em>'.
+   * @generated
+   */
+  Operation createOperation();
+
+  /**
+   * Returns a new object of class '<em>Int Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Int Literal</em>'.
+   * @generated
+   */
+  IntLiteral createIntLiteral();
 
   /**
    * Returns a new object of class '<em>LT</em>'.

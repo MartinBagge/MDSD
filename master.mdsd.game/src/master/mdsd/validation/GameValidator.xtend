@@ -3,6 +3,10 @@
  */
 package master.mdsd.validation
 
+import master.mdsd.game.GamePackage
+import org.eclipse.xtext.validation.Check
+import master.mdsd.game.DynamicEntity
+import master.mdsd.game.Character
 
 /**
  * This class contains custom validation rules. 
@@ -11,15 +15,19 @@ package master.mdsd.validation
  */
 class GameValidator extends AbstractGameValidator {
 	
-//	public static val INVALID_NAME = 'invalidName'
-//
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					GamePackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
+	@Check
+    def checkCharacterTypeIsNotEmpty(Character character){
+        if (character.getCharId()== null){
+            error("The character has to have a type. ex: Character [Type] hostile", GamePackage.Literals.CHARACTER__CHAR_ID, "invalidType");
+        }
+        
+    }
+    
+	@Check
+    def checkDynamicEntityNameIsNotEmpty(DynamicEntity dynamic){
+    	if (dynamic.getName() == null){
+            error("The character has to have an identifier. ex: Character Neutral [identifier]", GamePackage.Literals.DYNAMIC_ENTITY__NAME, "invalidNAME");
+        }
+    }
 	
 }

@@ -5,8 +5,6 @@ package master.mdsd.game;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Character</b></em>'.
@@ -16,8 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link master.mdsd.game.Character#getChar <em>Char</em>}</li>
- *   <li>{@link master.mdsd.game.Character#getName <em>Name</em>}</li>
+ *   <li>{@link master.mdsd.game.Character#getCharId <em>Char Id</em>}</li>
  *   <li>{@link master.mdsd.game.Character#getAtt <em>Att</em>}</li>
  * </ul>
  *
@@ -25,59 +22,33 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Character extends EObject
+public interface Character extends DynamicEntity
 {
   /**
-   * Returns the value of the '<em><b>Char</b></em>' containment reference.
+   * Returns the value of the '<em><b>Char Id</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Char</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Char Id</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Char</em>' containment reference.
-   * @see #setChar(CharType)
-   * @see master.mdsd.game.GamePackage#getCharacter_Char()
+   * @return the value of the '<em>Char Id</em>' containment reference.
+   * @see #setCharId(CharType)
+   * @see master.mdsd.game.GamePackage#getCharacter_CharId()
    * @model containment="true"
    * @generated
    */
-  CharType getChar();
+  CharType getCharId();
 
   /**
-   * Sets the value of the '{@link master.mdsd.game.Character#getChar <em>Char</em>}' containment reference.
+   * Sets the value of the '{@link master.mdsd.game.Character#getCharId <em>Char Id</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Char</em>' containment reference.
-   * @see #getChar()
+   * @param value the new value of the '<em>Char Id</em>' containment reference.
+   * @see #getCharId()
    * @generated
    */
-  void setChar(CharType value);
-
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see master.mdsd.game.GamePackage#getCharacter_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link master.mdsd.game.Character#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
+  void setCharId(CharType value);
 
   /**
    * Returns the value of the '<em><b>Att</b></em>' containment reference list.

@@ -3,8 +3,6 @@
  */
 package master.mdsd.game.impl;
 
-import java.util.Collection;
-
 import master.mdsd.game.AttributeInitializer;
 import master.mdsd.game.GamePackage;
 import master.mdsd.game.TargetRef;
@@ -12,16 +10,11 @@ import master.mdsd.game.TargetRef;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,14 +74,14 @@ public class AttributeInitializerImpl extends MinimalEObjectImpl.Container imple
   protected int amountValueId = AMOUNT_VALUE_ID_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference list.
+   * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTarget()
    * @generated
    * @ordered
    */
-  protected EList<TargetRef> target;
+  protected TargetRef target;
 
   /**
    * <!-- begin-user-doc -->
@@ -162,13 +155,47 @@ public class AttributeInitializerImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<TargetRef> getTarget()
+  public TargetRef getTarget()
   {
-    if (target == null)
-    {
-      target = new EObjectContainmentEList<TargetRef>(TargetRef.class, this, GamePackage.ATTRIBUTE_INITIALIZER__TARGET);
-    }
     return target;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTarget(TargetRef newTarget, NotificationChain msgs)
+  {
+    TargetRef oldTarget = target;
+    target = newTarget;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.ATTRIBUTE_INITIALIZER__TARGET, oldTarget, newTarget);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTarget(TargetRef newTarget)
+  {
+    if (newTarget != target)
+    {
+      NotificationChain msgs = null;
+      if (target != null)
+        msgs = ((InternalEObject)target).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.ATTRIBUTE_INITIALIZER__TARGET, null, msgs);
+      if (newTarget != null)
+        msgs = ((InternalEObject)newTarget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.ATTRIBUTE_INITIALIZER__TARGET, null, msgs);
+      msgs = basicSetTarget(newTarget, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.ATTRIBUTE_INITIALIZER__TARGET, newTarget, newTarget));
   }
 
   /**
@@ -182,7 +209,7 @@ public class AttributeInitializerImpl extends MinimalEObjectImpl.Container imple
     switch (featureID)
     {
       case GamePackage.ATTRIBUTE_INITIALIZER__TARGET:
-        return ((InternalEList<?>)getTarget()).basicRemove(otherEnd, msgs);
+        return basicSetTarget(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -212,7 +239,6 @@ public class AttributeInitializerImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -225,8 +251,7 @@ public class AttributeInitializerImpl extends MinimalEObjectImpl.Container imple
         setAmountValueId((Integer)newValue);
         return;
       case GamePackage.ATTRIBUTE_INITIALIZER__TARGET:
-        getTarget().clear();
-        getTarget().addAll((Collection<? extends TargetRef>)newValue);
+        setTarget((TargetRef)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -249,7 +274,7 @@ public class AttributeInitializerImpl extends MinimalEObjectImpl.Container imple
         setAmountValueId(AMOUNT_VALUE_ID_EDEFAULT);
         return;
       case GamePackage.ATTRIBUTE_INITIALIZER__TARGET:
-        getTarget().clear();
+        setTarget((TargetRef)null);
         return;
     }
     super.eUnset(featureID);
@@ -270,7 +295,7 @@ public class AttributeInitializerImpl extends MinimalEObjectImpl.Container imple
       case GamePackage.ATTRIBUTE_INITIALIZER__AMOUNT_VALUE_ID:
         return amountValueId != AMOUNT_VALUE_ID_EDEFAULT;
       case GamePackage.ATTRIBUTE_INITIALIZER__TARGET:
-        return target != null && !target.isEmpty();
+        return target != null;
     }
     return super.eIsSet(featureID);
   }

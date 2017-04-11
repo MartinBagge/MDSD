@@ -15,7 +15,6 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link master.mdsd.game.Bullet#getBulletRef <em>Bullet Ref</em>}</li>
- *   <li>{@link master.mdsd.game.Bullet#getName <em>Name</em>}</li>
  *   <li>{@link master.mdsd.game.Bullet#getAttributesBullet <em>Attributes Bullet</em>}</li>
  * </ul>
  *
@@ -23,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Bullet extends AttributeTypeAttack
+public interface Bullet extends Behaviour, AttributeTypeAttack
 {
   /**
    * Returns the value of the '<em><b>Bullet Ref</b></em>' reference.
@@ -50,32 +49,6 @@ public interface Bullet extends AttributeTypeAttack
    * @generated
    */
   void setBulletRef(Bullet value);
-
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see master.mdsd.game.GamePackage#getBullet_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link master.mdsd.game.Bullet#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
 
   /**
    * Returns the value of the '<em><b>Attributes Bullet</b></em>' containment reference list.

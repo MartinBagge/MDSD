@@ -5,10 +5,13 @@ package master.mdsd.game.impl;
 
 import master.mdsd.game.GamePackage;
 import master.mdsd.game.Type;
+import master.mdsd.game.VECTOR;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -22,6 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link master.mdsd.game.impl.TypeImpl#getValueId <em>Value Id</em>}</li>
+ *   <li>{@link master.mdsd.game.impl.TypeImpl#getValueIdVec <em>Value Id Vec</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,6 +51,16 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
    * @ordered
    */
   protected String valueId = VALUE_ID_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getValueIdVec() <em>Value Id Vec</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValueIdVec()
+   * @generated
+   * @ordered
+   */
+  protected VECTOR valueIdVec;
 
   /**
    * <!-- begin-user-doc -->
@@ -97,6 +111,70 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
    * <!-- end-user-doc -->
    * @generated
    */
+  public VECTOR getValueIdVec()
+  {
+    return valueIdVec;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetValueIdVec(VECTOR newValueIdVec, NotificationChain msgs)
+  {
+    VECTOR oldValueIdVec = valueIdVec;
+    valueIdVec = newValueIdVec;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GamePackage.TYPE__VALUE_ID_VEC, oldValueIdVec, newValueIdVec);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setValueIdVec(VECTOR newValueIdVec)
+  {
+    if (newValueIdVec != valueIdVec)
+    {
+      NotificationChain msgs = null;
+      if (valueIdVec != null)
+        msgs = ((InternalEObject)valueIdVec).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GamePackage.TYPE__VALUE_ID_VEC, null, msgs);
+      if (newValueIdVec != null)
+        msgs = ((InternalEObject)newValueIdVec).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GamePackage.TYPE__VALUE_ID_VEC, null, msgs);
+      msgs = basicSetValueIdVec(newValueIdVec, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.TYPE__VALUE_ID_VEC, newValueIdVec, newValueIdVec));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case GamePackage.TYPE__VALUE_ID_VEC:
+        return basicSetValueIdVec(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -104,6 +182,8 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
     {
       case GamePackage.TYPE__VALUE_ID:
         return getValueId();
+      case GamePackage.TYPE__VALUE_ID_VEC:
+        return getValueIdVec();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -120,6 +200,9 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
     {
       case GamePackage.TYPE__VALUE_ID:
         setValueId((String)newValue);
+        return;
+      case GamePackage.TYPE__VALUE_ID_VEC:
+        setValueIdVec((VECTOR)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -138,6 +221,9 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
       case GamePackage.TYPE__VALUE_ID:
         setValueId(VALUE_ID_EDEFAULT);
         return;
+      case GamePackage.TYPE__VALUE_ID_VEC:
+        setValueIdVec((VECTOR)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -154,6 +240,8 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
     {
       case GamePackage.TYPE__VALUE_ID:
         return VALUE_ID_EDEFAULT == null ? valueId != null : !VALUE_ID_EDEFAULT.equals(valueId);
+      case GamePackage.TYPE__VALUE_ID_VEC:
+        return valueIdVec != null;
     }
     return super.eIsSet(featureID);
   }

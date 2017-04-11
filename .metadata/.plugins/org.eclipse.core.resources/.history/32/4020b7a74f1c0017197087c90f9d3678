@@ -1,9 +1,0 @@
-grammar sdu.master.mdsd.Game with org.eclipse.xtext.common.Terminals
-
-generate game "http://www.master.sdu/mdsd/Game"
-
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';

@@ -3,15 +3,15 @@ grammar master.mdsd.Game with org.eclipse.xtext.common.Terminals
 generate game "http://www.mdsd.master/Game"
 
 Model:
-	'Game' '{' map=Map  entities+=Entity* ini=Initializer '}' 
+	{Model}'Game' '{' entities+=Entity* '}' 
 ;
 
-Map:
-	{Map} entityId = 'Map''{' attributes+=Attribute* '}'
+GameMap:
+	entityId = 'Map''{' attributeList+=Attribute* '}'
 ;
 
 Attribute:
-	{Attribute} attributename=ID type+=Type
+	{Attribute} attributename=ID type=Type
 ;
 
 
@@ -21,25 +21,25 @@ Entity:
 ;
 
 DynamicEntity:
-	entityid = 'Character' character+=Character | 
-	entityid = 'Object' object+=Object |  
-	entityid = 'Behaviour' behaviour+= Behaviour
+	Character | 
+	Object |  
+	Behaviour
 ;
 
 StaticEntity:
-	Map | Initializer
+	GameMap | Initializer
 ;
 
 Character:
-	 char=CharType name=ID '{' att+=Attribute*'}'
+	 entityid = 'Character' charId=CharType name=ID '{' att+=Attribute*'}'
 ;
 
 Type:
-	valueId = INTORDEC | valueId = ID | valueId = VECTOR
+	valueId = INTORDEC | valueId = ID | valueIdVec = VECTOR
 ;
 
 VECTOR:
-	INTORDEC INTORDEC
+	xVal = INTORDEC yVal = INTORDEC
 ;
 
 INTORDEC:
@@ -47,66 +47,64 @@ INTORDEC:
 ;
 
 CharType:
-	charTypeid = ID
+	charTypeId = ID
 ;
 
 Object:
-	name=ID '{' att+=Attribute* '}'
+	entityid = 'Object' name=ID '{' att+=Attribute* '}'
 ;
 
 
 Behaviour:
-	behaviourTypeId = 'Pathfinding' pathfinding=Pathfinding| 
-	behaviourTypeId ='Attack' attack=Attack | 
-	behaviourTypeId = 'Bullet' bullet=Bullet
+	Pathfinding| 
+	Attack | 
+	Bullet
 ;
 
 
 Pathfinding:
-	 name=ID '{' (attPathfinding += Attribute)*  (ruleSets+=RuleSet)* '}'
+	 entityid = 'Pathfinding' name=ID '{' (attPathfinding += Attribute)*  (conditions+=Condition)* '}'
 ;
 
-RuleSet:
-	ifId += 'if' rule = Rule (elseIfId += 'elseif' elseRules+= Rule)*
+BooleanExpression:
+	(attributeRefLeft = CharacterAttr)? (leftEx = Expression)? operator=CompOperator (attributeRefRight = CharacterAttr)? ((op=LogicOperator)? rightEx = Expression)?
 ;
 
-Rule:
-	'(' ruleSetup = RuleSetup ')'  toDoAction = Action
-;
-RuleSetup:
-	(attributeRefLeft = ReferenceCharacter)? ruleType = RuleType operator=CompOperator intAttleft=IntAtt (lo=LogicOperatorLoop)?
+Expression:
+    tm = TerminalExpression ({Operation.left=current} 
+    op=LogicOperator right=TerminalExpression)*
+ ;
+ 
+TerminalExpression returns Expression:
+    '(' Expression ')' |
+    {IntLiteral} value=INTORDEC
 ;
 
-IntAtt:
-	value = INTORDEC | 'self' attrId = ID
+Condition:
+	'if' '(' ifCondition = BooleanExpression ')'
+	then = Action
+	(=>'else'  elseIfCondition=Condition)?
 ;
 
 DECIMAL:
 	INT '.' INT
 ;
 
-LogicOperatorLoop:
-	logicOp+= LogicOperator intAtt+=IntAtt (lop+=LogicOperatorLoop)?
-;
 
 ReferenceCharacter:
 	{ReferenceCharacter} characterId = [Character] | {ReferenceCharacter} targetId = 'self'
 ;
 
-RuleType:
-	ruleTypeId = ID
-;
-
 CompOperator:
-	{LT} '<' | {GT} '>' | {LTE} '<=' | {GTE} '>=' | {EQ} '='
+	{LT} op='<' | {GT} op='>' | {LTE} op='<=' | {GTE} op='>=' | {EQ} op='='
 ;
 
 Action:
-'(' charAtt= CharacterAttr  '=' charDec = CharDec (lo+=LogicOperatorLoop)? ')'
+'(' charAtt= CharacterAttr  '=' (charDec = CharDec)? ((op=LogicOperator)? ex=Expression)? ')'
 ;
 
 CharDec:
-	charAttResult+= CharacterAttr | val =INTORDEC
+	charAttResult= CharacterAttr | val =INTORDEC
 ;
 
 CharacterAttr:
@@ -114,11 +112,11 @@ CharacterAttr:
 ;
 
 LogicOperator:
-	{T}'*' |{A} '+' |{M} '-' |{D} '/'
+	{T} lop='*' |{A} lop='+' |{M} lop='-' |{D} lop='/'
 ;
 
 Attack:
-	name=ID '{' (attributes += Attribute)* (attributesAttack += AttributeAttack)* (rules+=RuleSet)? '}'
+	entityid ='Attack' name=ID '{' (attributes += Attribute)* (attributesAttack += AttributeAttack)* (rules+=Condition)? '}'
 ;
 
 AttributeAttack:
@@ -130,7 +128,7 @@ AttributeTypeAttack:
 ;
 
 Bullet:
-	name = ID '{' attributesBullet += Attribute* '}'
+	entityid = 'Bullet' name=ID '{' attributesBullet += Attribute* '}'
 ;
 
 Initializer:
@@ -138,7 +136,7 @@ Initializer:
 ;
 
 AttributeInitializer:
-	attributeId = ID (amountValueId=INT?) target += TargetRef 
+	attributeId = ID (amountValueId=INT?) target = TargetRef 
 ;
 
 TargetRef:
@@ -147,11 +145,6 @@ TargetRef:
 
 Location:
 	locationId = 'random'  | 
-	'(' typea=Type ',' typeb=Type ')' |
-	charAtt+=Attribute logicOp+=LogicOperator typec+=Type
+	'(' typea=Type ',' typeb=Type ')'
 ;
-
-
-
-
 

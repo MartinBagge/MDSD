@@ -13,39 +13,39 @@ import master.mdsd.game.AttributeAttack;
 import master.mdsd.game.AttributeInitializer;
 import master.mdsd.game.AttributeTypeAttack;
 import master.mdsd.game.Behaviour;
+import master.mdsd.game.BooleanExpression;
 import master.mdsd.game.Bullet;
 import master.mdsd.game.CharDec;
 import master.mdsd.game.CharType;
 import master.mdsd.game.CharacterAttr;
 import master.mdsd.game.CompOperator;
+import master.mdsd.game.Condition;
 import master.mdsd.game.D;
 import master.mdsd.game.DynamicEntity;
 import master.mdsd.game.EQ;
 import master.mdsd.game.Entity;
+import master.mdsd.game.Expression;
 import master.mdsd.game.GT;
 import master.mdsd.game.GTE;
 import master.mdsd.game.GameFactory;
+import master.mdsd.game.GameMap;
 import master.mdsd.game.GamePackage;
 import master.mdsd.game.Initializer;
-import master.mdsd.game.IntAtt;
+import master.mdsd.game.IntLiteral;
 import master.mdsd.game.LT;
 import master.mdsd.game.LTE;
 import master.mdsd.game.Location;
 import master.mdsd.game.LogicOperator;
-import master.mdsd.game.LogicOperatorLoop;
 import master.mdsd.game.M;
-import master.mdsd.game.Map;
 import master.mdsd.game.Model;
+import master.mdsd.game.Operation;
 import master.mdsd.game.Pathfinding;
 import master.mdsd.game.ReferenceCharacter;
-import master.mdsd.game.Rule;
-import master.mdsd.game.RuleSet;
-import master.mdsd.game.RuleSetup;
-import master.mdsd.game.RuleType;
 import master.mdsd.game.StaticEntity;
 import master.mdsd.game.T;
 import master.mdsd.game.TargetRef;
 import master.mdsd.game.Type;
+import master.mdsd.game.VECTOR;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -108,24 +108,22 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
     switch (eClass.getClassifierID())
     {
       case GamePackage.MODEL: return createModel();
-      case GamePackage.MAP: return createMap();
+      case GamePackage.GAME_MAP: return createGameMap();
       case GamePackage.ATTRIBUTE: return createAttribute();
       case GamePackage.ENTITY: return createEntity();
       case GamePackage.DYNAMIC_ENTITY: return createDynamicEntity();
       case GamePackage.STATIC_ENTITY: return createStaticEntity();
       case GamePackage.CHARACTER: return createCharacter();
       case GamePackage.TYPE: return createType();
+      case GamePackage.VECTOR: return createVECTOR();
       case GamePackage.CHAR_TYPE: return createCharType();
       case GamePackage.OBJECT: return createObject();
       case GamePackage.BEHAVIOUR: return createBehaviour();
       case GamePackage.PATHFINDING: return createPathfinding();
-      case GamePackage.RULE_SET: return createRuleSet();
-      case GamePackage.RULE: return createRule();
-      case GamePackage.RULE_SETUP: return createRuleSetup();
-      case GamePackage.INT_ATT: return createIntAtt();
-      case GamePackage.LOGIC_OPERATOR_LOOP: return createLogicOperatorLoop();
+      case GamePackage.BOOLEAN_EXPRESSION: return createBooleanExpression();
+      case GamePackage.EXPRESSION: return createExpression();
+      case GamePackage.CONDITION: return createCondition();
       case GamePackage.REFERENCE_CHARACTER: return createReferenceCharacter();
-      case GamePackage.RULE_TYPE: return createRuleType();
       case GamePackage.COMP_OPERATOR: return createCompOperator();
       case GamePackage.ACTION: return createAction();
       case GamePackage.CHAR_DEC: return createCharDec();
@@ -139,6 +137,8 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
       case GamePackage.ATTRIBUTE_INITIALIZER: return createAttributeInitializer();
       case GamePackage.TARGET_REF: return createTargetRef();
       case GamePackage.LOCATION: return createLocation();
+      case GamePackage.OPERATION: return createOperation();
+      case GamePackage.INT_LITERAL: return createIntLiteral();
       case GamePackage.LT: return createLT();
       case GamePackage.GT: return createGT();
       case GamePackage.LTE: return createLTE();
@@ -171,10 +171,10 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Map createMap()
+  public GameMap createGameMap()
   {
-    MapImpl map = new MapImpl();
-    return map;
+    GameMapImpl gameMap = new GameMapImpl();
+    return gameMap;
   }
 
   /**
@@ -248,6 +248,17 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public VECTOR createVECTOR()
+  {
+    VECTORImpl vector = new VECTORImpl();
+    return vector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public CharType createCharType()
   {
     CharTypeImpl charType = new CharTypeImpl();
@@ -292,10 +303,10 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public RuleSet createRuleSet()
+  public BooleanExpression createBooleanExpression()
   {
-    RuleSetImpl ruleSet = new RuleSetImpl();
-    return ruleSet;
+    BooleanExpressionImpl booleanExpression = new BooleanExpressionImpl();
+    return booleanExpression;
   }
 
   /**
@@ -303,10 +314,10 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Rule createRule()
+  public Expression createExpression()
   {
-    RuleImpl rule = new RuleImpl();
-    return rule;
+    ExpressionImpl expression = new ExpressionImpl();
+    return expression;
   }
 
   /**
@@ -314,32 +325,10 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public RuleSetup createRuleSetup()
+  public Condition createCondition()
   {
-    RuleSetupImpl ruleSetup = new RuleSetupImpl();
-    return ruleSetup;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public IntAtt createIntAtt()
-  {
-    IntAttImpl intAtt = new IntAttImpl();
-    return intAtt;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public LogicOperatorLoop createLogicOperatorLoop()
-  {
-    LogicOperatorLoopImpl logicOperatorLoop = new LogicOperatorLoopImpl();
-    return logicOperatorLoop;
+    ConditionImpl condition = new ConditionImpl();
+    return condition;
   }
 
   /**
@@ -351,17 +340,6 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
   {
     ReferenceCharacterImpl referenceCharacter = new ReferenceCharacterImpl();
     return referenceCharacter;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RuleType createRuleType()
-  {
-    RuleTypeImpl ruleType = new RuleTypeImpl();
-    return ruleType;
   }
 
   /**
@@ -505,6 +483,28 @@ public class GameFactoryImpl extends EFactoryImpl implements GameFactory
   {
     LocationImpl location = new LocationImpl();
     return location;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Operation createOperation()
+  {
+    OperationImpl operation = new OperationImpl();
+    return operation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IntLiteral createIntLiteral()
+  {
+    IntLiteralImpl intLiteral = new IntLiteralImpl();
+    return intLiteral;
   }
 
   /**

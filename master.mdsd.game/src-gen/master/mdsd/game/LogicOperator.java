@@ -10,6 +10,12 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Logic Operator</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link master.mdsd.game.LogicOperator#getLop <em>Lop</em>}</li>
+ * </ul>
  *
  * @see master.mdsd.game.GamePackage#getLogicOperator()
  * @model
@@ -17,4 +23,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface LogicOperator extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Lop</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Lop</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Lop</em>' attribute.
+   * @see #setLop(String)
+   * @see master.mdsd.game.GamePackage#getLogicOperator_Lop()
+   * @model
+   * @generated
+   */
+  String getLop();
+
+  /**
+   * Sets the value of the '{@link master.mdsd.game.LogicOperator#getLop <em>Lop</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Lop</em>' attribute.
+   * @see #getLop()
+   * @generated
+   */
+  void setLop(String value);
+
 } // LogicOperator

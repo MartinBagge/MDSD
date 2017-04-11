@@ -6,20 +6,16 @@ package master.mdsd.game.impl;
 import java.util.Collection;
 
 import master.mdsd.game.Attribute;
+import master.mdsd.game.Condition;
 import master.mdsd.game.GamePackage;
 import master.mdsd.game.Pathfinding;
-import master.mdsd.game.RuleSet;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -32,35 +28,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link master.mdsd.game.impl.PathfindingImpl#getName <em>Name</em>}</li>
  *   <li>{@link master.mdsd.game.impl.PathfindingImpl#getAttPathfinding <em>Att Pathfinding</em>}</li>
- *   <li>{@link master.mdsd.game.impl.PathfindingImpl#getRuleSets <em>Rule Sets</em>}</li>
+ *   <li>{@link master.mdsd.game.impl.PathfindingImpl#getConditions <em>Conditions</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class PathfindingImpl extends MinimalEObjectImpl.Container implements Pathfinding
+public class PathfindingImpl extends BehaviourImpl implements Pathfinding
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getAttPathfinding() <em>Att Pathfinding</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -72,14 +47,14 @@ public class PathfindingImpl extends MinimalEObjectImpl.Container implements Pat
   protected EList<Attribute> attPathfinding;
 
   /**
-   * The cached value of the '{@link #getRuleSets() <em>Rule Sets</em>}' containment reference list.
+   * The cached value of the '{@link #getConditions() <em>Conditions</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRuleSets()
+   * @see #getConditions()
    * @generated
    * @ordered
    */
-  protected EList<RuleSet> ruleSets;
+  protected EList<Condition> conditions;
 
   /**
    * <!-- begin-user-doc -->
@@ -107,29 +82,6 @@ public class PathfindingImpl extends MinimalEObjectImpl.Container implements Pat
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GamePackage.PATHFINDING__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EList<Attribute> getAttPathfinding()
   {
     if (attPathfinding == null)
@@ -144,13 +96,13 @@ public class PathfindingImpl extends MinimalEObjectImpl.Container implements Pat
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<RuleSet> getRuleSets()
+  public EList<Condition> getConditions()
   {
-    if (ruleSets == null)
+    if (conditions == null)
     {
-      ruleSets = new EObjectContainmentEList<RuleSet>(RuleSet.class, this, GamePackage.PATHFINDING__RULE_SETS);
+      conditions = new EObjectContainmentEList<Condition>(Condition.class, this, GamePackage.PATHFINDING__CONDITIONS);
     }
-    return ruleSets;
+    return conditions;
   }
 
   /**
@@ -165,8 +117,8 @@ public class PathfindingImpl extends MinimalEObjectImpl.Container implements Pat
     {
       case GamePackage.PATHFINDING__ATT_PATHFINDING:
         return ((InternalEList<?>)getAttPathfinding()).basicRemove(otherEnd, msgs);
-      case GamePackage.PATHFINDING__RULE_SETS:
-        return ((InternalEList<?>)getRuleSets()).basicRemove(otherEnd, msgs);
+      case GamePackage.PATHFINDING__CONDITIONS:
+        return ((InternalEList<?>)getConditions()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -181,12 +133,10 @@ public class PathfindingImpl extends MinimalEObjectImpl.Container implements Pat
   {
     switch (featureID)
     {
-      case GamePackage.PATHFINDING__NAME:
-        return getName();
       case GamePackage.PATHFINDING__ATT_PATHFINDING:
         return getAttPathfinding();
-      case GamePackage.PATHFINDING__RULE_SETS:
-        return getRuleSets();
+      case GamePackage.PATHFINDING__CONDITIONS:
+        return getConditions();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -202,16 +152,13 @@ public class PathfindingImpl extends MinimalEObjectImpl.Container implements Pat
   {
     switch (featureID)
     {
-      case GamePackage.PATHFINDING__NAME:
-        setName((String)newValue);
-        return;
       case GamePackage.PATHFINDING__ATT_PATHFINDING:
         getAttPathfinding().clear();
         getAttPathfinding().addAll((Collection<? extends Attribute>)newValue);
         return;
-      case GamePackage.PATHFINDING__RULE_SETS:
-        getRuleSets().clear();
-        getRuleSets().addAll((Collection<? extends RuleSet>)newValue);
+      case GamePackage.PATHFINDING__CONDITIONS:
+        getConditions().clear();
+        getConditions().addAll((Collection<? extends Condition>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -227,14 +174,11 @@ public class PathfindingImpl extends MinimalEObjectImpl.Container implements Pat
   {
     switch (featureID)
     {
-      case GamePackage.PATHFINDING__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case GamePackage.PATHFINDING__ATT_PATHFINDING:
         getAttPathfinding().clear();
         return;
-      case GamePackage.PATHFINDING__RULE_SETS:
-        getRuleSets().clear();
+      case GamePackage.PATHFINDING__CONDITIONS:
+        getConditions().clear();
         return;
     }
     super.eUnset(featureID);
@@ -250,31 +194,12 @@ public class PathfindingImpl extends MinimalEObjectImpl.Container implements Pat
   {
     switch (featureID)
     {
-      case GamePackage.PATHFINDING__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case GamePackage.PATHFINDING__ATT_PATHFINDING:
         return attPathfinding != null && !attPathfinding.isEmpty();
-      case GamePackage.PATHFINDING__RULE_SETS:
-        return ruleSets != null && !ruleSets.isEmpty();
+      case GamePackage.PATHFINDING__CONDITIONS:
+        return conditions != null && !conditions.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //PathfindingImpl

@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link master.mdsd.game.CharType#getCharTypeid <em>Char Typeid</em>}</li>
+ *   <li>{@link master.mdsd.game.CharType#getCharTypeId <em>Char Type Id</em>}</li>
  * </ul>
  *
  * @see master.mdsd.game.GamePackage#getCharType()
@@ -24,29 +24,29 @@ import org.eclipse.emf.ecore.EObject;
 public interface CharType extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Char Typeid</b></em>' attribute.
+   * Returns the value of the '<em><b>Char Type Id</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Char Typeid</em>' attribute isn't clear,
+   * If the meaning of the '<em>Char Type Id</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Char Typeid</em>' attribute.
-   * @see #setCharTypeid(String)
-   * @see master.mdsd.game.GamePackage#getCharType_CharTypeid()
+   * @return the value of the '<em>Char Type Id</em>' attribute.
+   * @see #setCharTypeId(String)
+   * @see master.mdsd.game.GamePackage#getCharType_CharTypeId()
    * @model
    * @generated
    */
-  String getCharTypeid();
+  String getCharTypeId();
 
   /**
-   * Sets the value of the '{@link master.mdsd.game.CharType#getCharTypeid <em>Char Typeid</em>}' attribute.
+   * Sets the value of the '{@link master.mdsd.game.CharType#getCharTypeId <em>Char Type Id</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Char Typeid</em>' attribute.
-   * @see #getCharTypeid()
+   * @param value the new value of the '<em>Char Type Id</em>' attribute.
+   * @see #getCharTypeId()
    * @generated
    */
-  void setCharTypeid(String value);
+  void setCharTypeId(String value);
 
 } // CharType

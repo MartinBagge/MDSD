@@ -13,38 +13,38 @@ import master.mdsd.game.AttributeAttack;
 import master.mdsd.game.AttributeInitializer;
 import master.mdsd.game.AttributeTypeAttack;
 import master.mdsd.game.Behaviour;
+import master.mdsd.game.BooleanExpression;
 import master.mdsd.game.Bullet;
 import master.mdsd.game.CharDec;
 import master.mdsd.game.CharType;
 import master.mdsd.game.CharacterAttr;
 import master.mdsd.game.CompOperator;
+import master.mdsd.game.Condition;
 import master.mdsd.game.D;
 import master.mdsd.game.DynamicEntity;
 import master.mdsd.game.EQ;
 import master.mdsd.game.Entity;
+import master.mdsd.game.Expression;
 import master.mdsd.game.GT;
 import master.mdsd.game.GTE;
+import master.mdsd.game.GameMap;
 import master.mdsd.game.GamePackage;
 import master.mdsd.game.Initializer;
-import master.mdsd.game.IntAtt;
+import master.mdsd.game.IntLiteral;
 import master.mdsd.game.LT;
 import master.mdsd.game.LTE;
 import master.mdsd.game.Location;
 import master.mdsd.game.LogicOperator;
-import master.mdsd.game.LogicOperatorLoop;
 import master.mdsd.game.M;
-import master.mdsd.game.Map;
 import master.mdsd.game.Model;
+import master.mdsd.game.Operation;
 import master.mdsd.game.Pathfinding;
 import master.mdsd.game.ReferenceCharacter;
-import master.mdsd.game.Rule;
-import master.mdsd.game.RuleSet;
-import master.mdsd.game.RuleSetup;
-import master.mdsd.game.RuleType;
 import master.mdsd.game.StaticEntity;
 import master.mdsd.game.T;
 import master.mdsd.game.TargetRef;
 import master.mdsd.game.Type;
+import master.mdsd.game.VECTOR;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -121,12 +121,12 @@ public class GameSwitch<T1> extends Switch<T1>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GamePackage.MAP:
+      case GamePackage.GAME_MAP:
       {
-        Map map = (Map)theEObject;
-        T1 result = caseMap(map);
-        if (result == null) result = caseStaticEntity(map);
-        if (result == null) result = caseEntity(map);
+        GameMap gameMap = (GameMap)theEObject;
+        T1 result = caseGameMap(gameMap);
+        if (result == null) result = caseStaticEntity(gameMap);
+        if (result == null) result = caseEntity(gameMap);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -164,6 +164,8 @@ public class GameSwitch<T1> extends Switch<T1>
       {
         master.mdsd.game.Character character = (master.mdsd.game.Character)theEObject;
         T1 result = caseCharacter(character);
+        if (result == null) result = caseDynamicEntity(character);
+        if (result == null) result = caseEntity(character);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -171,6 +173,13 @@ public class GameSwitch<T1> extends Switch<T1>
       {
         Type type = (Type)theEObject;
         T1 result = caseType(type);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GamePackage.VECTOR:
+      {
+        VECTOR vector = (VECTOR)theEObject;
+        T1 result = caseVECTOR(vector);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -185,6 +194,8 @@ public class GameSwitch<T1> extends Switch<T1>
       {
         master.mdsd.game.Object object = (master.mdsd.game.Object)theEObject;
         T1 result = caseObject(object);
+        if (result == null) result = caseDynamicEntity(object);
+        if (result == null) result = caseEntity(object);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -192,6 +203,8 @@ public class GameSwitch<T1> extends Switch<T1>
       {
         Behaviour behaviour = (Behaviour)theEObject;
         T1 result = caseBehaviour(behaviour);
+        if (result == null) result = caseDynamicEntity(behaviour);
+        if (result == null) result = caseEntity(behaviour);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -199,41 +212,30 @@ public class GameSwitch<T1> extends Switch<T1>
       {
         Pathfinding pathfinding = (Pathfinding)theEObject;
         T1 result = casePathfinding(pathfinding);
+        if (result == null) result = caseBehaviour(pathfinding);
+        if (result == null) result = caseDynamicEntity(pathfinding);
+        if (result == null) result = caseEntity(pathfinding);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GamePackage.RULE_SET:
+      case GamePackage.BOOLEAN_EXPRESSION:
       {
-        RuleSet ruleSet = (RuleSet)theEObject;
-        T1 result = caseRuleSet(ruleSet);
+        BooleanExpression booleanExpression = (BooleanExpression)theEObject;
+        T1 result = caseBooleanExpression(booleanExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GamePackage.RULE:
+      case GamePackage.EXPRESSION:
       {
-        Rule rule = (Rule)theEObject;
-        T1 result = caseRule(rule);
+        Expression expression = (Expression)theEObject;
+        T1 result = caseExpression(expression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GamePackage.RULE_SETUP:
+      case GamePackage.CONDITION:
       {
-        RuleSetup ruleSetup = (RuleSetup)theEObject;
-        T1 result = caseRuleSetup(ruleSetup);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GamePackage.INT_ATT:
-      {
-        IntAtt intAtt = (IntAtt)theEObject;
-        T1 result = caseIntAtt(intAtt);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GamePackage.LOGIC_OPERATOR_LOOP:
-      {
-        LogicOperatorLoop logicOperatorLoop = (LogicOperatorLoop)theEObject;
-        T1 result = caseLogicOperatorLoop(logicOperatorLoop);
+        Condition condition = (Condition)theEObject;
+        T1 result = caseCondition(condition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -241,13 +243,6 @@ public class GameSwitch<T1> extends Switch<T1>
       {
         ReferenceCharacter referenceCharacter = (ReferenceCharacter)theEObject;
         T1 result = caseReferenceCharacter(referenceCharacter);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GamePackage.RULE_TYPE:
-      {
-        RuleType ruleType = (RuleType)theEObject;
-        T1 result = caseRuleType(ruleType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -290,6 +285,9 @@ public class GameSwitch<T1> extends Switch<T1>
       {
         Attack attack = (Attack)theEObject;
         T1 result = caseAttack(attack);
+        if (result == null) result = caseBehaviour(attack);
+        if (result == null) result = caseDynamicEntity(attack);
+        if (result == null) result = caseEntity(attack);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -311,7 +309,10 @@ public class GameSwitch<T1> extends Switch<T1>
       {
         Bullet bullet = (Bullet)theEObject;
         T1 result = caseBullet(bullet);
+        if (result == null) result = caseBehaviour(bullet);
         if (result == null) result = caseAttributeTypeAttack(bullet);
+        if (result == null) result = caseDynamicEntity(bullet);
+        if (result == null) result = caseEntity(bullet);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -342,6 +343,22 @@ public class GameSwitch<T1> extends Switch<T1>
       {
         Location location = (Location)theEObject;
         T1 result = caseLocation(location);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GamePackage.OPERATION:
+      {
+        Operation operation = (Operation)theEObject;
+        T1 result = caseOperation(operation);
+        if (result == null) result = caseExpression(operation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GamePackage.INT_LITERAL:
+      {
+        IntLiteral intLiteral = (IntLiteral)theEObject;
+        T1 result = caseIntLiteral(intLiteral);
+        if (result == null) result = caseExpression(intLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -464,7 +481,7 @@ public class GameSwitch<T1> extends Switch<T1>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T1 caseMap(Map object)
+  public T1 caseGameMap(GameMap object)
   {
     return null;
   }
@@ -566,6 +583,22 @@ public class GameSwitch<T1> extends Switch<T1>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>VECTOR</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>VECTOR</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T1 caseVECTOR(VECTOR object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Char Type</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -630,81 +663,49 @@ public class GameSwitch<T1> extends Switch<T1>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Rule Set</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Boolean Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Rule Set</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Boolean Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T1 caseRuleSet(RuleSet object)
+  public T1 caseBooleanExpression(BooleanExpression object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Rule</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Rule</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T1 caseRule(Rule object)
+  public T1 caseExpression(Expression object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Rule Setup</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Condition</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Rule Setup</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Condition</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T1 caseRuleSetup(RuleSetup object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Int Att</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Int Att</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T1 caseIntAtt(IntAtt object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Logic Operator Loop</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Logic Operator Loop</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T1 caseLogicOperatorLoop(LogicOperatorLoop object)
+  public T1 caseCondition(Condition object)
   {
     return null;
   }
@@ -721,22 +722,6 @@ public class GameSwitch<T1> extends Switch<T1>
    * @generated
    */
   public T1 caseReferenceCharacter(ReferenceCharacter object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Rule Type</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Rule Type</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T1 caseRuleType(RuleType object)
   {
     return null;
   }
@@ -945,6 +930,38 @@ public class GameSwitch<T1> extends Switch<T1>
    * @generated
    */
   public T1 caseLocation(Location object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Operation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Operation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T1 caseOperation(Operation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Int Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Int Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T1 caseIntLiteral(IntLiteral object)
   {
     return null;
   }

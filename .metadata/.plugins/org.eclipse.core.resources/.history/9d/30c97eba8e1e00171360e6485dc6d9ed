@@ -1,0 +1,157 @@
+grammar master.mdsd.Game with org.eclipse.xtext.common.Terminals
+
+generate game "http://www.mdsd.master/Game"
+
+Model:
+	'Game' '{' map=Map  entities+=Entity* ini=Initializer '}' 
+;
+
+Map:
+	{Map} entityId = 'Map''{' attributes+=Attribute* '}'
+;
+
+Attribute:
+	{Attribute} attributename=ID type+=Type
+;
+
+
+
+Entity:
+	 DynamicEntity | StaticEntity
+;
+
+DynamicEntity:
+	entityid = 'Character' character+=Character | 
+	entityid = 'Object' object+=Object |  
+	entityid = 'Behaviour' behaviour+= Behaviour
+;
+
+StaticEntity:
+	Map | Initializer
+;
+
+Character:
+	 char=CharType name=ID '{' att+=Attribute*'}'
+;
+
+Type:
+	valueId = INTORDEC | valueId = ID | valueId = VECTOR
+;
+
+VECTOR:
+	INTORDEC INTORDEC
+;
+
+INTORDEC:
+	INT | DECIMAL
+;
+
+CharType:
+	charTypeid = ID
+;
+
+Object:
+	name=ID '{' att+=Attribute* '}'
+;
+
+
+Behaviour:
+	behaviourTypeId = 'Pathfinding' pathfinding=Pathfinding| 
+	behaviourTypeId ='Attack' attack=Attack | 
+	behaviourTypeId = 'Bullet' bullet=Bullet
+;
+
+
+Pathfinding:
+	 name=ID '{' (attPathfinding += Attribute)*  (ruleSets+=RuleSet)* '}'
+;
+
+RuleSet:
+	ifId += 'if' rule = Rule (elseIfId += 'elseif' elseRules+= Rule)*
+;
+
+Rule:
+	'(' ruleSetup = RuleSetup ')'  toDoAction = Action
+;
+RuleSetup:
+	(attributeRefLeft = ReferenceCharacter)? ruleType = RuleType operator=CompOperator intAttleft=IntAtt (lo=LogicOperatorLoop)?
+;
+
+IntAtt:
+	value = INTORDEC | 'self' attrId = ID
+;
+
+DECIMAL:
+	INT '.' INT
+;
+
+LogicOperatorLoop:
+	logicOp+= LogicOperator intAtt+=IntAtt (lop+=LogicOperatorLoop)?
+;
+
+ReferenceCharacter:
+	{ReferenceCharacter} characterId = [Character] | {ReferenceCharacter} targetId = 'self'
+;
+
+RuleType:
+	ruleTypeId = ID
+;
+
+CompOperator:
+	{LT} '<' | {GT} '>' | {LTE} '<=' | {GTE} '>=' | {EQ} '='
+;
+
+Action:
+'(' charAtt= CharacterAttr  '=' charDec = CharDec (lo+=LogicOperatorLoop)? ')'
+;
+
+CharDec:
+	charAttResult+= CharacterAttr | val =INTORDEC
+;
+
+CharacterAttr:
+	reference= ReferenceCharacter  attributename = ID
+;
+
+LogicOperator:
+	{T}'*' |{A} '+' |{M} '-' |{D} '/'
+;
+
+Attack:
+	name=ID '{' (attributes += Attribute)* (attributesAttack += AttributeAttack)* (rules+=RuleSet)? '}'
+;
+
+AttributeAttack:
+	attributeTypesAttack+=AttributeTypeAttack (type+=Type)?
+;
+
+AttributeTypeAttack:
+	{Ammo}'Ammunition' |{AttS}'Attackspeed' | {Bullet}'Bullet' bulletRef = [Bullet]
+;
+
+Bullet:
+	name = ID '{' attributesBullet += Attribute* '}'
+;
+
+Initializer:
+	{Initializer} entityId = 'Initializer' '{' attributesInitializer +=AttributeInitializer* '}'
+;
+
+AttributeInitializer:
+	attributeId = ID (amountValueId=INT?) target += TargetRef 
+;
+
+TargetRef:
+	targetId = ID '{' (locationsId += Location) (',' locationsId+=Location)* '}'
+;
+
+Location:
+	locationId = 'random'  | 
+	'(' typea=Type ',' typeb=Type ')' |
+	charAtt+=Attribute logicOp+=LogicOperator typec+=Type
+;
+
+
+
+
+

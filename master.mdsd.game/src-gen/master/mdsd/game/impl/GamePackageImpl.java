@@ -12,28 +12,27 @@ import master.mdsd.game.AttributeAttack;
 import master.mdsd.game.AttributeInitializer;
 import master.mdsd.game.AttributeTypeAttack;
 import master.mdsd.game.Behaviour;
+import master.mdsd.game.BooleanExpression;
 import master.mdsd.game.Bullet;
 import master.mdsd.game.CharDec;
 import master.mdsd.game.CharType;
 import master.mdsd.game.CharacterAttr;
 import master.mdsd.game.CompOperator;
+import master.mdsd.game.Condition;
 import master.mdsd.game.DynamicEntity;
 import master.mdsd.game.Entity;
+import master.mdsd.game.Expression;
 import master.mdsd.game.GameFactory;
+import master.mdsd.game.GameMap;
 import master.mdsd.game.GamePackage;
 import master.mdsd.game.Initializer;
-import master.mdsd.game.IntAtt;
+import master.mdsd.game.IntLiteral;
 import master.mdsd.game.Location;
 import master.mdsd.game.LogicOperator;
-import master.mdsd.game.LogicOperatorLoop;
-import master.mdsd.game.Map;
 import master.mdsd.game.Model;
+import master.mdsd.game.Operation;
 import master.mdsd.game.Pathfinding;
 import master.mdsd.game.ReferenceCharacter;
-import master.mdsd.game.Rule;
-import master.mdsd.game.RuleSet;
-import master.mdsd.game.RuleSetup;
-import master.mdsd.game.RuleType;
 import master.mdsd.game.StaticEntity;
 import master.mdsd.game.TargetRef;
 import master.mdsd.game.Type;
@@ -65,7 +64,7 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass mapEClass = null;
+  private EClass gameMapEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -114,6 +113,13 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass vectorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass charTypeEClass = null;
 
   /**
@@ -142,35 +148,21 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass ruleSetEClass = null;
+  private EClass booleanExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass ruleEClass = null;
+  private EClass expressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass ruleSetupEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass intAttEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass logicOperatorLoopEClass = null;
+  private EClass conditionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -178,13 +170,6 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * @generated
    */
   private EClass referenceCharacterEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass ruleTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -276,6 +261,20 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * @generated
    */
   private EClass locationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass operationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass intLiteralEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -432,7 +431,7 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Map()
+  public EReference getModel_Entities()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(0);
   }
@@ -442,9 +441,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Entities()
+  public EClass getGameMap()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(1);
+    return gameMapEClass;
   }
 
   /**
@@ -452,29 +451,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Ini()
+  public EReference getGameMap_AttributeList()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getMap()
-  {
-    return mapEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getMap_Attributes()
-  {
-    return (EReference)mapEClass.getEStructuralFeatures().get(0);
+    return (EReference)gameMapEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -542,29 +521,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDynamicEntity_Character()
+  public EAttribute getDynamicEntity_Name()
   {
-    return (EReference)dynamicEntityEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getDynamicEntity_Object()
-  {
-    return (EReference)dynamicEntityEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getDynamicEntity_Behaviour()
-  {
-    return (EReference)dynamicEntityEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)dynamicEntityEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -602,7 +561,7 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCharacter_Char()
+  public EReference getCharacter_CharId()
   {
     return (EReference)characterEClass.getEStructuralFeatures().get(0);
   }
@@ -612,19 +571,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCharacter_Name()
-  {
-    return (EAttribute)characterEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getCharacter_Att()
   {
-    return (EReference)characterEClass.getEStructuralFeatures().get(2);
+    return (EReference)characterEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -652,6 +601,46 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getType_ValueIdVec()
+  {
+    return (EReference)typeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getVECTOR()
+  {
+    return vectorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVECTOR_XVal()
+  {
+    return (EAttribute)vectorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getVECTOR_YVal()
+  {
+    return (EAttribute)vectorEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getCharType()
   {
     return charTypeEClass;
@@ -662,7 +651,7 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCharType_CharTypeid()
+  public EAttribute getCharType_CharTypeId()
   {
     return (EAttribute)charTypeEClass.getEStructuralFeatures().get(0);
   }
@@ -682,19 +671,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getObject_Name()
-  {
-    return (EAttribute)objectEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getObject_Att()
   {
-    return (EReference)objectEClass.getEStructuralFeatures().get(1);
+    return (EReference)objectEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -712,46 +691,6 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBehaviour_BehaviourTypeId()
-  {
-    return (EAttribute)behaviourEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getBehaviour_Pathfinding()
-  {
-    return (EReference)behaviourEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getBehaviour_Attack()
-  {
-    return (EReference)behaviourEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getBehaviour_Bullet()
-  {
-    return (EReference)behaviourEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getPathfinding()
   {
     return pathfindingEClass;
@@ -762,9 +701,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPathfinding_Name()
+  public EReference getPathfinding_AttPathfinding()
   {
-    return (EAttribute)pathfindingEClass.getEStructuralFeatures().get(0);
+    return (EReference)pathfindingEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -772,7 +711,7 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPathfinding_AttPathfinding()
+  public EReference getPathfinding_Conditions()
   {
     return (EReference)pathfindingEClass.getEStructuralFeatures().get(1);
   }
@@ -782,9 +721,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPathfinding_RuleSets()
+  public EClass getBooleanExpression()
   {
-    return (EReference)pathfindingEClass.getEStructuralFeatures().get(2);
+    return booleanExpressionEClass;
   }
 
   /**
@@ -792,9 +731,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getRuleSet()
+  public EReference getBooleanExpression_AttributeRefLeft()
   {
-    return ruleSetEClass;
+    return (EReference)booleanExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -802,9 +741,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRuleSet_IfId()
+  public EReference getBooleanExpression_LeftEx()
   {
-    return (EAttribute)ruleSetEClass.getEStructuralFeatures().get(0);
+    return (EReference)booleanExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -812,9 +751,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRuleSet_Rule()
+  public EReference getBooleanExpression_Operator()
   {
-    return (EReference)ruleSetEClass.getEStructuralFeatures().get(1);
+    return (EReference)booleanExpressionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -822,9 +761,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRuleSet_ElseIfId()
+  public EReference getBooleanExpression_AttributeRefRight()
   {
-    return (EAttribute)ruleSetEClass.getEStructuralFeatures().get(2);
+    return (EReference)booleanExpressionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -832,9 +771,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRuleSet_ElseRules()
+  public EReference getBooleanExpression_Op()
   {
-    return (EReference)ruleSetEClass.getEStructuralFeatures().get(3);
+    return (EReference)booleanExpressionEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -842,9 +781,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getRule()
+  public EReference getBooleanExpression_RightEx()
   {
-    return ruleEClass;
+    return (EReference)booleanExpressionEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -852,9 +791,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRule_RuleSetup()
+  public EClass getExpression()
   {
-    return (EReference)ruleEClass.getEStructuralFeatures().get(0);
+    return expressionEClass;
   }
 
   /**
@@ -862,9 +801,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRule_ToDoAction()
+  public EReference getExpression_Tm()
   {
-    return (EReference)ruleEClass.getEStructuralFeatures().get(1);
+    return (EReference)expressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -872,9 +811,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getRuleSetup()
+  public EClass getCondition()
   {
-    return ruleSetupEClass;
+    return conditionEClass;
   }
 
   /**
@@ -882,9 +821,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRuleSetup_AttributeRefLeft()
+  public EReference getCondition_IfCondition()
   {
-    return (EReference)ruleSetupEClass.getEStructuralFeatures().get(0);
+    return (EReference)conditionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -892,9 +831,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRuleSetup_RuleType()
+  public EReference getCondition_Then()
   {
-    return (EReference)ruleSetupEClass.getEStructuralFeatures().get(1);
+    return (EReference)conditionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -902,99 +841,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRuleSetup_Operator()
+  public EReference getCondition_ElseIfCondition()
   {
-    return (EReference)ruleSetupEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getRuleSetup_IntAttleft()
-  {
-    return (EReference)ruleSetupEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getRuleSetup_Lo()
-  {
-    return (EReference)ruleSetupEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getIntAtt()
-  {
-    return intAttEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getIntAtt_Value()
-  {
-    return (EAttribute)intAttEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getIntAtt_AttrId()
-  {
-    return (EAttribute)intAttEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getLogicOperatorLoop()
-  {
-    return logicOperatorLoopEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLogicOperatorLoop_LogicOp()
-  {
-    return (EReference)logicOperatorLoopEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLogicOperatorLoop_IntAtt()
-  {
-    return (EReference)logicOperatorLoopEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getLogicOperatorLoop_Lop()
-  {
-    return (EReference)logicOperatorLoopEClass.getEStructuralFeatures().get(2);
+    return (EReference)conditionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1032,29 +881,19 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getRuleType()
-  {
-    return ruleTypeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getRuleType_RuleTypeId()
-  {
-    return (EAttribute)ruleTypeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getCompOperator()
   {
     return compOperatorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCompOperator_Op()
+  {
+    return (EAttribute)compOperatorEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1092,9 +931,19 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAction_Lo()
+  public EReference getAction_Op()
   {
     return (EReference)actionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAction_Ex()
+  {
+    return (EReference)actionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1172,6 +1021,16 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getLogicOperator_Lop()
+  {
+    return (EAttribute)logicOperatorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getAttack()
   {
     return attackEClass;
@@ -1182,19 +1041,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttack_Name()
-  {
-    return (EAttribute)attackEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getAttack_Attributes()
   {
-    return (EReference)attackEClass.getEStructuralFeatures().get(1);
+    return (EReference)attackEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1204,7 +1053,7 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    */
   public EReference getAttack_AttributesAttack()
   {
-    return (EReference)attackEClass.getEStructuralFeatures().get(2);
+    return (EReference)attackEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1214,7 +1063,7 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    */
   public EReference getAttack_Rules()
   {
-    return (EReference)attackEClass.getEStructuralFeatures().get(3);
+    return (EReference)attackEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1282,19 +1131,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBullet_Name()
-  {
-    return (EAttribute)bulletEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getBullet_AttributesBullet()
   {
-    return (EReference)bulletEClass.getEStructuralFeatures().get(2);
+    return (EReference)bulletEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1432,9 +1271,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLocation_CharAtt()
+  public EClass getOperation()
   {
-    return (EReference)locationEClass.getEStructuralFeatures().get(3);
+    return operationEClass;
   }
 
   /**
@@ -1442,9 +1281,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLocation_LogicOp()
+  public EReference getOperation_Left()
   {
-    return (EReference)locationEClass.getEStructuralFeatures().get(4);
+    return (EReference)operationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1452,9 +1291,39 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLocation_Typec()
+  public EReference getOperation_Op()
   {
-    return (EReference)locationEClass.getEStructuralFeatures().get(5);
+    return (EReference)operationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getOperation_Right()
+  {
+    return (EReference)operationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getIntLiteral()
+  {
+    return intLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getIntLiteral_Value()
+  {
+    return (EAttribute)intLiteralEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1598,12 +1467,10 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
 
     // Create classes and their features
     modelEClass = createEClass(MODEL);
-    createEReference(modelEClass, MODEL__MAP);
     createEReference(modelEClass, MODEL__ENTITIES);
-    createEReference(modelEClass, MODEL__INI);
 
-    mapEClass = createEClass(MAP);
-    createEReference(mapEClass, MAP__ATTRIBUTES);
+    gameMapEClass = createEClass(GAME_MAP);
+    createEReference(gameMapEClass, GAME_MAP__ATTRIBUTE_LIST);
 
     attributeEClass = createEClass(ATTRIBUTE);
     createEAttribute(attributeEClass, ATTRIBUTE__ATTRIBUTENAME);
@@ -1613,78 +1480,63 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
 
     dynamicEntityEClass = createEClass(DYNAMIC_ENTITY);
     createEAttribute(dynamicEntityEClass, DYNAMIC_ENTITY__ENTITYID);
-    createEReference(dynamicEntityEClass, DYNAMIC_ENTITY__CHARACTER);
-    createEReference(dynamicEntityEClass, DYNAMIC_ENTITY__OBJECT);
-    createEReference(dynamicEntityEClass, DYNAMIC_ENTITY__BEHAVIOUR);
+    createEAttribute(dynamicEntityEClass, DYNAMIC_ENTITY__NAME);
 
     staticEntityEClass = createEClass(STATIC_ENTITY);
     createEAttribute(staticEntityEClass, STATIC_ENTITY__ENTITY_ID);
 
     characterEClass = createEClass(CHARACTER);
-    createEReference(characterEClass, CHARACTER__CHAR);
-    createEAttribute(characterEClass, CHARACTER__NAME);
+    createEReference(characterEClass, CHARACTER__CHAR_ID);
     createEReference(characterEClass, CHARACTER__ATT);
 
     typeEClass = createEClass(TYPE);
     createEAttribute(typeEClass, TYPE__VALUE_ID);
+    createEReference(typeEClass, TYPE__VALUE_ID_VEC);
+
+    vectorEClass = createEClass(VECTOR);
+    createEAttribute(vectorEClass, VECTOR__XVAL);
+    createEAttribute(vectorEClass, VECTOR__YVAL);
 
     charTypeEClass = createEClass(CHAR_TYPE);
-    createEAttribute(charTypeEClass, CHAR_TYPE__CHAR_TYPEID);
+    createEAttribute(charTypeEClass, CHAR_TYPE__CHAR_TYPE_ID);
 
     objectEClass = createEClass(OBJECT);
-    createEAttribute(objectEClass, OBJECT__NAME);
     createEReference(objectEClass, OBJECT__ATT);
 
     behaviourEClass = createEClass(BEHAVIOUR);
-    createEAttribute(behaviourEClass, BEHAVIOUR__BEHAVIOUR_TYPE_ID);
-    createEReference(behaviourEClass, BEHAVIOUR__PATHFINDING);
-    createEReference(behaviourEClass, BEHAVIOUR__ATTACK);
-    createEReference(behaviourEClass, BEHAVIOUR__BULLET);
 
     pathfindingEClass = createEClass(PATHFINDING);
-    createEAttribute(pathfindingEClass, PATHFINDING__NAME);
     createEReference(pathfindingEClass, PATHFINDING__ATT_PATHFINDING);
-    createEReference(pathfindingEClass, PATHFINDING__RULE_SETS);
+    createEReference(pathfindingEClass, PATHFINDING__CONDITIONS);
 
-    ruleSetEClass = createEClass(RULE_SET);
-    createEAttribute(ruleSetEClass, RULE_SET__IF_ID);
-    createEReference(ruleSetEClass, RULE_SET__RULE);
-    createEAttribute(ruleSetEClass, RULE_SET__ELSE_IF_ID);
-    createEReference(ruleSetEClass, RULE_SET__ELSE_RULES);
+    booleanExpressionEClass = createEClass(BOOLEAN_EXPRESSION);
+    createEReference(booleanExpressionEClass, BOOLEAN_EXPRESSION__ATTRIBUTE_REF_LEFT);
+    createEReference(booleanExpressionEClass, BOOLEAN_EXPRESSION__LEFT_EX);
+    createEReference(booleanExpressionEClass, BOOLEAN_EXPRESSION__OPERATOR);
+    createEReference(booleanExpressionEClass, BOOLEAN_EXPRESSION__ATTRIBUTE_REF_RIGHT);
+    createEReference(booleanExpressionEClass, BOOLEAN_EXPRESSION__OP);
+    createEReference(booleanExpressionEClass, BOOLEAN_EXPRESSION__RIGHT_EX);
 
-    ruleEClass = createEClass(RULE);
-    createEReference(ruleEClass, RULE__RULE_SETUP);
-    createEReference(ruleEClass, RULE__TO_DO_ACTION);
+    expressionEClass = createEClass(EXPRESSION);
+    createEReference(expressionEClass, EXPRESSION__TM);
 
-    ruleSetupEClass = createEClass(RULE_SETUP);
-    createEReference(ruleSetupEClass, RULE_SETUP__ATTRIBUTE_REF_LEFT);
-    createEReference(ruleSetupEClass, RULE_SETUP__RULE_TYPE);
-    createEReference(ruleSetupEClass, RULE_SETUP__OPERATOR);
-    createEReference(ruleSetupEClass, RULE_SETUP__INT_ATTLEFT);
-    createEReference(ruleSetupEClass, RULE_SETUP__LO);
-
-    intAttEClass = createEClass(INT_ATT);
-    createEAttribute(intAttEClass, INT_ATT__VALUE);
-    createEAttribute(intAttEClass, INT_ATT__ATTR_ID);
-
-    logicOperatorLoopEClass = createEClass(LOGIC_OPERATOR_LOOP);
-    createEReference(logicOperatorLoopEClass, LOGIC_OPERATOR_LOOP__LOGIC_OP);
-    createEReference(logicOperatorLoopEClass, LOGIC_OPERATOR_LOOP__INT_ATT);
-    createEReference(logicOperatorLoopEClass, LOGIC_OPERATOR_LOOP__LOP);
+    conditionEClass = createEClass(CONDITION);
+    createEReference(conditionEClass, CONDITION__IF_CONDITION);
+    createEReference(conditionEClass, CONDITION__THEN);
+    createEReference(conditionEClass, CONDITION__ELSE_IF_CONDITION);
 
     referenceCharacterEClass = createEClass(REFERENCE_CHARACTER);
     createEReference(referenceCharacterEClass, REFERENCE_CHARACTER__CHARACTER_ID);
     createEAttribute(referenceCharacterEClass, REFERENCE_CHARACTER__TARGET_ID);
 
-    ruleTypeEClass = createEClass(RULE_TYPE);
-    createEAttribute(ruleTypeEClass, RULE_TYPE__RULE_TYPE_ID);
-
     compOperatorEClass = createEClass(COMP_OPERATOR);
+    createEAttribute(compOperatorEClass, COMP_OPERATOR__OP);
 
     actionEClass = createEClass(ACTION);
     createEReference(actionEClass, ACTION__CHAR_ATT);
     createEReference(actionEClass, ACTION__CHAR_DEC);
-    createEReference(actionEClass, ACTION__LO);
+    createEReference(actionEClass, ACTION__OP);
+    createEReference(actionEClass, ACTION__EX);
 
     charDecEClass = createEClass(CHAR_DEC);
     createEReference(charDecEClass, CHAR_DEC__CHAR_ATT_RESULT);
@@ -1695,9 +1547,9 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
     createEAttribute(characterAttrEClass, CHARACTER_ATTR__ATTRIBUTENAME);
 
     logicOperatorEClass = createEClass(LOGIC_OPERATOR);
+    createEAttribute(logicOperatorEClass, LOGIC_OPERATOR__LOP);
 
     attackEClass = createEClass(ATTACK);
-    createEAttribute(attackEClass, ATTACK__NAME);
     createEReference(attackEClass, ATTACK__ATTRIBUTES);
     createEReference(attackEClass, ATTACK__ATTRIBUTES_ATTACK);
     createEReference(attackEClass, ATTACK__RULES);
@@ -1710,7 +1562,6 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
 
     bulletEClass = createEClass(BULLET);
     createEReference(bulletEClass, BULLET__BULLET_REF);
-    createEAttribute(bulletEClass, BULLET__NAME);
     createEReference(bulletEClass, BULLET__ATTRIBUTES_BULLET);
 
     initializerEClass = createEClass(INITIALIZER);
@@ -1729,9 +1580,14 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
     createEAttribute(locationEClass, LOCATION__LOCATION_ID);
     createEReference(locationEClass, LOCATION__TYPEA);
     createEReference(locationEClass, LOCATION__TYPEB);
-    createEReference(locationEClass, LOCATION__CHAR_ATT);
-    createEReference(locationEClass, LOCATION__LOGIC_OP);
-    createEReference(locationEClass, LOCATION__TYPEC);
+
+    operationEClass = createEClass(OPERATION);
+    createEReference(operationEClass, OPERATION__LEFT);
+    createEReference(operationEClass, OPERATION__OP);
+    createEReference(operationEClass, OPERATION__RIGHT);
+
+    intLiteralEClass = createEClass(INT_LITERAL);
+    createEAttribute(intLiteralEClass, INT_LITERAL__VALUE);
 
     ltEClass = createEClass(LT);
 
@@ -1785,11 +1641,19 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    mapEClass.getESuperTypes().add(this.getStaticEntity());
+    gameMapEClass.getESuperTypes().add(this.getStaticEntity());
     dynamicEntityEClass.getESuperTypes().add(this.getEntity());
     staticEntityEClass.getESuperTypes().add(this.getEntity());
+    characterEClass.getESuperTypes().add(this.getDynamicEntity());
+    objectEClass.getESuperTypes().add(this.getDynamicEntity());
+    behaviourEClass.getESuperTypes().add(this.getDynamicEntity());
+    pathfindingEClass.getESuperTypes().add(this.getBehaviour());
+    attackEClass.getESuperTypes().add(this.getBehaviour());
+    bulletEClass.getESuperTypes().add(this.getBehaviour());
     bulletEClass.getESuperTypes().add(this.getAttributeTypeAttack());
     initializerEClass.getESuperTypes().add(this.getStaticEntity());
+    operationEClass.getESuperTypes().add(this.getExpression());
+    intLiteralEClass.getESuperTypes().add(this.getExpression());
     ltEClass.getESuperTypes().add(this.getCompOperator());
     gtEClass.getESuperTypes().add(this.getCompOperator());
     lteEClass.getESuperTypes().add(this.getCompOperator());
@@ -1804,96 +1668,79 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModel_Map(), this.getMap(), null, "map", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Entities(), this.getEntity(), null, "entities", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_Ini(), this.getInitializer(), null, "ini", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(mapEClass, Map.class, "Map", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMap_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, Map.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(gameMapEClass, GameMap.class, "GameMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getGameMap_AttributeList(), this.getAttribute(), null, "attributeList", null, 0, -1, GameMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAttribute_Attributename(), ecorePackage.getEString(), "attributename", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAttribute_Type(), this.getType(), null, "type", null, 0, -1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAttribute_Type(), this.getType(), null, "type", null, 0, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(dynamicEntityEClass, DynamicEntity.class, "DynamicEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDynamicEntity_Entityid(), ecorePackage.getEString(), "entityid", null, 0, 1, DynamicEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDynamicEntity_Character(), this.getCharacter(), null, "character", null, 0, -1, DynamicEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDynamicEntity_Object(), this.getObject(), null, "object", null, 0, -1, DynamicEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDynamicEntity_Behaviour(), this.getBehaviour(), null, "behaviour", null, 0, -1, DynamicEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDynamicEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, DynamicEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(staticEntityEClass, StaticEntity.class, "StaticEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getStaticEntity_EntityId(), ecorePackage.getEString(), "entityId", null, 0, 1, StaticEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(characterEClass, master.mdsd.game.Character.class, "Character", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCharacter_Char(), this.getCharType(), null, "char", null, 0, 1, master.mdsd.game.Character.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCharacter_Name(), ecorePackage.getEString(), "name", null, 0, 1, master.mdsd.game.Character.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCharacter_CharId(), this.getCharType(), null, "charId", null, 0, 1, master.mdsd.game.Character.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCharacter_Att(), this.getAttribute(), null, "att", null, 0, -1, master.mdsd.game.Character.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getType_ValueId(), ecorePackage.getEString(), "valueId", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getType_ValueIdVec(), this.getVECTOR(), null, "valueIdVec", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(vectorEClass, master.mdsd.game.VECTOR.class, "VECTOR", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getVECTOR_XVal(), ecorePackage.getEString(), "xVal", null, 0, 1, master.mdsd.game.VECTOR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVECTOR_YVal(), ecorePackage.getEString(), "yVal", null, 0, 1, master.mdsd.game.VECTOR.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(charTypeEClass, CharType.class, "CharType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getCharType_CharTypeid(), ecorePackage.getEString(), "charTypeid", null, 0, 1, CharType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCharType_CharTypeId(), ecorePackage.getEString(), "charTypeId", null, 0, 1, CharType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(objectEClass, master.mdsd.game.Object.class, "Object", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getObject_Name(), ecorePackage.getEString(), "name", null, 0, 1, master.mdsd.game.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getObject_Att(), this.getAttribute(), null, "att", null, 0, -1, master.mdsd.game.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(behaviourEClass, Behaviour.class, "Behaviour", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBehaviour_BehaviourTypeId(), ecorePackage.getEString(), "behaviourTypeId", null, 0, 1, Behaviour.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBehaviour_Pathfinding(), this.getPathfinding(), null, "pathfinding", null, 0, 1, Behaviour.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBehaviour_Attack(), this.getAttack(), null, "attack", null, 0, 1, Behaviour.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBehaviour_Bullet(), this.getBullet(), null, "bullet", null, 0, 1, Behaviour.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(pathfindingEClass, Pathfinding.class, "Pathfinding", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getPathfinding_Name(), ecorePackage.getEString(), "name", null, 0, 1, Pathfinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPathfinding_AttPathfinding(), this.getAttribute(), null, "attPathfinding", null, 0, -1, Pathfinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPathfinding_RuleSets(), this.getRuleSet(), null, "ruleSets", null, 0, -1, Pathfinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPathfinding_Conditions(), this.getCondition(), null, "conditions", null, 0, -1, Pathfinding.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(ruleSetEClass, RuleSet.class, "RuleSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRuleSet_IfId(), ecorePackage.getEString(), "ifId", null, 0, -1, RuleSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRuleSet_Rule(), this.getRule(), null, "rule", null, 0, 1, RuleSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRuleSet_ElseIfId(), ecorePackage.getEString(), "elseIfId", null, 0, -1, RuleSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRuleSet_ElseRules(), this.getRule(), null, "elseRules", null, 0, -1, RuleSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(booleanExpressionEClass, BooleanExpression.class, "BooleanExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getBooleanExpression_AttributeRefLeft(), this.getCharacterAttr(), null, "attributeRefLeft", null, 0, 1, BooleanExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBooleanExpression_LeftEx(), this.getExpression(), null, "leftEx", null, 0, 1, BooleanExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBooleanExpression_Operator(), this.getCompOperator(), null, "operator", null, 0, 1, BooleanExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBooleanExpression_AttributeRefRight(), this.getCharacterAttr(), null, "attributeRefRight", null, 0, 1, BooleanExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBooleanExpression_Op(), this.getLogicOperator(), null, "op", null, 0, 1, BooleanExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBooleanExpression_RightEx(), this.getExpression(), null, "rightEx", null, 0, 1, BooleanExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(ruleEClass, Rule.class, "Rule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getRule_RuleSetup(), this.getRuleSetup(), null, "ruleSetup", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRule_ToDoAction(), this.getAction(), null, "toDoAction", null, 0, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExpression_Tm(), this.getExpression(), null, "tm", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(ruleSetupEClass, RuleSetup.class, "RuleSetup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getRuleSetup_AttributeRefLeft(), this.getReferenceCharacter(), null, "attributeRefLeft", null, 0, 1, RuleSetup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRuleSetup_RuleType(), this.getRuleType(), null, "ruleType", null, 0, 1, RuleSetup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRuleSetup_Operator(), this.getCompOperator(), null, "operator", null, 0, 1, RuleSetup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRuleSetup_IntAttleft(), this.getIntAtt(), null, "intAttleft", null, 0, 1, RuleSetup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRuleSetup_Lo(), this.getLogicOperatorLoop(), null, "lo", null, 0, 1, RuleSetup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(intAttEClass, IntAtt.class, "IntAtt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getIntAtt_Value(), ecorePackage.getEString(), "value", null, 0, 1, IntAtt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getIntAtt_AttrId(), ecorePackage.getEString(), "attrId", null, 0, 1, IntAtt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(logicOperatorLoopEClass, LogicOperatorLoop.class, "LogicOperatorLoop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLogicOperatorLoop_LogicOp(), this.getLogicOperator(), null, "logicOp", null, 0, -1, LogicOperatorLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLogicOperatorLoop_IntAtt(), this.getIntAtt(), null, "intAtt", null, 0, -1, LogicOperatorLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLogicOperatorLoop_Lop(), this.getLogicOperatorLoop(), null, "lop", null, 0, -1, LogicOperatorLoop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(conditionEClass, Condition.class, "Condition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCondition_IfCondition(), this.getBooleanExpression(), null, "ifCondition", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCondition_Then(), this.getAction(), null, "then", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCondition_ElseIfCondition(), this.getCondition(), null, "elseIfCondition", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(referenceCharacterEClass, ReferenceCharacter.class, "ReferenceCharacter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getReferenceCharacter_CharacterId(), this.getCharacter(), null, "characterId", null, 0, 1, ReferenceCharacter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getReferenceCharacter_TargetId(), ecorePackage.getEString(), "targetId", null, 0, 1, ReferenceCharacter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(ruleTypeEClass, RuleType.class, "RuleType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRuleType_RuleTypeId(), ecorePackage.getEString(), "ruleTypeId", null, 0, 1, RuleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(compOperatorEClass, CompOperator.class, "CompOperator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCompOperator_Op(), ecorePackage.getEString(), "op", null, 0, 1, CompOperator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(actionEClass, Action.class, "Action", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAction_CharAtt(), this.getCharacterAttr(), null, "charAtt", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAction_CharDec(), this.getCharDec(), null, "charDec", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAction_Lo(), this.getLogicOperatorLoop(), null, "lo", null, 0, -1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAction_Op(), this.getLogicOperator(), null, "op", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAction_Ex(), this.getExpression(), null, "ex", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(charDecEClass, CharDec.class, "CharDec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCharDec_CharAttResult(), this.getCharacterAttr(), null, "charAttResult", null, 0, -1, CharDec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCharDec_CharAttResult(), this.getCharacterAttr(), null, "charAttResult", null, 0, 1, CharDec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCharDec_Val(), ecorePackage.getEString(), "val", null, 0, 1, CharDec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(characterAttrEClass, CharacterAttr.class, "CharacterAttr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1901,12 +1748,12 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
     initEAttribute(getCharacterAttr_Attributename(), ecorePackage.getEString(), "attributename", null, 0, 1, CharacterAttr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(logicOperatorEClass, LogicOperator.class, "LogicOperator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLogicOperator_Lop(), ecorePackage.getEString(), "lop", null, 0, 1, LogicOperator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(attackEClass, Attack.class, "Attack", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getAttack_Name(), ecorePackage.getEString(), "name", null, 0, 1, Attack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAttack_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, Attack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAttack_AttributesAttack(), this.getAttributeAttack(), null, "attributesAttack", null, 0, -1, Attack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAttack_Rules(), this.getRuleSet(), null, "rules", null, 0, -1, Attack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAttack_Rules(), this.getCondition(), null, "rules", null, 0, -1, Attack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(attributeAttackEClass, AttributeAttack.class, "AttributeAttack", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAttributeAttack_AttributeTypesAttack(), this.getAttributeTypeAttack(), null, "attributeTypesAttack", null, 0, -1, AttributeAttack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1916,7 +1763,6 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
 
     initEClass(bulletEClass, Bullet.class, "Bullet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBullet_BulletRef(), this.getBullet(), null, "bulletRef", null, 0, 1, Bullet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getBullet_Name(), ecorePackage.getEString(), "name", null, 0, 1, Bullet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBullet_AttributesBullet(), this.getAttribute(), null, "attributesBullet", null, 0, -1, Bullet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(initializerEClass, Initializer.class, "Initializer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1925,7 +1771,7 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
     initEClass(attributeInitializerEClass, AttributeInitializer.class, "AttributeInitializer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAttributeInitializer_AttributeId(), ecorePackage.getEString(), "attributeId", null, 0, 1, AttributeInitializer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttributeInitializer_AmountValueId(), ecorePackage.getEInt(), "amountValueId", null, 0, 1, AttributeInitializer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAttributeInitializer_Target(), this.getTargetRef(), null, "target", null, 0, -1, AttributeInitializer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAttributeInitializer_Target(), this.getTargetRef(), null, "target", null, 0, 1, AttributeInitializer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(targetRefEClass, TargetRef.class, "TargetRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTargetRef_TargetId(), ecorePackage.getEString(), "targetId", null, 0, 1, TargetRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1935,9 +1781,14 @@ public class GamePackageImpl extends EPackageImpl implements GamePackage
     initEAttribute(getLocation_LocationId(), ecorePackage.getEString(), "locationId", null, 0, 1, Location.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLocation_Typea(), this.getType(), null, "typea", null, 0, 1, Location.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLocation_Typeb(), this.getType(), null, "typeb", null, 0, 1, Location.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLocation_CharAtt(), this.getAttribute(), null, "charAtt", null, 0, -1, Location.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLocation_LogicOp(), this.getLogicOperator(), null, "logicOp", null, 0, -1, Location.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLocation_Typec(), this.getType(), null, "typec", null, 0, -1, Location.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOperation_Left(), this.getExpression(), null, "left", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOperation_Op(), this.getLogicOperator(), null, "op", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOperation_Right(), this.getExpression(), null, "right", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(intLiteralEClass, IntLiteral.class, "IntLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getIntLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, IntLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(ltEClass, master.mdsd.game.LT.class, "LT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

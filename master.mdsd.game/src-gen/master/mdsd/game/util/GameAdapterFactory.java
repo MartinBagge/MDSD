@@ -13,38 +13,38 @@ import master.mdsd.game.AttributeAttack;
 import master.mdsd.game.AttributeInitializer;
 import master.mdsd.game.AttributeTypeAttack;
 import master.mdsd.game.Behaviour;
+import master.mdsd.game.BooleanExpression;
 import master.mdsd.game.Bullet;
 import master.mdsd.game.CharDec;
 import master.mdsd.game.CharType;
 import master.mdsd.game.CharacterAttr;
 import master.mdsd.game.CompOperator;
+import master.mdsd.game.Condition;
 import master.mdsd.game.D;
 import master.mdsd.game.DynamicEntity;
 import master.mdsd.game.EQ;
 import master.mdsd.game.Entity;
+import master.mdsd.game.Expression;
 import master.mdsd.game.GT;
 import master.mdsd.game.GTE;
+import master.mdsd.game.GameMap;
 import master.mdsd.game.GamePackage;
 import master.mdsd.game.Initializer;
-import master.mdsd.game.IntAtt;
+import master.mdsd.game.IntLiteral;
 import master.mdsd.game.LT;
 import master.mdsd.game.LTE;
 import master.mdsd.game.Location;
 import master.mdsd.game.LogicOperator;
-import master.mdsd.game.LogicOperatorLoop;
 import master.mdsd.game.M;
-import master.mdsd.game.Map;
 import master.mdsd.game.Model;
+import master.mdsd.game.Operation;
 import master.mdsd.game.Pathfinding;
 import master.mdsd.game.ReferenceCharacter;
-import master.mdsd.game.Rule;
-import master.mdsd.game.RuleSet;
-import master.mdsd.game.RuleSetup;
-import master.mdsd.game.RuleType;
 import master.mdsd.game.StaticEntity;
 import master.mdsd.game.T;
 import master.mdsd.game.TargetRef;
 import master.mdsd.game.Type;
+import master.mdsd.game.VECTOR;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -122,9 +122,9 @@ public class GameAdapterFactory extends AdapterFactoryImpl
         return createModelAdapter();
       }
       @Override
-      public Adapter caseMap(Map object)
+      public Adapter caseGameMap(GameMap object)
       {
-        return createMapAdapter();
+        return createGameMapAdapter();
       }
       @Override
       public Adapter caseAttribute(Attribute object)
@@ -157,6 +157,11 @@ public class GameAdapterFactory extends AdapterFactoryImpl
         return createTypeAdapter();
       }
       @Override
+      public Adapter caseVECTOR(VECTOR object)
+      {
+        return createVECTORAdapter();
+      }
+      @Override
       public Adapter caseCharType(CharType object)
       {
         return createCharTypeAdapter();
@@ -177,39 +182,24 @@ public class GameAdapterFactory extends AdapterFactoryImpl
         return createPathfindingAdapter();
       }
       @Override
-      public Adapter caseRuleSet(RuleSet object)
+      public Adapter caseBooleanExpression(BooleanExpression object)
       {
-        return createRuleSetAdapter();
+        return createBooleanExpressionAdapter();
       }
       @Override
-      public Adapter caseRule(Rule object)
+      public Adapter caseExpression(Expression object)
       {
-        return createRuleAdapter();
+        return createExpressionAdapter();
       }
       @Override
-      public Adapter caseRuleSetup(RuleSetup object)
+      public Adapter caseCondition(Condition object)
       {
-        return createRuleSetupAdapter();
-      }
-      @Override
-      public Adapter caseIntAtt(IntAtt object)
-      {
-        return createIntAttAdapter();
-      }
-      @Override
-      public Adapter caseLogicOperatorLoop(LogicOperatorLoop object)
-      {
-        return createLogicOperatorLoopAdapter();
+        return createConditionAdapter();
       }
       @Override
       public Adapter caseReferenceCharacter(ReferenceCharacter object)
       {
         return createReferenceCharacterAdapter();
-      }
-      @Override
-      public Adapter caseRuleType(RuleType object)
-      {
-        return createRuleTypeAdapter();
       }
       @Override
       public Adapter caseCompOperator(CompOperator object)
@@ -275,6 +265,16 @@ public class GameAdapterFactory extends AdapterFactoryImpl
       public Adapter caseLocation(Location object)
       {
         return createLocationAdapter();
+      }
+      @Override
+      public Adapter caseOperation(Operation object)
+      {
+        return createOperationAdapter();
+      }
+      @Override
+      public Adapter caseIntLiteral(IntLiteral object)
+      {
+        return createIntLiteralAdapter();
       }
       @Override
       public Adapter caseLT(LT object)
@@ -369,16 +369,16 @@ public class GameAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link master.mdsd.game.Map <em>Map</em>}'.
+   * Creates a new adapter for an object of class '{@link master.mdsd.game.GameMap <em>Map</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see master.mdsd.game.Map
+   * @see master.mdsd.game.GameMap
    * @generated
    */
-  public Adapter createMapAdapter()
+  public Adapter createGameMapAdapter()
   {
     return null;
   }
@@ -474,6 +474,21 @@ public class GameAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link master.mdsd.game.VECTOR <em>VECTOR</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see master.mdsd.game.VECTOR
+   * @generated
+   */
+  public Adapter createVECTORAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link master.mdsd.game.CharType <em>Char Type</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -534,76 +549,46 @@ public class GameAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link master.mdsd.game.RuleSet <em>Rule Set</em>}'.
+   * Creates a new adapter for an object of class '{@link master.mdsd.game.BooleanExpression <em>Boolean Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see master.mdsd.game.RuleSet
+   * @see master.mdsd.game.BooleanExpression
    * @generated
    */
-  public Adapter createRuleSetAdapter()
+  public Adapter createBooleanExpressionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link master.mdsd.game.Rule <em>Rule</em>}'.
+   * Creates a new adapter for an object of class '{@link master.mdsd.game.Expression <em>Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see master.mdsd.game.Rule
+   * @see master.mdsd.game.Expression
    * @generated
    */
-  public Adapter createRuleAdapter()
+  public Adapter createExpressionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link master.mdsd.game.RuleSetup <em>Rule Setup</em>}'.
+   * Creates a new adapter for an object of class '{@link master.mdsd.game.Condition <em>Condition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see master.mdsd.game.RuleSetup
+   * @see master.mdsd.game.Condition
    * @generated
    */
-  public Adapter createRuleSetupAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link master.mdsd.game.IntAtt <em>Int Att</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see master.mdsd.game.IntAtt
-   * @generated
-   */
-  public Adapter createIntAttAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link master.mdsd.game.LogicOperatorLoop <em>Logic Operator Loop</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see master.mdsd.game.LogicOperatorLoop
-   * @generated
-   */
-  public Adapter createLogicOperatorLoopAdapter()
+  public Adapter createConditionAdapter()
   {
     return null;
   }
@@ -619,21 +604,6 @@ public class GameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createReferenceCharacterAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link master.mdsd.game.RuleType <em>Rule Type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see master.mdsd.game.RuleType
-   * @generated
-   */
-  public Adapter createRuleTypeAdapter()
   {
     return null;
   }
@@ -829,6 +799,36 @@ public class GameAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLocationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link master.mdsd.game.Operation <em>Operation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see master.mdsd.game.Operation
+   * @generated
+   */
+  public Adapter createOperationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link master.mdsd.game.IntLiteral <em>Int Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see master.mdsd.game.IntLiteral
+   * @generated
+   */
+  public Adapter createIntLiteralAdapter()
   {
     return null;
   }

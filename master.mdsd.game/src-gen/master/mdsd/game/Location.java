@@ -3,8 +3,6 @@
  */
 package master.mdsd.game;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -19,9 +17,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link master.mdsd.game.Location#getLocationId <em>Location Id</em>}</li>
  *   <li>{@link master.mdsd.game.Location#getTypea <em>Typea</em>}</li>
  *   <li>{@link master.mdsd.game.Location#getTypeb <em>Typeb</em>}</li>
- *   <li>{@link master.mdsd.game.Location#getCharAtt <em>Char Att</em>}</li>
- *   <li>{@link master.mdsd.game.Location#getLogicOp <em>Logic Op</em>}</li>
- *   <li>{@link master.mdsd.game.Location#getTypec <em>Typec</em>}</li>
  * </ul>
  *
  * @see master.mdsd.game.GamePackage#getLocation()
@@ -107,53 +102,5 @@ public interface Location extends EObject
    * @generated
    */
   void setTypeb(Type value);
-
-  /**
-   * Returns the value of the '<em><b>Char Att</b></em>' containment reference list.
-   * The list contents are of type {@link master.mdsd.game.Attribute}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Char Att</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Char Att</em>' containment reference list.
-   * @see master.mdsd.game.GamePackage#getLocation_CharAtt()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Attribute> getCharAtt();
-
-  /**
-   * Returns the value of the '<em><b>Logic Op</b></em>' containment reference list.
-   * The list contents are of type {@link master.mdsd.game.LogicOperator}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Logic Op</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Logic Op</em>' containment reference list.
-   * @see master.mdsd.game.GamePackage#getLocation_LogicOp()
-   * @model containment="true"
-   * @generated
-   */
-  EList<LogicOperator> getLogicOp();
-
-  /**
-   * Returns the value of the '<em><b>Typec</b></em>' containment reference list.
-   * The list contents are of type {@link master.mdsd.game.Type}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Typec</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Typec</em>' containment reference list.
-   * @see master.mdsd.game.GamePackage#getLocation_Typec()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Type> getTypec();
 
 } // Location

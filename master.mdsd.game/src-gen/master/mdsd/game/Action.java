@@ -3,8 +3,6 @@
  */
 package master.mdsd.game;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,7 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link master.mdsd.game.Action#getCharAtt <em>Char Att</em>}</li>
  *   <li>{@link master.mdsd.game.Action#getCharDec <em>Char Dec</em>}</li>
- *   <li>{@link master.mdsd.game.Action#getLo <em>Lo</em>}</li>
+ *   <li>{@link master.mdsd.game.Action#getOp <em>Op</em>}</li>
+ *   <li>{@link master.mdsd.game.Action#getEx <em>Ex</em>}</li>
  * </ul>
  *
  * @see master.mdsd.game.GamePackage#getAction()
@@ -80,19 +79,55 @@ public interface Action extends EObject
   void setCharDec(CharDec value);
 
   /**
-   * Returns the value of the '<em><b>Lo</b></em>' containment reference list.
-   * The list contents are of type {@link master.mdsd.game.LogicOperatorLoop}.
+   * Returns the value of the '<em><b>Op</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Lo</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Op</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Lo</em>' containment reference list.
-   * @see master.mdsd.game.GamePackage#getAction_Lo()
+   * @return the value of the '<em>Op</em>' containment reference.
+   * @see #setOp(LogicOperator)
+   * @see master.mdsd.game.GamePackage#getAction_Op()
    * @model containment="true"
    * @generated
    */
-  EList<LogicOperatorLoop> getLo();
+  LogicOperator getOp();
+
+  /**
+   * Sets the value of the '{@link master.mdsd.game.Action#getOp <em>Op</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Op</em>' containment reference.
+   * @see #getOp()
+   * @generated
+   */
+  void setOp(LogicOperator value);
+
+  /**
+   * Returns the value of the '<em><b>Ex</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Ex</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Ex</em>' containment reference.
+   * @see #setEx(Expression)
+   * @see master.mdsd.game.GamePackage#getAction_Ex()
+   * @model containment="true"
+   * @generated
+   */
+  Expression getEx();
+
+  /**
+   * Sets the value of the '{@link master.mdsd.game.Action#getEx <em>Ex</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Ex</em>' containment reference.
+   * @see #getEx()
+   * @generated
+   */
+  void setEx(Expression value);
 
 } // Action
